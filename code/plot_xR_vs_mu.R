@@ -5,6 +5,7 @@ RBA_reverse <- read.csv("data/01_RBA_reverse.csv", row.names = 1)
 RNAPmax <- read.csv("data/02_RNAPmax.csv")
 RNAPmax_act <- read.csv("data/03_RNAPmax_act.csv")
 RNAPmax_arch <- read.csv("data/04_RNAPmax_arch.csv")
+vmax <- read.csv("data/09_vmax.csv")
 
 lwd <- 7
 fig_size <- c(18,13)
@@ -18,6 +19,7 @@ uni_blue <- "#0063a6"
 uni_red <- "#a71c49"
 uni_teal <- "#11897a"
 uni_green <- "#94c154"
+uni_yellow <- "#f6a800"
 
 xlab <- "Protein mass fraction of ribosome"
 ylab <- expression(paste("Growth rate [h"^"-1"*"]"))
@@ -36,8 +38,8 @@ plot(RBA$x, RBA$mu,
 dev.off()
 
 
-#----RBA reverse-----------------------------------------------------------#####
 
+#----RBA reverse-----------------------------------------------------------#####
 png(filename = "plots/RBA_reverse.png", type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 
@@ -62,7 +64,6 @@ dev.off()
 
 
 #----RBA vs RNA+RNAPmax----------------------------------------------------#####
-
 png(filename = "plots/RNAPmax.png", type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 par(mar = c(4.5,5.5,1,0.5))
@@ -97,6 +98,7 @@ legend("bottomright", legend = my.expressions, lty = c(3,1,1), lwd = lwd,
 dev.off()
 
 
+
 #----Archaea---------------------------------------------------------------#####
 png(filename = "plots/RNAPmax_arch.png", type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
@@ -106,6 +108,32 @@ plot(RNAPmax_arch$x, RNAPmax_arch$mu,
      ylim = c(0,2), xlim = xlim, type = "l",
      xlab = xlab, ylab = ylab,
      cex.axis = cex_axis, cex.lab = cex_labs, lwd = lwd, col = uni_blue)
+
+dev.off()
+
+
+
+#----Vmax------------------------------------------------------------------#####
+cols <- c(uni_red, uni_blue, uni_teal, uni_green, uni_yellow)
+vmaxes <- unique(vmax$vmax)
+
+png(filename = "plots/RBA_vmax.png", type="cairo", units="cm", 
+    width=fig_size[1], height=fig_size[2], res=300)
+
+par(mar = c(4.5,5.5,1,0.5))
+for(v in 1:length(vmaxes)){
+  one_vmax <- vmax[vmax$vmax == vmaxes[v],]
+  plot(one_vmax$x, one_vmax$mu,
+       ylim = ylim, xlim = xlim, type = "l", lty = 1,
+       xlab = xlab, ylab = ylab,
+       cex.axis = cex_axis, cex.lab = cex_labs, lwd = lwd, 
+       col = cols[v])
+  par(new=TRUE)
+}
+par(new=FALSE)
+legend("topright", legend = vmaxes, lty = rep(1,5), lwd = lwd,
+       col = cols, bty = "n", cex = 1.2, 
+       title = as.expression(bquote("V"["max"]*" [mmol g"^"-1"*"h"^"-1"*"]")))
 
 dev.off()
 
@@ -120,5 +148,4 @@ print(paste0("Max. growth rate RBA+RNAPmax+activities (", max(RNAPmax_act$mu),")
             RNAPmax_act$x[which.max(RNAPmax_act$mu)]))
 print(paste0("Maximum growth rate Archaea (", max(RNAPmax_arch$mu),") reached at RP fraction: ", 
             RNAPmax_arch$x[which.max(RNAPmax_arch$mu)]))
-
 

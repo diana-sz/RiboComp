@@ -10,7 +10,7 @@ colors = list("Succinate" = "mediumpurple",
               "Glucose+AA" = "chocolate3", 
               "LB" = "gray42")
 
-lwd <- 4
+lwd <- 5
 fig_size <- c(18,13)
 leg_size <- 1.4
 cex_labs <- 1.8
