@@ -15,6 +15,7 @@ Scripts to study the effect of ribosome composition on growth rate using Element
 * 06_fluxes_RNAPmax_noacc.py -- RBA with a limit on total RNAP, no accumulation of R or rRNA; fixed xR = 36%; saves RNAP fluxes
 * 07_fluxes_RNAPmax_noacc_act.py -- RBA with a limit on total RNAP, no accumulation of R or rRNA; limits on the maximum R and RNAP activity; fixed xR = 36%; saves RNAP fluxes
 * 08_PRL_reproduction.py -- RBA with fixed allocation of R and RNAP and maximum activities, parameters from Kostinski & Reuveni 2020
+* 09_vmax.py -- RBA with a limit on RNAP flux (=transcription initiation rate)
 
 ### Plots 
 * plot_xR_vs_mu.R

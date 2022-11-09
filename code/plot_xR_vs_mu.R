@@ -23,7 +23,6 @@ uni_yellow <- "#f6a800"
 
 xlab <- "Protein mass fraction of ribosome"
 ylab <- expression(paste("Growth rate [h"^"-1"*"]"))
-#ylab = expression(paste("Normalized growth rate ("*mu*"/"*mu[max]*")")),
 
 
 #----RBA only--------------------------------------------------------------#####
