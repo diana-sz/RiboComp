@@ -170,21 +170,6 @@ def make_matrix_v4max(mwG, mwAA, mwNT, n1, n2, n3, n4, n5, nR, mR, mu, k1, k2, k
             "C"]
     nAA = mwAA/mwG
     nNT = (mwNT-mwAA)/mwG  
-    
-    # S = np.array([[  1, -nAA, -nNT,   0,      0,   0,   0,   0,   0,   0,   0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    #               [  0,  1,  -1,      0,      0, -n1, -n2, -n3, -n4, -n5, -nR,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    #               [  0,  0,   1,    -mR,      0,   0,   0,   0,   0,   0,   0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    #               [  0,  0,   0,      1,     -1,   0,   0,   0,   0,   0,   0, -1, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    #               [  0,  0,   0,      0,     -1,   0,   0,   0,   0,   0,   1,  0,-1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-    #               [-mu,  0,   0,      0,      0,  k1,   0,   0,   0,   0,   0,  0, 0, -1,  0,  0,  0,  0,  0,  0,  0,  0],
-    #               [  0,-mu,   0,      0,      0,   0,  k2,   0,   0,   0,   0,  0, 0,  0, -1,  0,  0,  0,  0,  0,  0,  0],
-    #               [  0,  0, -mu,      0,      0,   0,   0,  k3,   0,   0,   0,  0, 0,  0,  0, -1,  0,  0,  0,  0,  0,  0],
-    #               [  0,  0,   0, -mu*mR,      0,   0,   0,   0,   c,   0,   0,  0, 0,  0,  0,  0, -1,  0,  0,  0,  0,  0],
-    #               [  0,  0,   0,      0,    -mu,   0,   0,   0,   0,  k5,   0,  0, 0,  0,  0,  0,  0, -1,  0,  0,  0,  0],
-    #               [  0,  0,   0,      0, kel/mu, -n1, -n2, -n3, -n4, -n5, -nR,  0, 0,  0,  0,  0,  0,  0, -1,  0,  0,  0],
-    #               [  0,  0,   0,    -mu,      0,   0,   0,   0, v4max, 0,   0,  0, 0,  0,  0,  0, 0,  0,  0,  -1,  0,  0],
-    #               [  0,  0,   0,      0,      0,   0,   0,   0, -1/mu, 0,   0,  0, 0,  0,  0,  0,  0,  0,  0,   0, -1, c_pol_max],
-    #               [-mwG,  0,   0,      0,      0,   0,   0,   0,   0,   0,   0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0, mu]])
 
     # vmax
     S = np.array([[  1, -nAA, -nNT,   0,      0,   0,   0,   0,   0,   0,   0,  0, 0,  0,  0,  0,  0,  0,  0,  0,   0],
@@ -290,96 +275,6 @@ def make_matrix(mwG, mwAA, mwNT, n1, n2, n3, n4, n5, nR, mR, mu, k1, k2, k3, k5,
 
     return((S, rxns, row_names, revs))
 
-
-def make_matrix_2rib(mwG, mwAA, mwNT, n1, n2, n3, n4, n5, nR, mR, mu, k1, k2, k3, k5, c, kel, x):
-    """create RBA matrix
-    Parameters: 
-    * mwG, mwAA, mwNT - molecular masses of glucose (or other substrate), AA and NT
-    * n1, n2, n3, n4, n5 - stoichiometric coefficients of transporter (n1), AA/NT synthesis enzymes (n2/n3),
-    RNAP (n4) and ribosome assembly factors (n5)
-    * nR, mR - stoich coefficients of AA and NT in ribosome
-    * mu - growth rate [1/h]
-    * k1 - kcat of substrate importer [1/h]
-    * k2/k3/k5 - kcat of AA synthesis (k2) / NT synthesis (k3) / ribosome assembly (k5) [1/h]
-    * c - transcription rate [nt/h]
-    * kel - translation rate [aa/h]
-    * x - fraction of protein in ribosome
-
-    Returns:
-    * tuple of numpy array with stoich. matrix, list of reactions, list of row names
-    """
-    
-    nAA = mwAA/mwG
-    nNT = (mwNT-mwAA)/mwG
-    row_names = ["G", "AA", "NT", "rRNA", "rP", "C1", "C2", "C3", "C4", "CArRNA", "CArP", "CR", "Cfrac", 
-                 "DM"]
-    rxns = ["vIG", "vEAA", "vENT", "vRNAP", "vrArRNA", "vrArP", "wIG", "wEAA", "wENT", "wRNAP", "wrAS", "wrAS2", "wRP", 
-             "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12", "S13", "C"]
-    
-    S = np.array([[  1, -nAA, -nNT,   0,      0,    0,   0,   0,   0,   0,   0,   0,  0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  1,  -1,      0,      0,    0, -n1, -n2, -n3, -n4, -n5, -n5, -nR, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   1,    -mR,      0,    0,   0,   0,   0,   0,   0,   0,  0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      1,     -1,    0,   0,   0,   0,   0,   0,   0,  0, -1, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      0,      0,   -1,   0,   0,   0,   0,   0,   0,  1,  0,-1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [-mu,  0,   0,      0,      0,    0,  k1,   0,   0,   0,   0,   0,  0,  0, 0, -1,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,-mu,   0,      0,      0,    0,   0,  k2,   0,   0,   0,   0,  0,  0, 0,  0, -1,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0, -mu,      0,      0,    0,   0,   0,  k3,   0,   0,   0,  0,  0, 0,  0,  0, -1,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0, -mu*mR,      0,    0,   0,   0,   0,   c,   0,   0,  0,  0, 0,  0,  0,  0, -1,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      0,    -mu,    0,   0,   0,   0,   0,  k5,   0,  0,  0, 0,  0,  0,  0,  0, -1,  0,  0,  0,  0],
-                  [  0,  0,   0,      0,      0,  -mu,   0,   0,   0,   0,   0,  k5,  0,  0, 0,  0,  0,  0,  0,  0, -1,  0,  0,  0],
-                  [  0,  0,   0,      0, kel/mu,kel/mu,-n1, -n2, -n3, -n4, -n5, -n5, -nR, 0, 0,  0,  0,  0,  0,  0,  0, -1,  0,  0],
-                  [  0,  0,   0,      0, -x/mu,(1-x)/mu, 0,   0,   0,   0,  0,   0,    0, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [-mwG,  0,   0,      0,      0,   0,   0,   0,   0,   0,   0,   0,   0, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0, mu]])
-    
-    return((S, rxns, row_names))
-
-
-
-def make_matrix_2rib_vmax(mwG, mwAA, mwNT, n1, n2, n3, n4, n5, nR, mR, mu, k1, k2, k3, k5, c, kel, x, v4max, c_pol_max):
-    """create RBA matrix
-    Parameters: 
-    * mwG, mwAA, mwNT - molecular masses of glucose (or other substrate), AA and NT
-    * n1, n2, n3, n4, n5 - stoichiometric coefficients of transporter (n1), AA/NT synthesis enzymes (n2/n3),
-    RNAP (n4) and ribosome assembly factors (n5)
-    * nR, mR - stoich coefficients of AA and NT in ribosome
-    * mu - growth rate [1/h]
-    * k1 - kcat of substrate importer [1/h]
-    * k2/k3/k5 - kcat of AA synthesis (k2) / NT synthesis (k3) / ribosome assembly (k5) [1/h]
-    * c - transcription rate [nt/h]
-    * kel - translation rate [aa/h]
-    * x - fraction of protein in ribosome
-    * v4max -  max RNA synthesis rate [1/h]
-    * c_pol_max - max. RNA polymerase [mmol/g]
-
-    Returns:
-    * tuple of numpy array with stoich. matrix, list of reactions, list of row names
-    """
-    
-    nAA = mwAA/mwG
-    nNT = (mwNT-mwAA)/mwG
-    row_names = ["G", "AA", "NT", "rRNA", "rP", "C1", "C2", "C3", "C4", "CArRNA", "CArP", "CR", "vmax", "cpolmax", "Cfrac", 
-                 "DM"]
-    rxns = ["vIG", "vEAA", "vENT", "vRNAP", "vrArRNA", "vrArP", "wIG", "wEAA", "wENT", "wRNAP", "wrAS", "wrAS2", "wRP", 
-             "S4", "S5", "S6", "S7", "S8", "S9", "S10", "S11", "S12", "S13", "S14", "C"]
-    
-    S = np.array([[  1, -nAA, -nNT,   0,      0,    0,   0,   0,   0,   0,   0,   0,  0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  1,  -1,      0,      0,    0, -n1, -n2, -n3, -n4, -n5, -n5, -nR, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   1,    -mR,      0,    0,   0,   0,   0,   0,   0,   0,  0,  0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      1,     -1,    0,   0,   0,   0,   0,   0,   0,  0, -1, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      0,      0,   -1,   0,   0,   0,   0,   0,   0,  1,  0,-1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [-mu,  0,   0,      0,      0,    0,  k1,   0,   0,   0,   0,   0,  0,  0, 0, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,-mu,   0,      0,      0,    0,   0,  k2,   0,   0,   0,   0,  0,  0, 0,  0, -1,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0, -mu,      0,      0,    0,   0,   0,  k3,   0,   0,   0,  0,  0, 0,  0,  0, -1,  0,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0, -mu*mR,      0,    0,   0,   0,   0,   c,   0,   0,  0,  0, 0,  0,  0,  0, -1,  0,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      0,    -mu,    0,   0,   0,   0,   0,  k5,   0,  0,  0, 0,  0,  0,  0,  0, -1,  0,  0,  0,  0,  0],
-                  [  0,  0,   0,      0,      0,  -mu,   0,   0,   0,   0,   0,  k5,  0,  0, 0,  0,  0,  0,  0,  0, -1,  0,  0,  0,  0],
-                  [  0,  0,   0,      0, kel/mu,kel/mu,-n1, -n2, -n3, -n4, -n5, -n5, -nR, 0, 0,  0,  0,  0,  0,  0,  0, -1,  0,  0,  0],
-                  [  0,  0,   0,    -mu,      0,    0,   0,   0,   0,v4max, 0,   0,    0, 0, 0,  0,  0,  0,  0,  0,  0,  0, -1,  0,  0],
-                  [  0,  0,   0,      0,      0,   0,    0,   0,   0,-1/mu, 0,   0,    0, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0, -1, c_pol_max],
-                  [  0,  0,   0,      0, -x/mu,(1-x)/mu, 0,   0,   0,   0,  0,   0,    0, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-                  [-mwG,  0,   0,      0,      0,   0,   0,   0,   0,   0,   0,   0,   0, 0, 0,  0,  0,  0,  0,  0,  0,  0,  0,  0, mu]])
-    
-    return((S, rxns, row_names))
 
 
 def run_efmtool(S, revs, rxns, row_names):
