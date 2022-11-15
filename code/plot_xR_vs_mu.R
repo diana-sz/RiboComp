@@ -1,11 +1,11 @@
-setwd("~/RiboComp")
+library(here)
 
-RBA <- read.csv("data/00_RBA.csv", row.names = 1)
-RBA_reverse <- read.csv("data/01_RBA_reverse.csv", row.names = 1)
-RNAPmax <- read.csv("data/02_RNAPmax.csv")
-RNAPmax_act <- read.csv("data/03_RNAPmax_act.csv")
-RNAPmax_arch <- read.csv("data/04_RNAPmax_arch.csv")
-vmax <- read.csv("data/09_vmax.csv")
+RBA <- read.csv(here("data", "00_RBA.csv"))
+RBA_reverse <- read.csv(here("data", "01_RBA_reverse.csv"))
+RNAPmax <- read.csv(here("data", "02_RNAPmax.csv"))
+RNAPmax_act <- read.csv(here("data", "03_RNAPmax_act.csv"))
+RNAPmax_arch <- read.csv(here("data", "04_RNAPmax_arch.csv"))
+vmax <- read.csv(here("data", "09_vmax.csv"))
 
 lwd <- 7
 fig_size <- c(18,13)
@@ -26,7 +26,7 @@ ylab <- expression(paste("Growth rate [h"^"-1"*"]"))
 
 
 #----RBA only--------------------------------------------------------------#####
-png(filename = "plots/RBA.png", type="cairo", units="cm", 
+png(filename = here("plots","RBA.png"), type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 
 par(mar = c(4.5,5.5,1,0.5))
@@ -37,9 +37,8 @@ plot(RBA$x, RBA$mu,
 dev.off()
 
 
-
 #----RBA reverse-----------------------------------------------------------#####
-png(filename = "plots/RBA_reverse.png", type="cairo", units="cm", 
+png(filename = here("plots", "RBA_reverse.png"), type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 
 par(mar = c(4.5,5.5,1,0.5))
@@ -61,9 +60,8 @@ legend("bottomright", legend = c("RBA", "RBA (RNA expensive)"), lty = c(1,1), lw
 dev.off()
 
 
-
 #----RBA vs RNA+RNAPmax----------------------------------------------------#####
-png(filename = "plots/RNAPmax.png", type="cairo", units="cm", 
+png(filename = here("plots", "RNAPmax.png"), type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 par(mar = c(4.5,5.5,1,0.5))
 
@@ -84,7 +82,6 @@ plot(RBA$x, RBA$mu,
      ylim = ylim, xlim = xlim, type = "l", lty = 3,
      xlab = NA, ylab = NA, axes = FALSE,
      lwd = lwd, col = "grey78")
-
 par(new = FALSE)
 
 my.expressions <-c(as.expression(bquote("RBA")),
@@ -97,9 +94,8 @@ legend("bottomright", legend = my.expressions, lty = c(3,1,1), lwd = lwd,
 dev.off()
 
 
-
 #----Archaea---------------------------------------------------------------#####
-png(filename = "plots/RNAPmax_arch.png", type="cairo", units="cm", 
+png(filename = here("plots", "RNAPmax_arch.png"), type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 
 par(mar = c(4.5,5.5,1,0.5))
@@ -116,7 +112,7 @@ dev.off()
 cols <- c(uni_red, uni_blue, uni_teal, uni_green, uni_yellow)
 vmaxes <- unique(vmax$vmax)
 
-png(filename = "plots/RBA_vmax.png", type="cairo", units="cm", 
+png(filename = here("plots", "RBA_vmax.png"), type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
 
 par(mar = c(4.5,5.5,1,0.5))
@@ -139,12 +135,12 @@ dev.off()
 
 #----Print max growth rates------------------------------------------------#####
 
-print(paste0("Max. growth rate RBA (", max(RBA$mu),") reached at RP fraction: ", 
+print(paste0("Max. growth rate RBA (", max(RBA$mu),") at RP fraction: ", 
             RBA$x[which.max(RBA$mu)]))
-print(paste0("Max. growth rate RBA+RNAPmax (", max(RNAPmax$mu),") reached at RP fraction: ", 
+print(paste0("Max. growth rate RBA+RNAPmax (", max(RNAPmax$mu),") at RP fraction: ", 
             RNAPmax$x[which.max(RNAPmax$mu)]))
-print(paste0("Max. growth rate RBA+RNAPmax+activities (", max(RNAPmax_act$mu),") reached at RP fraction: ", 
+print(paste0("Max. growth rate RBA+RNAPmax+activities (", max(RNAPmax_act$mu),") at RP fraction: ", 
             RNAPmax_act$x[which.max(RNAPmax_act$mu)]))
-print(paste0("Maximum growth rate Archaea (", max(RNAPmax_arch$mu),") reached at RP fraction: ", 
+print(paste0("Maximum growth rate Archaea (", max(RNAPmax_arch$mu),") at RP fraction: ", 
             RNAPmax_arch$x[which.max(RNAPmax_arch$mu)]))
 

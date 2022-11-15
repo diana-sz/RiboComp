@@ -130,3 +130,6 @@ dmypy.json
 
 # Archived stuff
 archive/
+.Rproj.user
+.Rhistory
+
