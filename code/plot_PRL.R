@@ -1,6 +1,6 @@
 library(here)
 
-data <- read.csv(here("data", "08_PRL_reproduction.csv"), row.names = 1)
+data <- read.csv(here("data", "PRL_reproduction.csv"), row.names = 1)
 colnames(data) <- c("Succinate", "Glycerol", "Glucose", "Glycerol+AA", "Glucose+AA", "LB")
 
 colors <- list("Succinate" = "mediumpurple", 

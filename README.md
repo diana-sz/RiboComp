@@ -1,26 +1,38 @@
 # Ribosome composition
 
-Scripts to study the effect of ribosome composition on growth rate using Elementary growth modes (EGMs) and elementary growth vectors (EGVs)
+Scripts to study the effect of ribosome composition on growth rate using Elementary growth modes / vectors (EGMs/EGVs)
 
 
 ## code/
 
 ### Simulations
-* 00_RBA.py -- standard RBA
-* 01_RBA_reverse.py -- standard RBA with parameters that make RNA more expensive than protein
-* 02_RNAPmax.py -- RBA with a limit on total RNA polymerase (RNAP)
-* 03_RNAPmax_act.py -- RBA with a limit on total RNAP + limits on the maximum Ribosome (R) and RNAP activity
-* 04_RNAPmax_arch.py -- RBA with a limit on total RNAP with archaeal parameters
-* 05_fluxes_RNAPmax.py -- RBA with a limit on total RNAP; fixed xR = 36%; saves RNAP fluxes
-* 06_fluxes_RNAPmax_noacc.py -- RBA with a limit on total RNAP, no accumulation of R or rRNA; fixed xR = 36%; saves RNAP fluxes
-* 07_fluxes_RNAPmax_noacc_act.py -- RBA with a limit on total RNAP, no accumulation of R or rRNA; limits on the maximum R and RNAP activity; fixed xR = 36%; saves RNAP fluxes
-* 08_PRL_reproduction.py -- RBA with fixed allocation of R and RNAP and maximum activities, parameters from Kostinski & Reuveni 2020
-* 09_vmax.py -- RBA with a limit on RNAP flux (=transcription initiation rate)
+* general_functions.py -- various functions used by other scripts
+* RBA.py -- standard RBA with E.coli parameters / parameters that make RNA more expensive than protein
+* fit_RNAPmax.py -- find optimal RNAPmax such that the maximum growth rate is reached with xrP=36%
+* RNAPmax.py -- RBA with a limit on total RNA polymerase (RNAP) without / with
+                limits on the maximum Ribosome (R) and RNAP activity
+                for E. coli and archaeal parameters (only without activities)
+* fluxes_RNAPmax.py -- RBA with a limit on total RNAP; fixed xR = 36%; saves RNAP fluxes
+                          with or without accumulation of R or rRNA
+                          with or without limits on the maximum R and RNAP activity
+* init_rate.py -- RBA with a limit on RNAP initiation rate (instead of standard RNAP capacity constraint)
+* PRL_reproduction.py -- RBA with fixed allocation of R and RNAP and maximum activities, 
+                         parameters from Kostinski & Reuveni 2020
+* analytical_xrP.py -- calculate optimal xrP (protein fraction in ribosome) analytically
+                       for a range of different transcription and translation rates
 
 ### Plots 
-* plot_xR_vs_mu.R
-* plot_RNAP_fluxes.R
-* plot_PRL.py
+* plot_xR_vs_mu.R -- plot growth rate vs. ribosome composition  
+                    (outputs of RBA.py, RNAPmax.py, init_rate.py)
+* plot_allocation.R -- plot ribosome allocation vs. ribosome composition
+                       (outputs of RBA.py, RNAPmax.py)
+* plot_RNAP_fluxes.R -- plot RNAP fluxes vs. growth rate at fixed xrP=36%
+                        (output of fluxes_RNAPmax.py)
+* plot_PRL.py -- plot growth rate vs. ribosome composition (Kostinski & Reuveni 2020 reproduction)
+                 (output of PRL_reproduction.py)
+* plot analytical_xrp.R -- plot optiaml xrp calculated analytically for different 
+                           trancription/translation rates
+                           (output of analytical_xrp.py)
 
 
 ## data/
