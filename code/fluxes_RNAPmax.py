@@ -7,7 +7,7 @@ Run RBA with:
     * fixed ribosome composition (0.36% protein)
     * mu increased step by step
     * save RNAP fluxes
-2 parameters sets:
+Three parameters sets:
     * noact: max. activities of R and RNAP NOT included (activities = False)
     * noacc_noact: max. activities of R and RNAP NOT included (activities = False)
                    no accumulation of rRNA or R

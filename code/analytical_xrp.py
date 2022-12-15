@@ -22,7 +22,7 @@ def calculate_xrp(kel, c, activities):
     
     cpolmax = 0.0000126
     if activities:
-        cpolmax = 0.0000776 #0.000079 #
+        cpolmax = 0.0000776
 
     a = (kel/c)*(1/(cpolmax*mwNT))*(mwAA/mwR)
     zeta = (a-beta)/(1+gamma)
@@ -30,8 +30,8 @@ def calculate_xrp(kel, c, activities):
     
     return xrp
 
-kels_r = np.arange(1, 90000, 200)
-kels_rnap = np.arange(1, 90000, 200)
+kels_r = np.arange(1e-5, 9e4, 130)
+kels_rnap = np.arange(1e-5, 9e4, 130)
 comb_array = np.array(np.meshgrid(kels_r, kels_rnap)).T.reshape(-1,2)
 
 xrps = []
@@ -41,4 +41,4 @@ for row in comb_array:
 res = pd.DataFrame({"kel_r": comb_array[:,0],
                     "kel_rnap": comb_array[:,1],
                     "xrp": xrps})
-res.to_csv("../data/analytical_xrp_act.csv")
+res.to_csv("../data/analytical_xrp.csv")

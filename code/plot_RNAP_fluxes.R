@@ -5,9 +5,9 @@ fluxes1 <- read.csv(here("data", "fluxes_RNAPmax_noact.csv"), row.names = 1)
 fluxes2 <- read.csv(here("data", "fluxes_RNAPmax_noacc_noact.csv"), row.names = 1)
 fluxes3 <- read.csv(here("data", "fluxes_RNAPmax_noacc_act.csv"), row.names = 1)
 
-all_fluxes <- list("fluxes_RNAPmax_minimal" = fluxes1,
-                   "fluxes_RNAPmax_noacc_minimal" = fluxes2,
-                   "fluxes_RNAPmax_noacc_act_minimal" = fluxes3)
+all_fluxes <- list("fluxes_RNAPmax" = fluxes1,
+                   "fluxes_RNAPmax_noacc" = fluxes2,
+                   "fluxes_RNAPmax_noacc_act" = fluxes3)
 
 fig_size <- c(18,13)
 uni_blue <- "#0063a6"

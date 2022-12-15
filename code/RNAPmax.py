@@ -3,9 +3,10 @@
 
 """
 Run RBA with a limit on total RNAP concentration
-2 parameters sets:
+Three parameters sets:
     * noact: max. activities of R and RNAP NOT included (activities = False)
     * act: max. activities of R and RNAP included (activities = True)
+    * arch: archaeal parameters used, activities = False
 """
 
 import numpy as np

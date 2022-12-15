@@ -3,7 +3,7 @@
 
 """
 Find optimal RNAPmax such that optimal ribosome composition (xrP) = 36% protein
-2 iterations: withour and with activities of RNAP and R
+2 iterations: without and with activities of RNAP and R
 """
 
 import numpy as np
