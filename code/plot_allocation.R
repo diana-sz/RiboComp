@@ -1,30 +1,30 @@
 library(here)
 library(RColorBrewer)
 
-phis1 <- read.csv(here("data", "RBA_standard_phis.csv"), row.names = 1)
-phis2 <- read.csv(here("data", "RNAPmax_noact_phis.csv"), row.names = 1)
-phis3 <- read.csv(here("data", "RNAPmax_act_phis.csv"), row.names = 1)
-phis4 <- read.csv(here("data", "RNAPmax_arch_phis.csv"), row.names = 1)
+#### read simulation results and put them in one list ##########################
+filenames <- c("R_deg_hill", "RBA")
+for(filename in filenames){
+  data <- read.csv(here("data", paste0(filename, "_allocations.csv")))
+  for(name in unique(data$name)){
+    all_data[[name]] <- data[data$name == name,]
+  }
+}
 
-all_data <- list("RBA_standard_phis" = phis1,
-                 "RNAPmax_noact_phis" = phis2,
-                 "RNAPmax_act_phis" = phis3,
-                 "RNAPmax_arch_phis" = phis4)
 
-metabolite_cols <- c("G", "AA", "NT", "rRNA", "rP")
-enzyme_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG")
-syn_cols <- c("wrP", "wAF", "wRNAP", "wENT", "wEAA", "wIG")
-
+#### define plotting parameters and functions ##################################
 fig_size <- c(18,13)
-colours <-  c(brewer.pal(6, "Paired"), "grey96")
 
 # find min. concentration/allocation across EGVs (=necessary minimum)
 # everything above that is unnecessary accumulation
 group_data <- function(data, columns){
-  grouped <- aggregate(data[, columns], list(data$x), FUN='min')[, columns]
+  grouped <- aggregate(data[, columns], list(data$prot_fraction), FUN='min')[, columns]
+  
+  # calculate the rest (inactive ribosomes)
   storage <- 1-rowSums(grouped)
+  
+  # only include storage fraction if it is big enough to plot
   if(max(storage) > 0.01){
-    grouped$storage <- storage  # only include if it is big enough
+    grouped$storage <- storage  
   }
   return(grouped)
 }
@@ -36,12 +36,11 @@ make_plot <- function(data, columns, main, colours){
   
   grouped <- group_data(data, columns)
   cumsums <- t(apply(grouped, 1, cumsum))  # cumulative sum to draw the polygons
-  xs <- c(unique(data$x), rev(unique(data$x)))
+  xs <- c(unique(data$prot_fraction), rev(unique(data$prot_fraction)))
   
   par(mar = c(4.5,5.5,1,1))
   plot(NA, 
-       xlim = c(0,1), 
-       ylim = c(0,1), 
+       xlim = c(0,1), ylim = c(0,1), 
        xaxs = "i", yaxs = "i",
        xlab = "Protein mass fraction in ribosome",
        ylab = as.expression(bquote("Ribosome allocation ["*Phi["R"]^"i"*"]")),
@@ -63,11 +62,21 @@ make_plot <- function(data, columns, main, colours){
          cex = leg_size, bty = "n")
 }
 
-#### Plot allocations ##########################################################
-for(dataset in names(all_data)){
-  png(filename = here("plots", paste0(dataset, ".png")), 
+
+#### plot data #################################################################
+for(dataset in c("R_deg_hill_glc", "RBA_standard")){ #names(all_data)
+  
+  syn_cols <- c("wrP", "wAF", "wRNAP", "wENT", "wEAA", "wIG")
+  if(grepl("R_deg", dataset)){
+    syn_cols <- c(syn_cols, "wRNase")
+  }
+  colours <-c(brewer.pal(length(syn_cols), "Paired"), "grey96")
+
+  png(filename = here("plots", paste0(dataset, "_allocations.png")), 
       type="cairo", units="cm", 
       width=fig_size[1], height=fig_size[2], res=300)
   make_plot(all_data[[dataset]], syn_cols, dataset, colours)
   dev.off()
 }
+
+

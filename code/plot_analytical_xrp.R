@@ -6,7 +6,7 @@ kelsrnap_ecoli <- 85*c(13.2, 14.4, 15.0)/100  # 18.8, 24.2, 31.0
 
 # optimal xrPs (protein fraction in ribosome) calculated analytically 
 # for varying translation/transcription rates (output of analytical_xrp.py)
-data <- read.csv(here("data", "analytical_xrp_act.csv"), row.names = 1)
+data <- read.csv(here("data", "analytical_xrp.csv"), row.names = 1)
 data[, c("kel_r", "kel_rnap")] <- data[, c("kel_r", "kel_rnap")]/3600
 
 xrps <- c(0, 0.2, 0.6, 0.8, 1, 0.36)  # xrPs to plot
