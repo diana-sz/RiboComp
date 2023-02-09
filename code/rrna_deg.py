@@ -21,7 +21,7 @@ from general import Simulation
 # fitted degradation rates (without / with activities)
 deg_rates = {"R_deg2": (53.4, 16.9),
              "R_deg": (61.0, 18.15),
-            "R_deg_hill": (157.2, 56.7)
+             "R_deg_hill": (157.2, 56.7)
             }
 
 # Variable parameters
@@ -55,7 +55,8 @@ for matrix_type, rates in deg_rates.items():
         par["matrix_type"] = matrix_type
         par["kdeg_max"] = rates[par.get("parameter_set") == "activities"]
 
-        sim = Simulation(par, growth_rates = growth_rates, prot_fractions = prot_fractions)
+        sim = Simulation(par, growth_rates = growth_rates, 
+                         prot_fractions = prot_fractions)
         sim.test_xrps()
 
         # get results

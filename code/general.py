@@ -4,7 +4,7 @@ General classes and functions used by other scripts
 * Simulations with efmtool
 * Calculations of mass fractions and ribosome allocations
 
-Author: Diana Szeliova, 7.2.2023
+Author: Diana Szeliova, 8.2.2023
 """
 
 import efmtool
@@ -21,7 +21,7 @@ def slack(n_columns, pos = -100):
     Parameters
     ----------
     pos: optional, specifies position where -1 is inserted
-    
+
     Returns
     -------
     numpy array
@@ -102,22 +102,21 @@ class Model:
             - naa, nnt - stoich. coefficients for synthesis of AA, NT,
                          depend on the molecular mass of carbon source (mol_masses["C"])
             - nrp, nrrna - stoich. coefficients for synthesis of rP and rRNA, depend on "frac"
-        kig: kcat of substrate importer [1/h]
-        kent: kcat of NT synthesis [1/h]
-        kaf: kcat of R assembly [1/h]
-        keaa - kcat of AA synthesis (keaa), depends on the value of "medium"
-        ktr: transcription rate [nt/h]
-        krnap: transcription rate [1/h]
-        kel: translation rate [aa/h]
-        kexo: exonuclease rate (RNase R) [nt/h]
-        kdeg_max: max. degradation rate [1/h]
-        kin: transcription initiation rate [1/h]
-
+        kinetics: a dictionary of kinetic parameters
+            - kig: kcat of substrate importer [1/h]
+            - kent: kcat of NT synthesis [1/h]
+            - kaf: kcat of R assembly [1/h]
+            - keaa - kcat of AA synthesis (keaa), depends on the value of "medium"
+            - ktr: transcription rate [nt/h]
+            - krnap: transcription rate [1/h]
+            - kel: translation rate [aa/h]
+            - kexo: exonuclease rate (RNase R) [nt/h]
+            - kdeg_max: max. degradation rate [1/h]
+            - kin: transcription initiation rate [1/h]
         matrix_uc: np.array - matrix without constraints
         matrix_c: np.array - matrix with constraints
         rows_uc, rows_c: row names for unconstrained / constrained matrices
         columns_uc, columns_c: column names for unconstrained / constrained matrices
-        revs_uc, revs_c: lists of reversibilities (by default all irreversible)
     """
 
     def __init__(self, *model_pars, **kwargs):
@@ -134,6 +133,8 @@ class Model:
         self.frac = 0.36
         self.growth_rate = 1
         self.rnapmax = 1000
+        self.kin = 1000
+        self.kdeg_max = 0
 
         # molecular masses
         self.mol_masses = {"R": 2300,
@@ -148,14 +149,12 @@ class Model:
                                 "naf": avg_protein*12,
                                 "nrnase": 813}
         # kinetic parameters
-        self.kig = 180*TO_H
-        self.kent = 10*TO_H
-        self.kaf = 1/120*TO_H
-        self.ktr = 85*TO_H
-        self.kel = 21*TO_H
-        self.kexo = 88*TO_H
-        self.kdeg_max = 0
-        self.kin = 1000
+        self.kinetics = {"kig": 180*TO_H,
+                         "kent": 10*TO_H,
+                         "kaf": 1/120*TO_H,
+                         "ktr": 85*TO_H,
+                         "kel": 21*TO_H,
+                         "kexo": 88*TO_H}
 
         # if model_pars, kwargs are provided, update basic settings
         for dictionary in model_pars:
@@ -180,10 +179,6 @@ class Model:
         self.make_matrix_uc()
         self.make_matrix_c()
 
-        # initiate result objects
-        self.egvs = np.array([])
-        self.nice_fluxes = pd.DataFrame
-
 
     def set_specific_parameters(self, *model_pars, **kwargs):
         """change a specific set of parameters according to values
@@ -199,34 +194,79 @@ class Model:
             custom_attr.append(key)
 
         # medium specific parameters - always set
-        self.keaa = [2, 3.5, 5, 7, 8.5, 10.5][self.medium]*TO_H  # kcat of AA synthesis, 1/h
+        # kcat of AA synthesis, 1/h
+        self.kinetics["keaa"] = [2, 3.5, 5, 7, 8.5, 10.5][self.medium]*TO_H
+
+        # molecular mass of the carbon source
+        # 1,3: glycerol; 2,4,5: glucose; 0: succinate
         carbon_sources = {5: 0.18, 4: 0.18, 3: 0.092,
-                          2: 0.18, 1: 0.092, 0: 0.118} # glucose, glycerol, succinate
+                          2: 0.18, 1: 0.092, 0: 0.118}
         self.mol_masses["C"] = carbon_sources[self.medium]
-        overwritten = [any(i in custom_attr for i in ["keaa", "mol_masses"])]
+        overwritten = [any(i in custom_attr for i in ["kinetics", "mol_masses"])]
 
         if self.parameter_set == "archaea":
-            self.ktr = 25*TO_H
-            self.kel = 25/3*TO_H
+            self.kinetics["ktr"] = 25*TO_H
+            self.kinetics["kel"] = 25/3*TO_H
             self.stoichiometries["nrnap"] = 3338
             self.mol_masses["R"] = 3040
-            overwritten.append(any(i in custom_attr for i in ["c", "kel",
+            overwritten.append(any(i in custom_attr for i in ["kinetics",
                                                               "stoichiometries",
                                                               "mol_masses"]))
         if self.parameter_set == "rna_expensive":
             self.stoichiometries["nrnap"] = 3498*15
-            self.kel = 21*TO_H*3
-            self.ktr = 85/10*TO_H
-            overwritten.append(any(i in custom_attr for i in ["c", "kel", "stoichiometries"]))
+            self.kinetics["kel"] = 21*TO_H*3
+            self.kinetics["ktr"] = 85/10*TO_H
+            overwritten.append(any(i in custom_attr for i in ["kinetics",
+                                                              "stoichiometries"]))
 
         if self.parameter_set == "activities":
-            self.kel = self.kel*0.85
+            self.kinetics["kel"] = self.kinetics["kel"]*0.85
             f_rnap = np.array([13.2, 14.4, 15.0, 18.8, 24.2, 31.0])/100  # % active RNAP
-            self.ktr = self.ktr*f_rnap[self.medium]
-            overwritten.append(any(i in custom_attr for i in ["c", "kel"]))
+            self.kinetics["ktr"] = self.kinetics["ktr"]*f_rnap[self.medium]
+            overwritten.append(any(i in custom_attr for i in ["kinetics"]))
+
+        if self.parameter_set == "Kostinski":
+            # parameters from Kostinski & Reuveni
+            kel = [12, 16.83, 21, 20.17, 21, 22.25][self.medium]*3600
+            self.kinetics["kel"] = kel*0.85  # % active ribosomes
+
+            # % active polymerase
+            f_rnap = [13.2, 14.4, 15.0, 18.8, 24.2, 31.0][self.medium]/100
+
+            # RNAP allocation fractions
+            phi_rnap = [0.18, 0.28, 0.42, 0.52, 0.60, 0.65][self.medium]
+
+            self.kinetics["ktr"] = self.kinetics["ktr"]*f_rnap*phi_rnap
+            overwritten.append(any(i in custom_attr for i in ["kinetics"]))
 
         if any(overwritten):
-            print(f"Some custom parameters overwritten with parameter set: {self.parameter_set}!")
+            print(f"Custom parameters may be overwritten with parameter set: {self.parameter_set}")
+
+
+    def caluclate_degradation_rate(self):
+        """
+        Calculate ribosome degradation rate.
+        The rate decreases with protein fraction in the ribosome (frac)
+        either linearly, with a square of frac or according to a Hill function
+
+        Returns
+        -------
+        float of the degradation rate
+        """
+        # linear increase
+        if self.matrix_type == "R_deg":
+            kdeg = self.kdeg_max*(1-self.frac)
+
+        # squared
+        if self.matrix_type == "R_deg2":
+            kdeg = self.kdeg_max*(1-self.frac)**2
+
+        # hill function
+        if self.matrix_type == "R_deg_hill":
+            hill = 6
+            kdeg = self.kdeg_max*(1-(self.frac**hill/(self.frac**hill+0.2**hill)))
+
+        return kdeg
 
 
     def __str__(self):
@@ -260,9 +300,9 @@ class Model:
         )
 
         self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vAF",
-                        "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
+                           "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
         self.rows_uc = ["G", "AA", "NT", "rRNA", "rP",
-                       "IG", "EAA", "ENT", "RNAP", "AF", "R"]
+                        "IG", "EAA", "ENT", "RNAP", "AF", "R"]
 
         # matrix with ribosome degradation rate
         if "deg" in self.matrix_type:
@@ -281,7 +321,7 @@ class Model:
               [0,   0,   0,     0,  0,    0,   0,    0,    0,     0,   0,     1,   0]]
             )
             self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vAF", "vdeg",
-                            "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wRNase", "wrP"]
+                               "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wRNase", "wrP"]
             self.rows_uc = ["G", "AA", "NT", "rRNA", "rP", "R",
                             "IG", "EAA", "ENT", "RNAP", "AF", "RNase"]
 
@@ -289,149 +329,104 @@ class Model:
     def make_matrix_c(self):
         """
         Create stoichiometric matrix with constraints (matrix_c), list of rows (rows_c),
-        list of columns (columns_c), list of reversibilities (revs_c)
-        based on the value of "matrix_type" attribute
+        list of columns (columns_c) based on the value of "matrix_type" attribute
         """
         mu = self.growth_rate
-        naa, nnt, = self.stoichiometries["naa"], self.stoichiometries["nnt"]
         nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
         nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
         naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
         nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
-        kig, keaa, kent, kaf = self.kig, self.keaa, self.kent, self.kaf
-        kel, kexo = self.kel, self.kexo
+        kig, keaa = self.kinetics["kig"], self.kinetics["keaa"]
+        kent, kaf, kel = self.kinetics["kent"], self.kinetics["kaf"], self.kinetics["kel"]
         mwc = self.mol_masses["C"]
-        krnap = self.ktr/nrrna  # transcripts/h
+        krnap = self.kinetics["ktr"]/nrrna  # transcripts/h
+        if "_init_rate" in self.matrix_type:
+            krnap = self.kin  # initiation rate limiting
 
-        if "RBA" in self.matrix_type:
-            if "_init_rate" in self.matrix_type:
-                krnap = self.kin  # initiation rate limiting
+        if self.matrix_type in ["RBA", "RBA_init_rate", "RNAPmax"]:
+            # take the metabolite rows from the unconstrained stocihiometric matrix
+            met_matrix = self.matrix_uc[0:5,:]
 
-            self.matrix_c = np.array(
-             [[  1,-naa,-nnt,    0,     0,   0,    0,    0,     0,   0,   0]+slack(9),
-              [  0,   1,  -1,    0,     0,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(9),
-              [  0,   0,   1,-nrrna,    0,   0,    0,    0,     0,   0,   0]+slack(9),
-              [  0,   0,   0,    1,    -1,   0,    0,    0,     0,   0,   0]+slack(9,0),
-              [  0,   0,   0,    0,    -1,   0,    0,    0,     0,   0,   1]+slack(9,1),
-              [-mu,   0,   0,    0,     0, kig,    0,    0,     0,   0,   0]+slack(9,2),
-              [  0, -mu,   0,    0,     0,   0, keaa,    0,     0,   0,   0]+slack(9,3),
-              [  0,   0, -mu,    0,     0,   0,    0, kent,     0,   0,   0]+slack(9,4),
-              [  0,   0,   0,  -mu,     0,   0,    0,    0, krnap,   0,   0]+slack(9,5),
-              [  0,   0,   0,    0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(9,6),
-              [  0,   0,   0,    0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(9,7),
-              [-mwc,  0,   0,    0,     0,   0,    0,    0,    0,   0,    0]+slack(8)+[mu]]
+            # add slack columns
+            ncol = 9
+            if self.matrix_type == "RNAPmax":
+                ncol = 10  # RNAPmax matrix needs one extra slack column
+            slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                               slack(ncol, 0), slack(ncol, 1)])
+            met_matrix = np.concatenate((met_matrix, slacks), axis = 1)
+
+            # rba constraints
+            constraints = np.array(
+              [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
+               [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
+               [  0,  0,-mu,  0,     0,   0,    0, kent,     0,   0,   0]+slack(ncol,4),
+               [  0,  0,  0,-mu,     0,   0,    0,    0, krnap,   0,   0]+slack(ncol,5),
+               [  0,  0,  0,  0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(ncol,6),
+               [  0,  0,  0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(ncol,7),
+               [-mwc, 0,  0,  0,     0,   0,    0,    0,    0,   0,    0]+slack(ncol-1)+[mu]]
             )
 
-
-#             constraints = np.array(
-#               [[-mu,   0,   0,    0,     0, kig,    0,    0,     0,   0,   0],
-#               [  0, -mu,   0,    0,     0,   0, keaa,    0,     0,   0,   0],
-#               [  0,   0, -mu,    0,     0,   0,    0, kent,     0,   0,   0],
-#               [  0,   0,   0,  -mu,     0,   0,    0,    0, krnap,   0,   0],
-#               [  0,   0,   0,    0,   -mu,   0,    0,    0,     0, kaf,   0],
-#               [  0,   0,   0,    0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp],
-#               [-mwc,  0,   0,    0,     0,   0,    0,    0,    0,   0,    0]]
-#             )
-#             matrix = np.concatenate((self.matrix_uc[0:5,:], constraints), axis=0)
-            
-#             slacks = np.array(
-#                 [slack(9),
-#                 slack(9),
-#                 slack(9),
-#                 slack(9,1),
-#                 slack(9,2),
-#                 slack(9,3),
-#                 slack(9,4),
-#                 slack(9,5),
-#                 slack(9,6),
-#                 slack(9,7),
-#                 slack(8)+[mu]]
-#             )
-            
-#             self.matrix_c = np.concatenate((matrix, slacks), axis = 1)
-            
-        
-            
-
-
-        if self.matrix_type == "RNAPmax":
-            self.matrix_c = np.array(
-             [[ 1,-naa,-nnt, 0,     0,   0,    0,    0,     0,   0,   0]+slack(10),
-              [  0,  1, -1,  0,     0,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(10),
-              [  0,  0,  1,-nrrna,  0,   0,    0,    0,     0,   0,   0]+slack(10),
-              [  0,  0,  0,  1,    -1,   0,    0,    0,     0,   0,   0]+slack(10,0),
-              [  0,  0,  0,  0,    -1,   0,    0,    0,     0,   0,   1]+slack(10,1),
-              [-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(10,2),
-              [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(10,3),
-              [  0,  0,-mu,  0,     0,   0,    0, kent,     0,   0,   0]+slack(10,4),
-              [  0,  0,  0,-mu,     0,   0,    0,    0, krnap,   0,   0]+slack(10,5),
-              [  0,  0,  0,  0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(10,6),
-              [  0,  0,  0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(10,7),
-              [  0,  0,  0,  0,     0,   0,    0,    0, -1/mu,   0,   0]+slack(9,8)+[self.rnapmax],
-              [-mwc, 0,  0,  0,     0,   0,    0,    0,     0,   0,   0]+slack(9)+[mu]]
-            )
+            # constraint on the max. RNAP concentration
+            if self.matrix_type == "RNAPmax":
+                max_rnap = np.array(
+                  [[0, 0, 0, 0, 0, 0, 0, 0, -1/mu, 0, 0]+slack(ncol-1,8)+[self.rnapmax]])
+                constraints = np.concatenate((constraints, max_rnap), axis = 0)
 
         if "R_deg" in self.matrix_type:
-            # calculate kdeg - degradation rate depending on protein fraction in ribosome
-            krnase = kexo/nrrna
-            kdeg = self.kdeg_max*(1-self.frac)
-            if self.matrix_type == "R_deg2":
-                kdeg = self.kdeg_max*(1-self.frac)**2
+            met_matrix = self.matrix_uc[0:6,:]
+            ncol = 12
+            slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                               slack(ncol, 0), slack(ncol, 1), slack(ncol, 2)])
+            met_matrix = np.concatenate((met_matrix, slacks), axis = 1)
 
-            if self.matrix_type == "R_deg_hill":
-                hill_c = 6
-                kdeg = self.kdeg_max*(1-(self.frac**hill_c/(self.frac**hill_c+0.2**hill_c)))
+            krnase = self.kinetics["kexo"]/nrrna
+            kdeg = self.caluclate_degradation_rate()
 
-            self.matrix_c = np.array(
-             [[ 1,-naa,-nnt,0,     0,      0,   0,    0,    0,     0,   0,      0,   0]+slack(12),
-              [ 0,  1, -1,  0,     0,      0,-nig,-neaa,-nent,-nrnap,-naf,-nrnase,-nrp]+slack(12),
-              [ 0,  0,  1,-nrrna,  0,  nrrna,   0,    0,    0,     0,   0,      0,   0]+slack(12),
-              [ 0,  0,  0,  1,    -1,      0,   0,    0,    0,     0,   0,      0,   0]+slack(12,0),
-              [ 0,  0,  0,  0,    -1,      1,   0,    0,    0,     0,   0,      0,   1]+slack(12,1),
-              [ 0,  0,  0,  0,     1,     -1,   0,    0,    0,     0,   0,      0,   0]+slack(12,2),
-              [-mu, 0,  0,  0,     0,      0, kig,    0,    0,     0,   0,      0,   0]+slack(12,3),
-              [ 0,-mu,  0,  0,     0,      0,   0, keaa,    0,     0,   0,      0,   0]+slack(12,4),
-              [ 0,  0,-mu,  0,     0,      0,   0,    0, kent,     0,   0,      0,   0]+slack(12,5),
-              [ 0,  0,  0, -mu,    0,      0,   0,    0,    0, krnap,   0,      0,   0]+slack(12,6),
-              [ 0,  0,  0,  0,   -mu,      0,   0,    0,    0,     0, kaf,      0,   0]+slack(12,7),
-              [ 0,  0,  0,  0,     0,    -mu,   0,    0,    0,     0,   0, krnase,   0]+slack(12,8),
-              [ 0,  0,  0,  0,kel/mu,-kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrnase,-nrp]+slack(12,9),
-              [ 0,  0,  0,  0, -kdeg,mu+kdeg,   0,    0,    0,     0,   0,      0,   0]+slack(12,10),
-              [-mwc,0,  0,  0,     0,      0,   0,    0,    0,     0,   0,      0,   0]+slack(11)+[mu]]
+            constraints = np.array(
+             [[-mu,0, 0, 0,     0,      0, kig,    0,    0,     0,   0,    0,   0]+slack(ncol,3),
+              [ 0,-mu,0, 0,     0,      0,   0, keaa,    0,     0,   0,    0,   0]+slack(ncol,4),
+              [ 0, 0,-mu,0,     0,      0,   0,    0, kent,     0,   0,    0,   0]+slack(ncol,5),
+              [ 0, 0, 0,-mu,    0,      0,   0,    0,    0, krnap,   0,    0,   0]+slack(ncol,6),
+              [ 0, 0, 0, 0,   -mu,      0,   0,    0,    0,     0, kaf,    0,   0]+slack(ncol,7),
+              [ 0, 0, 0, 0,     0,    -mu,   0,    0,    0,     0,   0, krnase, 0]+slack(ncol,8),
+              [ 0, 0, 0, 0,kel/mu,-kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrnase,-nrp]+slack(ncol,9),
+              [ 0, 0, 0, 0, -kdeg,mu+kdeg,   0,    0,    0,     0,   0,    0,   0]+slack(ncol,10),
+              [-mwc,0,0, 0,     0,      0,   0,    0,    0,     0,   0,    0,   0]+slack(ncol-1)+[mu]]
             )
 
-        if self.matrix_type == "PRL":
-            kel = [12, 16.83, 21, 20.17, 21, 22.25][self.medium]*3600
-            kel = kel*0.85  # activity
+        if self.matrix_type == "Kostinski":
+            # take the metabolite rows from the unconstrained matrix
+            met_matrix = self.matrix_uc[0:5,:]
 
+            # add slack columns
+            ncol = 11
+            slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                               slack(ncol, 0), slack(ncol, 1)])
+            met_matrix = np.concatenate((met_matrix, slacks), axis = 1)
+
+            # parameters from Kostinski & Reuveni
             # ribosome allocations to RNAP, rP
-            phi_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100  # phi^RNAP_R, data in %
-            phi_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100  # phi^rP_R, data in %
+            phi_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100  # phi^RNAP_R, in %
+            phi_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100  # phi^rP_R, in %
 
-            # effective translation rates
+            # effective translation rates for different allocation fractions
             kel_rnap = phi_rnap*kel
             kel_rp = phi_rp*kel
             kel_rest = (1-phi_rnap-phi_rp)*kel # the rest is allocated to all other proteins
 
-            # RNAP allocation fractions * transcription rate
-            krnap = [0.18, 0.28, 0.42, 0.52, 0.60, 0.65][self.medium]*self.ktr/nrrna
+            constraints = np.array(
+            [[-mu,   0,   0,   0,        0, kig,    0,    0,    0,    0,   0]+slack(ncol,2),
+             [  0, -mu,   0,   0,        0,   0, keaa,    0,    0,    0,   0]+slack(ncol,3),
+             [  0,   0, -mu,   0,        0,   0,    0, kent,    0,    0,   0]+slack(ncol,4),
+             [  0,   0,   0, -mu,        0,   0,    0,    0, krnap,   0,   0]+slack(ncol,5),
+             [  0,   0,   0,   0,      -mu,   0,    0,    0,    0,  kaf,   0]+slack(ncol,6),
+             [  0,   0,   0,   0,kel_rest/mu,-nig,-neaa,-nent,  0, -naf,   0]+slack(ncol,7),
+             [  0,   0,   0,   0,kel_rnap/mu, 0,    0,    0,-nrnap,   0,   0]+slack(ncol,8),
+             [  0,   0,   0,   0, kel_rp/mu,  0,    0,    0,    0,    0,-nrp]+slack(ncol,9),
+             [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,    0,   0]+slack(ncol-1)+[mu]])
 
-            self.matrix_c = np.array(
-            [[  1,-naa,-nnt,   0,        0,   0,    0,    0,    0,    0,   0]+slack(11),
-             [  0,   1,  -1,   0,        0,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(11),
-             [  0,   0,   1,-nrrna,      0,   0,    0,    0,    0,    0,   0]+slack(11),
-             [  0,   0,   0,   1,       -1,   0,    0,    0,    0,    0,   0]+slack(11,0),
-             [  0,   0,   0,   0,       -1,   0,    0,    0,    0,    0,   1]+slack(11,1),
-             [-mu,   0,   0,   0,        0, kig,    0,    0,    0,    0,   0]+slack(11,2),
-             [  0, -mu,   0,   0,        0,   0, keaa,    0,    0,    0,   0]+slack(11,3),
-             [  0,   0, -mu,   0,        0,   0,    0, kent,    0,    0,   0]+slack(11,4),
-             [  0,   0,   0, -mu,        0,   0,    0,    0, krnap,   0,   0]+slack(11,5),
-             [  0,   0,   0,   0,      -mu,   0,    0,    0,    0,  kaf,   0]+slack(11,6),
-             [  0,   0,   0,   0,kel_rest/mu,-nig,-neaa,-nent,  0, -naf,   0]+slack(11,7),
-             [  0,   0,   0,   0,kel_rnap/mu, 0,    0,    0,-nrnap,   0,   0]+slack(11,8),
-             [  0,   0,   0,   0, kel_rp/mu,  0,    0,    0,    0,    0,-nrp]+slack(11,9),
-             [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,    0,   0]+slack(10)+[mu]])
-
+        # concatenate stoichiometric matrix with constraint matrix
+        self.matrix_c = np.concatenate((met_matrix, constraints), axis=0)
         self.generate_row_and_column_names()
 
 
@@ -439,47 +434,50 @@ class Model:
         """add row (rows_c) and column names (columns_c) based on the shape of matrix_c"""
 
         if "deg" in self.matrix_type:
-            columns = ["vIG", "vEAA", "vENT", "vRNAP", "vAF", "vdeg",
-                    "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wRNase", "wrP"]
-            rows = ["G", "AA", "NT", "rRNA", "rP", "R"]
+            rows =  self.rows_uc[:6]
         else:
-            columns = ["vIG", "vEAA", "vENT", "vRNAP", "vAF",
-                    "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
-            rows = ["G", "AA", "NT", "rRNA", "rP"]
+            rows =  self.rows_uc[:5]
 
         n_slack_row = self.matrix_c.shape[0]-len(rows)
-        n_slack_col = self.matrix_c.shape[1]-len(columns)-1
+        n_slack_col = self.matrix_c.shape[1]-len(self.columns_uc)-1
 
         self.rows_c = rows +  [f"C{i}" for i in range(n_slack_row)]
-        self.columns_c = columns + [f"S{i}" for i in range(n_slack_col)] + ["C"]
+        self.columns_c = self.columns_uc + [f"S{i}" for i in range(n_slack_col)] + ["C"]
 
 
-    def run_efmtool(self, drop_slack = True):
+    def run_efmtool(self):
         """run efmtool once for the matrix with constraints (matrix_c)
-        Store the output in the attribute egvs (as np.array) and
-        nice_fluxes (as a pandas DataFrame with column and row names"""
+        Store the output in the attribute egvs (as np.array)
+
+        Parameters
+        ----------
+        drop_slack: bool, if True, slack columns are dropped from the data frame
+
+        Return
+        ------
+        numpy array with fluxes
+        """
 
         options = efmtool.get_default_options()
         options["arithmetic"] = "fractional"
         options['level'] = 'WARNING'
-        self.egvs = efmtool.calculate_efms(stoichiometry = self.matrix_c,
-                                          reversibilities = [0]*self.matrix_c.shape[1],
-                                          reaction_names = self.columns_c,
-                                          metabolite_names = self.rows_c,
-                                          options = options,
-                                          jvm_options = ["--illegal-access=deny"])
-        self.make_nice_results(drop_slack)
+        egvs = efmtool.calculate_efms(stoichiometry = self.matrix_c,
+                                      reversibilities = [0]*self.matrix_c.shape[1],
+                                      reaction_names = self.columns_c,
+                                      metabolite_names = self.rows_c,
+                                      options = options,
+                                      jvm_options = ["--illegal-access=deny"])
+        return egvs
 
 
     def update_mu(self, growth_rate):
         """
-        update growth rate and matrices in the model
+        Update growth rate and matrices in the model.
 
         Parameters
         ----------
         growth_rate: new growth rate value
         """
-
         self.growth_rate = growth_rate
         self.make_matrix_c()
         self.make_matrix_uc()
@@ -487,8 +485,8 @@ class Model:
 
     def update_frac(self, frac):
         """
-        * update protein fraction in ribosome
-        * update nrp and nrrna and then update matrices
+        Update protein fraction in ribosome (frac),
+        rP and rRNA stoichiometries (nrp and nrrna), then matrices.
 
         Parameters
         ----------
@@ -501,43 +499,48 @@ class Model:
         self.make_matrix_uc()
 
 
-    def make_nice_results(self, drop_slack = True):
+    def make_nice_results(self, egvs, drop_slack = True):
         """
         Convert ugly array from efmtool into a nice pandas DataFrame
         Store as Model.nice_fluxes
 
         Parameters
         ----------
+        egvs: numpy array with the output of "run_efmtool()"
         drop_slack: bool, if True, slack columns are removed
+
+        Returns
+        -------
+        pandas Data Frame with fluxes
         """
 
-        if self.egvs.shape[1] == 0:
-            self.nice_fluxes = pd.DataFrame()
-        else:
-            # solve "ValueError: Big-endian buffer not supported on little-endian compiler"
-            egms = self.egvs.byteswap().newbyteorder()
+        if egvs.shape[1] == 0:
+            return pd.DataFrame()
 
-            # remove zero flux EGVs
-            # subtract one because zero EGVs have 1 for a slack variable
-            nonzeros = (np.count_nonzero(egms, axis=0)-1).astype(bool)
-            egms = egms.T[nonzeros]
+        # solve "ValueError: Big-endian buffer not supported on little-endian compiler"
+        egms = egvs.byteswap().newbyteorder()
 
-            res = pd.DataFrame(egms,
-                               index = [f"EGM{(i+1)}" for i in range(egms.shape[0])],
-                               columns = self.columns_c)
+        # remove zero flux EGVs
+        # subtract one because zero EGVs have 1 for a slack variable
+        nonzeros = (np.count_nonzero(egms, axis=0)-1).astype(bool)
+        egms = egms.T[nonzeros]
 
-            # normalize values by the column C
+        res = pd.DataFrame(egms,
+                           index = [f"EGM{(i+1)}" for i in range(egms.shape[0])],
+                           columns = self.columns_c)
+
+        # normalize values by the column C
+        if "C" in res.columns:
+            res = res.div(res.C, axis = 0)
+
+        if drop_slack:
+            # remove columns with slack variables
+            cols = [c for c in res.columns if c.startswith("S")]
             if "C" in res.columns:
-                res = res.div(res.C, axis = 0)
+                cols = cols+["C"]
+            res = res[res.columns.drop(cols)]
 
-            if drop_slack:
-                # remove columns with slack variables
-                cols = [c for c in res.columns if c.startswith("S")]
-                if "C" in res.columns:
-                    cols = cols+["C"]
-                res = res[res.columns.drop(cols)]
-
-            self.nice_fluxes = res
+        return res
 
 
 class Simulation:
@@ -589,8 +592,7 @@ class Simulation:
 
         while new_mu != last_mu: # check if we already found the last mu
             self.model.update_mu(new_mu)
-            self.model.run_efmtool()
-            egvs = self.model.egvs
+            egvs = self.model.run_efmtool()
 
             # no solution (no egvs/zero egvs in non-slack columns) -- growth rate too big
             ncol = 11
@@ -615,9 +617,9 @@ class Simulation:
 
         # recalculate egvs for last_mu (the last feasible solution)
         self.model.update_mu(growth_rate=last_mu)
-        self.model.run_efmtool()
+        egvs = self.model.run_efmtool()
 
-        return (last_mu, self.model.nice_fluxes)
+        return (last_mu, self.model.make_nice_results(egvs))
 
 
     def test_xrps(self, plot=True):
@@ -667,7 +669,7 @@ class Simulation:
 
     def calculate_mass_fractions(self):
         """
-        Calculates metabolite mass fractions in g/g. 
+        Calculates metabolite mass fractions in g/g.
             mass_fractions = (Nv/mu)*mw
             N: stoichiometric matrix without constraints
             v: vector a fluxes
@@ -679,12 +681,10 @@ class Simulation:
             print("No EGVs - nothing to calculate!")
 
         else:
-            all_fluxes = self.fluxes
             mass_fractions = pd.DataFrame(columns = self.model.rows_uc,
-                                          index = all_fluxes.index)
-            for egv in all_fluxes.index:
-                frac = all_fluxes.loc[egv, "prot_fraction"]
-
+                                          index = self.fluxes.index)
+            for egv in self.fluxes.index:
+                frac = self.fluxes.loc[egv, "prot_fraction"]
                 self.model.update_frac(float(frac))
 
                 mat = pd.DataFrame(self.model.matrix_uc,
@@ -711,13 +711,13 @@ class Simulation:
                            stoich["nent"]*mwaa, stoich["nrnap"]*mwaa,
                            stoich["naf"]*mwaa, stoich["nrnase"]*mwaa]
 
-                mus = all_fluxes.loc[egv, "growth_rate"]
-                fluxes = all_fluxes.loc[egv][:mat.shape[1]]
+                mus = self.fluxes.loc[egv, "growth_rate"]
+                fluxes = self.fluxes.loc[egv][:mat.shape[1]]
                 mass_fractions.loc[egv] = mat.multiply(fluxes).sum(axis=1)/float(mus)
                 mass_fractions.loc[egv] = mass_fractions.loc[egv]*mws
-            mass_fractions["growth_rate"] = all_fluxes.growth_rate
-            mass_fractions["EGVs"] = all_fluxes.EGVs
-            mass_fractions["prot_fraction"] = all_fluxes.prot_fraction
+            mass_fractions["growth_rate"] = self.fluxes.growth_rate
+            mass_fractions["EGVs"] = self.fluxes.EGVs
+            mass_fractions["prot_fraction"] = self.fluxes.prot_fraction
 
             self.mass_fractions = mass_fractions
 
@@ -731,8 +731,8 @@ class Simulation:
             phi_i = (mu*n_i*w_i)/(kel*vaf)
         For matrix with ribosome degradation
             phi_i = (mu*n_i*w_i)/(kel*(vaf-vdeg))
-            
-        where 
+
+        where
             phi_i: ribosome allocation to protein i
             mu: growth rate
             n_i: stoichiometric coefficient of protein i
@@ -745,9 +745,6 @@ class Simulation:
         if self.fluxes.empty:
             print("No EGVs - nothing to calculate!")
         else:
-            all_fluxes = self.fluxes
-
-            # multiply fluxes by stoichiometries
             protein_columns = ["wIG", "wEAA", "wENT", "wRNAP", "wAF"]
             stoich = self.model.stoichiometries
             protein_stoichiometries = [stoich["nig"], stoich["neaa"], stoich["nent"],
@@ -757,21 +754,21 @@ class Simulation:
                 protein_columns = protein_columns + ["wRNase"]
                 protein_stoichiometries = protein_stoichiometries + [stoich["nrnase"]]
 
-            prot_fluxes = all_fluxes[protein_columns].multiply(protein_stoichiometries)
+            prot_fluxes = self.fluxes[protein_columns].multiply(protein_stoichiometries)
 
             # rP stoichiometry calculated from 'prot_fraction' (rP mass fraction in ribosome)
             mwr = self.model.mol_masses["R"]
             mwaa = self.model.mol_masses["AA"]
-            xrps = all_fluxes["prot_fraction"]
-            prot_fluxes["wrP"] = all_fluxes["wrP"]*mwr*xrps.astype(float)/mwaa
+            xrps = self.fluxes["prot_fraction"]
+            prot_fluxes["wrP"] = self.fluxes["wrP"]*mwr*xrps.astype(float)/mwaa
 
             # multiply with growth rates and divide with assembly flux and elongation rate
-            kel = self.model.kel
-            growth_rates = all_fluxes["growth_rate"]
-            v_af = all_fluxes["vAF"]
+            kel = self.model.kinetics["kel"]
+            growth_rates = self.fluxes["growth_rate"]
+            v_af = self.fluxes["vAF"]
 
             if "R_deg" in self.model.matrix_type:
-                v_deg = all_fluxes["vdeg"]
+                v_deg = self.fluxes["vdeg"]
                 allocations = prot_fluxes.apply(lambda x: x*growth_rates/((v_af-v_deg)*kel))
             else:
                 allocations = prot_fluxes.apply(lambda x: x*growth_rates/(v_af*kel))

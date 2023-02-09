@@ -1,0 +1,17 @@
+RNAP: 0.0000460, xrP: 0.350, growth rate: 2.31300
+RNAP: 0.0000239, xrP: 0.350, growth rate: 2.31300
+RNAP: 0.0000129, xrP: 0.350, growth rate: 2.31300
+RNAP: 0.0000074, xrP: 0.350, growth rate: 2.31300
+RNAP: 0.0000046, xrP: 0.370, growth rate: 1.85500
+RNAP: 0.0000060, xrP: 0.370, growth rate: 2.16100
+RNAP: 0.0000067, xrP: 0.365, growth rate: 2.29700
+RNAP: 0.0000070, xrP: 0.350, growth rate: 2.31300
+RNAP: 0.0000068, xrP: 0.360, growth rate: 2.30400
+RNAPmax (activities=False): 0.0000068 (3563 RNAP/cell), mu: 2.30400
+RNAP: 0.0000460, xrP: 0.350, growth rate: 2.14800
+RNAP: 0.0000239, xrP: 0.370, growth rate: 1.50100
+RNAP: 0.0000349, xrP: 0.370, growth rate: 1.86500
+RNAP: 0.0000404, xrP: 0.370, growth rate: 2.03100
+RNAP: 0.0000432, xrP: 0.370, growth rate: 2.11300
+RNAP: 0.0000446, xrP: 0.360, growth rate: 2.14000
+RNAPmax (activities=True): 0.0000446 (23367 RNAP/cell), mu: 2.14000

@@ -109,7 +109,7 @@ legend("bottomright", legend = c("RBA", "RBA (RNA expensive)"),
 dev.off()
 
 
-#### RBA degradation E. coli vs. Archaea (3 types of degradation function) #####
+#### E. coli vs. Archaea #######################################################
 for(deg_type in c("RNAPmax", "R_deg_hill", "R_deg2", "R_deg")){
   png(filename = here("plots", paste0(deg_type, "_arch_mus.png")), type="cairo", units="cm", 
       width=fig_size[1], height=fig_size[2], res=300)
@@ -130,15 +130,15 @@ for(deg_type in c("RNAPmax", "R_deg_hill", "R_deg2", "R_deg")){
 
 
 
-#### RBA degradation media #####################################################
+#### Six different media #######################################################
 colors <- c(uni_blue, uni_teal,uni_green, uni_yellow, uni_red, "grey28")
 
-for(deg_type in c("R_deg_hill", "R_deg2", "R_deg", "RNAPmax", "PRL")){
+for(deg_type in c("R_deg_hill", "R_deg2", "R_deg", "RNAPmax", "Kostinski")){
   png(filename = here("plots", paste0(deg_type, "_media_mus.png")), type="cairo", units="cm", 
       width=fig_size[1], height=fig_size[2], res=300)
   par(mar = c(mar[1:3], 0.5))
   
-  ylim <- ifelse(deg_type == "PRL", 2.2, 3.5)
+  ylim <- ifelse(deg_type == "Kostinski", 2.2, 3.5)
   
   plot_curves(all_data, stats,
               paste0(deg_type, c("_LB", "_glcAA", "_glyAA", "_glc", "_gly", "_succ")), 
@@ -156,7 +156,7 @@ for(deg_type in c("R_deg_hill", "R_deg2", "R_deg", "RNAPmax", "PRL")){
            bty = "n", cex = leg_size)
   }
   
-  if(deg_type %in% c("PRL")){
+  if(deg_type %in% c("Kostinski")){
     legend("topright", legend = c("LB", "Glc+AA", "Gly+AA", "Glc", "Gly", "Succ"),
            lty = 1, lwd = lwd,
            col = colors,

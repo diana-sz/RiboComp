@@ -6,9 +6,10 @@ Run RBA  with R degradation rate:
     * fixed ribosome composition (0.36% protein)
     * mu increased step by step
     * save RNAP fluxes
-Three parameters sets:
+Nine parameters sets:
     * three types of matrices with different degradation function: R_deg, R_deg2, R_deg_hill
     * activities = False ("noact") / True ("glc" - activities in minimal glucose medium used)
+    * "glc_noacc": like "glc" but no accumulation of rRNA or R, no excess R degradation
 """
 
 import numpy as np
@@ -53,8 +54,8 @@ for matrix_type, rates in deg_rates.items():
                 model.columns_c.remove("S1")
                 model.columns_c.remove("S2")
 
-            model.run_efmtool(drop_slack = False)
-            res = model.nice_fluxes
+            egvs = model.run_efmtool()
+            res = model.make_nice_results(egvs, drop_slack = False)
 
             res["growth_rate"] = mu
             res["prot_fraction"] = FRAC
@@ -65,7 +66,7 @@ for matrix_type, rates in deg_rates.items():
     all_results.to_csv(f"../data/fluxes_{matrix_type}.csv")
 
 
-# Bremer 2003 data -- convert to mmol/g/h
+# Bremer 2003 data, converted to mmol/g/h
 avogadro = 6.022e20
 nrrna = model.mol_masses["R"]*(1-FRAC)/model.mol_masses["NT"]
 mus = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5]]  # growth rates (doublings/h)

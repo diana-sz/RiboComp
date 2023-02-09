@@ -2,7 +2,7 @@
 # coding: utf-8
 
 """
-Run RBA with a limit on RNAP initiation rate
+Run RBA with a limit on RNAP initiation rate instead of elongation
 """
 
 import numpy as np

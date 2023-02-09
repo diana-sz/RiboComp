@@ -12,7 +12,7 @@ from general import Simulation
 
 # Parameters
 FILENAME = "Kostinski_reproduction"
-MATRIX_TYPE = "PRL"
+MATRIX_TYPE = "Kostinski"
 
 prot_fractions = np.arange(0.01,1,0.005)
 growth_rates = np.arange(0.01,2.5,0.001)
@@ -33,7 +33,7 @@ for name, par in parameters.items():
                      prot_fractions = prot_fractions,
                      matrix_type = MATRIX_TYPE,
                      medium = par["medium"],
-                     parameter_set = "activities")
+                     parameter_set = "Kostinski")
     sim.test_xrps(plot=False)
 
     temp_results = sim.max_growth_rates
