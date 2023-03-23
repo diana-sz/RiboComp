@@ -1,35 +1,34 @@
 # Ribosome composition
 
-Scripts to study the effect of ribosome composition on growth rate using Elementary growth modes / vectors (EGMs/EGVs)
+Scripts to study the effect of ribosome composition on growth rate using resource balance analysis (RBA) and elementary growth vectors
 
 
 ## code/
 
 ### Simulations
-* general_functions.py -- various functions used by other scripts
-* RBA.py -- standard RBA with E.coli parameters / parameters that make RNA more expensive than protein
-* fit_RNAPmax.py -- find optimal RNAPmax such that the maximum growth rate is reached with xrP=36%
-* RNAPmax.py -- RBA with a limit on total RNA polymerase (RNAP) without / with
-                limits on the maximum Ribosome (R) and RNAP activity
-                for E. coli and archaeal parameters (only without activities)
-* fluxes_RNAPmax.py -- RBA with a limit on total RNAP; fixed xR = 36%; saves RNAP fluxes
+* general.py -- models, functions and classes used by other scripts, 
+* rba.py -- standard RBA with E.coli parameters / parameters that make RNA more expensive than protein
+* fit_rnapmax.py -- find optimal rnapmax such that the maximum growth rate is reached with xrP=36%
+* rnapmax.py -- RBA with a limit on total RNA polymerase (RNAP)
+                for E. coli in different media and archaea
+* fluxes_rnapmax.py -- RBA with a limit on total RNAP; fixed xrP = 36%; saves RNAP fluxes
                           with or without accumulation of R or rRNA
                           with or without limits on the maximum R and RNAP activity
 * init_rate.py -- RBA with a limit on RNAP initiation rate (instead of standard RNAP capacity constraint)
-* PRL_reproduction.py -- RBA with fixed allocation of R and RNAP and maximum activities, 
-                         parameters from Kostinski & Reuveni 2020
+* kostinski_reproduction.py -- RBA with fixed allocation of R and RNAP
+                               parameters from Kostinski & Reuveni 2020
 * analytical_xrP.py -- calculate optimal xrP (protein fraction in ribosome) analytically
                        for a range of different transcription and translation rates
+* rrna_deg.py -- RBA with ribosome degradation reaction. The degradation rate decreases 
+                 with xrP
+* fit_kdegmax.py -- fit R degradation rate so that the optimal composition is xrP=36%
+* fluxes_rrna_deg.py -- calculate RNAP fluxes at xrP=36% at different growth rates
 
 ### Plots 
-* plot_xR_vs_mu.R -- plot growth rate vs. ribosome composition  
-                    (outputs of RBA.py, RNAPmax.py, init_rate.py)
+* plot_xrp_vs_mu.R -- plot growth rate vs. ribosome composition
 * plot_allocation.R -- plot ribosome allocation vs. ribosome composition
-                       (outputs of RBA.py, RNAPmax.py)
 * plot_RNAP_fluxes.R -- plot RNAP fluxes vs. growth rate at fixed xrP=36%
-                        (output of fluxes_RNAPmax.py)
-* plot_PRL.py -- plot growth rate vs. ribosome composition (Kostinski & Reuveni 2020 reproduction)
-                 (output of PRL_reproduction.py)
+* plot_mass_fraction.R -- plot RNA:protein ratio at different growth rates
 * plot analytical_xrp.R -- plot optiaml xrp calculated analytically for different 
                            trancription/translation rates
                            (output of analytical_xrp.py)

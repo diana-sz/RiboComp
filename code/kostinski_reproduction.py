@@ -11,7 +11,6 @@ import pandas as pd
 from general import Simulation
 
 # Parameters
-FILENAME = "Kostinski_reproduction"
 MATRIX_TYPE = "Kostinski"
 
 prot_fractions = np.arange(0.01,1,0.005)
@@ -33,7 +32,7 @@ for name, par in parameters.items():
                      prot_fractions = prot_fractions,
                      matrix_type = MATRIX_TYPE,
                      medium = par["medium"],
-                     parameter_set = "Kostinski")
+                     parameter_set = MATRIX_TYPE)
     sim.test_xrps(plot=False)
 
     temp_results = sim.max_growth_rates
@@ -44,4 +43,4 @@ for name, par in parameters.items():
 
 #res = pd.DataFrame(all_last_mus)
 #res.set_index(prot_fractions, inplace=True)
-growth_rates_res.to_csv(f"../data/{FILENAME}_growth_rates.csv")
+growth_rates_res.to_csv(f"../data/{MATRIX_TYPE}_reproduction_growth_rates.csv")

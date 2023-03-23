@@ -2,7 +2,8 @@ library(here)
 library(RColorBrewer)
 
 #### read simulation results and put them in one list ##########################
-filenames <- c("R_deg_hill", "RBA")
+filenames <- c("RBA_deg")
+all_data <- list()
 for(filename in filenames){
   data <- read.csv(here("data", paste0(filename, "_allocations.csv")))
   for(name in unique(data$name)){
@@ -64,10 +65,10 @@ make_plot <- function(data, columns, main, colours){
 
 
 #### plot data #################################################################
-for(dataset in c("R_deg_hill_glc", "RBA_standard")){ #names(all_data)
+for(dataset in c("deg_hill-6_glc", "RBA_standard")){
   
   syn_cols <- c("wrP", "wAF", "wRNAP", "wENT", "wEAA", "wIG")
-  if(grepl("R_deg", dataset)){
+  if(grepl("deg", dataset)){
     syn_cols <- c(syn_cols, "wRNase")
   }
   colours <-c(brewer.pal(length(syn_cols), "Paired"), "grey96")
@@ -80,3 +81,47 @@ for(dataset in c("R_deg_hill_glc", "RBA_standard")){ #names(all_data)
 }
 
 
+#### Make linear fits for RBA ##################################################
+dataset <- "RBA_standard"
+rba <- all_data[[dataset]]
+proteins <- c("wrP", "wRNAP")
+grouped <-  aggregate(rba[, proteins], list("prot_fraction" = rba$prot_fraction), FUN='min')
+
+colours <- colours[c(1,2)]
+ylims <- c(0.6, 0.01)
+
+png(filename = here("plots", paste0(dataset, "_allocation_fits.png")), 
+    type="cairo", units="cm", 
+    width=26, height=14, res=300)
+
+par(mar = c(1,1.7,1,1.2), oma = c(3,3.2,0,0), mfrow = c(1,2))
+
+for(index in 1:length(proteins)){
+  protein <- proteins[index]
+  plot(grouped$prot_fraction, grouped[,protein], 
+       col = colours[index],
+       xlim = c(0,1), 
+       ylim = c(0, ylims[index]),
+       xlab = NA,
+       ylab = as.expression(bquote("Ribosome allocation ["*Phi["R"]^"i"*"]")),
+       pch = 19,
+       cex.lab = 1.8,
+       cex.axis = 1.6)
+
+  fit <- lm(as.formula(paste0(protein, " ~ prot_fraction")), grouped)
+  
+  abline(fit, col = colours[index], lwd = 2)
+  print(summary(fit))
+  coef <- round(summary(fit)$coefficients, 4)
+  legend <- paste0(protein, " = ", coef[2,1], " xrP + ", coef[1,1])
+  legend("topleft", legend = legend, col =  colours[index], pch = 19,
+         cex = 1.35)
+}
+
+title(xlab = "Protein mass fraction in ribosome", 
+      cex.lab = 1.8, line = 1.8, outer = TRUE)
+title(ylab = as.expression(bquote("Ribosome allocation ["*Phi["R"]^"i"*"]")),
+      cex.lab = 1.8, line = 0.8, outer = TRUE)
+par(new=FALSE)
+
+dev.off()

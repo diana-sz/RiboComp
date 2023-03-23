@@ -4,7 +4,7 @@ library(RColorBrewer)
 #### read simulation results and put them in one list ##########################
 all_data <- list()
 
-filenames <- c("R_deg_hill")#, "RNAPmax_Kn")
+filenames <- c("RBA_deg")#,
 for(filename in filenames){
   data <- read.csv(here("data", paste0(filename, "_mass_fractions.csv")))
   for(name in unique(data$name)){
@@ -61,8 +61,8 @@ make_plot <- function(data, columns, main, colours){
 }
 
 #for(dataset in names(all_data)){
-for(dataset in c("R_deg_hill_glc")){  
-  if(grepl("R_deg", dataset)){
+for(dataset in c("deg_glc")){  
+  if(grepl("deg", dataset)){
     protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG", "RNase")
   }else{
     protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG")
@@ -81,36 +81,42 @@ xlim <- c(0,1)
 mar <- c(4.5,5.5,0.5,0.5)
 
 
-png(filename = here("plots", "R_deg_hill_RNA_P_ratio.png"), type="cairo", units="cm", 
-    width=fig_size[1], height=fig_size[2], res=300)
-par(mar = mar)
+#### Plot RNA:protein ratio ####################################################
+names <- c("deg", "deg_hill-2", "deg_hill-6")
+for(name in names){
 
-for(dataset in names(all_data)[3:8]){
-
-  if(grepl("R_deg", dataset)){
-    protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG", "RNase")
-  }else{
-    protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG")
+png(filename = here("plots", paste0("ratio_RNA_protein_", name, ".png")), type="cairo", units="cm", 
+      width=fig_size[1], height=fig_size[2], res=300)
+  par(mar = mar)
+  for(dataset in paste0(name, c("_LB", "_glcAA", "_glyAA", "_glc", "_gly", "_succ"))){
+    
+    if(grepl("deg", dataset)){
+      protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG", "RNase")
+    }else{
+      protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG")
+    }
+    
+    one <- all_data[[dataset]]
+    x_opt <- 0.35500 #0.36000
+    opt <- group_data(one[one$prot_fraction == x_opt,], c(protein_cols, "growth_rate"))
+    opt$rP <- opt$R * x_opt
+    opt$RNA <- opt$R * (1-x_opt)
+    
+    opt$RP_ratio <- opt$RNA / rowSums(opt[, c(protein_cols[2:length(protein_cols)], "rP")])
+    
+    plot(RP_ratio ~ growth_rate, opt, ylim = c(0,1), xlim = c(0,4),
+         ylab = "RNA/protein mass ratio",
+         xlab = expression(paste("Growth rate [h"^"-1"*"]")),
+         pch = 19,
+         cex = 1.2,
+         cex.axis = 1.6, 
+         cex.lab = 1.8)
+    
+    par(new=TRUE)
   }
-  
-  one <- all_data[[dataset]]
-  x_opt <- 0.36000
-  opt <- group_data(one[one$prot_fraction == x_opt,], c(protein_cols, "growth_rate"))
-  opt$rP <- opt$R * x_opt
-  opt$RNA <- opt$R * (1-x_opt)
-  
-  opt$RP_ratio <- opt$RNA / rowSums(opt[, c(protein_cols[2:length(protein_cols)], "rP")])
-  
-  plot(RP_ratio ~ growth_rate, opt, ylim = c(0,1), xlim = c(0,4),
-       ylab = "RNA/protein mass ratio",
-       xlab = expression(paste("Growth rate [h"^"-1"*"]")),
-       pch = 19,
-       cex = 1.2,
-       cex.axis = 1.6, 
-       cex.lab = 1.8)
-  
-  par(new=TRUE)
+  par(new=FALSE)
+  dev.off()
 }
-par(new=FALSE)
-dev.off()
+
+
 

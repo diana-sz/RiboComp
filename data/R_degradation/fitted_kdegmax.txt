@@ -1,0 +1,37 @@
+Deg. rate: 18.00, xrP: 0.350, growth rate: 1.83900
+Deg. rate: 18.05, xrP: 0.350, growth rate: 1.83800
+Deg. rate: 18.10, xrP: 0.370, growth rate: 1.83800
+Deg. rate: 18.15, xrP: 0.360, growth rate: 1.83700
+Optimal deg. rate (activities=True, matrix=R_deg: 18.15)
+Deg. rate: 61.00, xrP: 0.360, growth rate: 1.91100
+Optimal deg. rate (activities=False, matrix=R_deg: 61.00)
+Deg. rate: 16.00, xrP: 0.350, growth rate: 1.95900
+Deg. rate: 16.10, xrP: 0.350, growth rate: 1.95800
+Deg. rate: 16.20, xrP: 0.350, growth rate: 1.95700
+Deg. rate: 16.30, xrP: 0.350, growth rate: 1.95600
+Deg. rate: 16.40, xrP: 0.350, growth rate: 1.95500
+Deg. rate: 16.50, xrP: 0.350, growth rate: 1.95400
+Deg. rate: 16.60, xrP: 0.350, growth rate: 1.95300
+Deg. rate: 16.70, xrP: 0.350, growth rate: 1.95200
+Deg. rate: 16.80, xrP: 0.355, growth rate: 1.95100
+Deg. rate: 16.90, xrP: 0.360, growth rate: 1.95000
+Optimal deg. rate (activities=True, matrix=R_deg2: 16.90)
+Deg. rate: 53.00, xrP: 0.350, growth rate: 2.06900
+Deg. rate: 53.10, xrP: 0.355, growth rate: 2.06900
+Deg. rate: 53.20, xrP: 0.350, growth rate: 2.06800
+Deg. rate: 53.30, xrP: 0.350, growth rate: 2.06800
+Deg. rate: 53.40, xrP: 0.360, growth rate: 2.06800
+Optimal deg. rate (activities=False, matrix=R_deg2: 53.40)
+Deg. rate: 56.00, xrP: 0.350, growth rate: 2.09300
+Deg. rate: 56.10, xrP: 0.355, growth rate: 2.09300
+Deg. rate: 56.20, xrP: 0.355, growth rate: 2.09300
+Deg. rate: 56.30, xrP: 0.355, growth rate: 2.09300
+Deg. rate: 56.40, xrP: 0.355, growth rate: 2.09300
+Deg. rate: 56.50, xrP: 0.355, growth rate: 2.09300
+Deg. rate: 56.60, xrP: 0.355, growth rate: 2.09300
+Deg. rate: 56.70, xrP: 0.360, growth rate: 2.09300
+Optimal deg. rate (activities=True, matrix=R_deg_hill: 56.70)
+Deg. rate: 157.00, xrP: 0.355, growth rate: 2.25200
+Deg. rate: 157.10, xrP: 0.355, growth rate: 2.25200
+Deg. rate: 157.20, xrP: 0.360, growth rate: 2.25200
+Optimal deg. rate (activities=False, matrix=R_deg_hill: 157.20)
