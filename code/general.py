@@ -15,17 +15,7 @@ import plotext as plt
 TO_H = 3600  # factor to convert from seconds to hours
 
 def slack(n_columns, position = -100):
-    """
-    make a 1D array with zeros and optionally with a -1 at a specified position
-
-    Parameters
-    ----------
-    position: optional, specifies position where -1 is inserted
-
-    Returns
-    -------
-    a list
-    """
+    """make a list with zeroes, optionally with -1 at a specified position"""
     zeros = np.zeros(n_columns, dtype = int)
     if position in range(len(zeros)):
         zeros[position] = -1
@@ -45,7 +35,7 @@ def initiate_progress_plot(title):
     plt.xlabel("Protein fraction in ribosome")
     plt.ylabel("Growth rate [1/h]")
     plt.theme("clear")
-    plt.plot_size(70,25)
+    plt.plot_size(70, 25)
 
 
 def fill_progress_plot(xdata, ydata, ymin=0, ymax=4):
@@ -60,7 +50,7 @@ def fill_progress_plot(xdata, ydata, ymin=0, ymax=4):
     plt.clt()
     plt.ylim(ymin, ymax)
     plt.xlim(0,1)
-    plt.scatter(xdata, ydata, marker="heart", color = 125)
+    plt.scatter(xdata, ydata, marker="heart", color=125)
     plt.show()
 
 
@@ -76,11 +66,11 @@ class Model:
     matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
         - "RBA": standard RBA (default)
         - "RBA_init": RBA with RNAP capacity constraint on initiation
-                       instead of elongation
-        - "RNAPmax": RBA + constraint on max. RNAP concentration
-        - "deg", "deg_hill-[n]": matrices with rRNA degradation reaction
-                                 deg: constant rate, deg_hill-[n] - calculated with
-                                 Hill function where [n] is the hill factor
+                      instead of elongation
+        - "deg", "deg_mito", "deg_hill-[n]", "deg_hill_mito-[n]": 
+                matrices with rRNA degradation reaction
+                deg: constant rate, deg_hill-[n] - calculated with
+                Hill function where [n] is the hill factor
         - "Kostinski" - RBA with fixed ribosome and RNAP allocations
     medium: influences the values of keaa, mol_masses["C"], ktr (if parameter_set = "activities")
         - 0: succinate minimal medium
@@ -91,8 +81,6 @@ class Model:
         - 5: LB
     frac: protein mass fraction in the ribosome
     mu: growth rate
-    rnapmax: maximum concentration of RNAP (mmol/gh)
-             used only for matrix_type: RNAPmax
     mol_masses: a dictionary of molecular masses (g/mmol) of ribosome (R),
                 average amino acid (AA), average nucleotide (NT), carbon source (C)
     stoichiometries: a dictionary of stoichiometric coefficients
@@ -102,26 +90,26 @@ class Model:
         - naa, nnt - stoich. coefficients for synthesis of AA, NT,
                      depend on the molecular mass of carbon source (mol_masses["C"])
         - nrp, nrrna - stoich. coefficients for synthesis of rP and rRNA, depend on "frac"
-        kinetics: a dictionary of kinetic parameters
-            - kig: kcat of substrate importer [1/h]
-            - kent: kcat of NT synthesis [1/h]
-            - kaf: kcat of R assembly [1/h]
-            - keaa - kcat of AA synthesis (keaa), depends on the value of "medium"
-            - ktr: transcription rate [nt/h]
-            - krnap: transcription rate [1/h]
-            - kel: translation rate [aa/h]
-            - kexo: exonuclease rate (RNase R) [nt/h]
-        kdeg_max: max. degradation rate [1/h]
-        kin_max: max. transcription initiation rate [1/h]
-        matrix_uc: np.array - matrix without constraints
-        matrix_c: np.array - matrix with constraints
-        rows_uc, rows_c: row names for unconstrained / constrained matrices
-        columns_uc, columns_c: column names for unconstrained / constrained matrices
+    kinetics: a dictionary of kinetic parameters
+        - kig: kcat of substrate importer [1/h]
+        - kent: kcat of NT synthesis [1/h]
+        - kaf: kcat of R assembly [1/h]
+        - keaa - kcat of AA synthesis, depends on the value of "medium"
+        - ktr: transcription rate [nt/h]
+        - krnap: transcription rate [1/h]
+        - kel: translation rate [aa/h]
+        - kexo: exonuclease rate (RNase R) [nt/h]
+    kdeg_max: max. degradation rate [1/h]
+    kin_max: max. transcription initiation rate [1/h]
+    matrix_uc: np.array - matrix without constraints
+    matrix_c: np.array - matrix with constraints
+    rows_uc, rows_c: row names for unconstrained / constrained matrices
+    columns_uc, columns_c: column names for unconstrained / constrained matrices
     """
     
     # allowed attributes
     __slots__ = ["parameter_set", "matrix_type", "medium", "frac", 
-                 "growth_rate", "rnapmax", "kin_max", "kdeg_max", 
+                 "growth_rate", "kin_max", "kdeg_max", 
                  "stoichiometries", "mol_masses", "kinetics", 
                  "rows_c", "columns_c", "matrix_c", 
                  "rows_uc", "columns_uc", "matrix_uc"]
@@ -132,7 +120,6 @@ class Model:
         self.medium = 2
         self.frac = 0.36
         self.growth_rate = 1
-        self.rnapmax = 1000
         self.kin_max = 1000
         self.kdeg_max = 0
 
@@ -165,10 +152,12 @@ class Model:
         self.set_specific_parameters(*model_pars, **kwargs)
 
         # calculated stoichiometries - must be placed after all other parameters are set
-        self.stoichiometries["naa"] = self.mol_masses["AA"]/self.mol_masses["C"]
-        self.stoichiometries["nnt"] = (self.mol_masses["NT"]-self.mol_masses["AA"])/self.mol_masses["C"]
-        self.stoichiometries["nrp"] = self.mol_masses["R"]*self.frac/self.mol_masses["AA"]
-        self.stoichiometries["nrrna"] = self.mol_masses["R"]*(1-self.frac)/self.mol_masses["NT"]
+        self.stoichiometries["naa"] = self.mol_masses["AA"] / self.mol_masses["C"]
+        self.stoichiometries["nnt"] = ((self.mol_masses["NT"] - self.mol_masses["AA"])
+                                       / self.mol_masses["C"])
+        self.stoichiometries["nrp"] = self.mol_masses["R"] * self.frac / self.mol_masses["AA"]
+        self.stoichiometries["nrrna"] = (self.mol_masses["R"] * (1-self.frac)
+                                         / self.mol_masses["NT"])
 
         # initialize row and column names of matrices
         self.rows_c = []
@@ -182,13 +171,14 @@ class Model:
 
 
     def set_specific_parameters(self, *model_pars, **kwargs):
-        """change a specific set of parameters according to values
+        """
+        change a specific set of parameters according to values
         of "Model.medium" and "Model.parameter_set"
         """
         # check if parameter set/medium are valid
         if self.parameter_set not in ["default", "activities", "activities2", 
                                       "archaea", "rna_expensive", "Kostinski"]:
-            print(f"Unknown parameter set: {self.parameter_set}, parameters set to default")
+            print(f"Unknown parameter set: {self.parameter_set}, using default parameters")
 
         if self.medium not in [0,1,2,3,4,5]:
             print(f"Unknown medium: {self.medium}, using default (2: glucose minimal)")
@@ -216,6 +206,10 @@ class Model:
             self.kinetics["kel"] = 25/3*TO_H
             self.stoichiometries["nrnap"] = 3338
             self.mol_masses["R"] = 3040
+            
+            # activities from E. coli
+            self.kinetics["kel"] *= active_ribosome_fraction
+            self.kinetics["ktr"] *= active_rnap_fraction
 
         if self.parameter_set == "rna_expensive":
             self.stoichiometries["nrnap"] = 3498*15
@@ -237,9 +231,7 @@ class Model:
 
 
     def calculate_molecular_masses(self):
-        """
-        generate a list of metabolite molecular masses based on matrix row names
-        """
+        """generate a list of molecular masses based on matrix row names"""
         mw_aa = self.mol_masses["AA"]
         mw_nt = self.mol_masses["NT"]
 
@@ -269,11 +261,13 @@ class Model:
         -------
         a float with rRNA degradation rate
         """
-        kdeg = self.kdeg_max*(1-self.frac)
+        kdeg = self.kdeg_max * (1 - self.frac)
 
         if "deg_hill" in self.matrix_type:
             hill = int(self.matrix_type.split("-")[-1])
-            kdeg = self.kdeg_max*(1-(self.frac**hill/(self.frac**hill+0.2**hill)))*(1-self.frac)
+            kdeg = (self.kdeg_max
+                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
+                    * (1-self.frac))
 
         return kdeg
 
@@ -339,7 +333,7 @@ class Model:
             
         # for mitochondria, add a rP imoprt reaction
         if "mito" in self.matrix_type:
-            rp_import = np.array([[0,0,0,0,1,0,0,0,0,0,0,0]]).T
+            rp_import = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]).T
             self.matrix_uc = np.concatenate((self.matrix_uc, rp_import), axis=1)
             self.columns_uc.append("vIrP")
 
@@ -364,14 +358,9 @@ class Model:
         if "_init_rate" in self.matrix_type:
             krnap = self.kin_max  # if initiation rate is limiting
 
-
         # get submatrix with metabolite rows (met_matrix) and add slack columnes
         ncol = 9
-        if "deg" in self.matrix_type:
-            ncol = 11
-        if self.matrix_type == "RNAPmax":
-            ncol = 10
-        if self.matrix_type == "Kostinski":
+        if ("deg" in self.matrix_type) or (self.matrix_type == "Kostinski"):
             ncol = 11
     
         slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
@@ -379,7 +368,7 @@ class Model:
         met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
 
         # "RBA" matrix - enzyme capacity + dry mass constraints
-        if self.matrix_type in ["RBA", "RBA_init_rate", "RNAPmax"]:
+        if self.matrix_type in ["RBA", "RBA_init_rate"]:
             constraints = np.array(
               [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
                [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
@@ -390,19 +379,13 @@ class Model:
                [-mwc, 0,  0,  0,     0,   0,    0,    0,    0,   0,    0]+slack(ncol-1)+[mu]]
             )
 
-            # "RNAPmax" matrix - RBA + constraint on max. RNAP concentration
-            if self.matrix_type == "RNAPmax":
-                max_rnap = np.array(
-                  [[0, 0, 0, 0, 0, 0, 0, 0, -1/mu, 0, 0]+slack(ncol-1,8)+[self.rnapmax]])
-                constraints = np.concatenate((constraints, max_rnap), axis = 0)
-
         # "Kostinski" matrix - like RBA but with fixed allocations of ribosome
         if self.matrix_type == "Kostinski":
             # ribosome allocation to RNAP and rP (%) from Kostinski & Reuveni
             r_allocation_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100
             r_allocation_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100
 
-            # value of translation rate "kel" is set in "set_specific_parameters"
+            # translation rate "kel" is set in "set_specific_parameters"
             # the ribsome constraint is split to 3 rows, where "kel" is multiplied 
             # by the respective allocation fraction for RNAP, rP and the rest
             kel_rnap = r_allocation_rnap*kel
@@ -438,7 +421,7 @@ class Model:
               [-mwc,0,0, 0,  0,     0,   0,    0,    0,     0,    0,    0,   0]+slack(ncol-1)+[mu]]
             )
             
-        # half of rP imported for free
+        # 1/3 of rP imported for free
         if "mito" in self.matrix_type:
             mwrp = self.stoichiometries["nrp"]*self.mol_masses["AA"]
             
@@ -459,11 +442,7 @@ class Model:
     def generate_row_and_column_names(self):
         """add row (rows_c) and column names (columns_c) based on the shape of matrix_c"""
 
-        if "deg" in self.matrix_type:
-            rows =  self.rows_uc[:6]
-        else:
-            rows =  self.rows_uc[:5]
-
+        rows =  self.rows_uc[:5]
         n_slack_row = self.matrix_c.shape[0]-len(rows)
         n_slack_col = self.matrix_c.shape[1]-len(self.columns_uc)-1
 
@@ -472,16 +451,9 @@ class Model:
 
 
     def run_efmtool(self):
-        """run efmtool once for the matrix with constraints (matrix_c)
-        Store the output in the attribute egvs (as np.array)
-
-        Parameters
-        ----------
-        drop_slack: bool, if True, slack columns are dropped from the data frame
-
-        Return
-        ------
-        numpy array with fluxes
+        """
+        run efmtool for matrix with constraints (matrix_c), 
+        return numpy array with fluxes
         """
 
         options = efmtool.get_default_options()
@@ -497,13 +469,7 @@ class Model:
 
 
     def update_mu(self, growth_rate):
-        """
-        Update growth rate and matrices in the model.
-
-        Parameters
-        ----------
-        growth_rate: new growth rate value
-        """
+        """Update matrices with new growth rate"""
         self.growth_rate = growth_rate
         self.make_matrix_c()
         self.make_matrix_uc()
@@ -560,7 +526,6 @@ class Model:
             res = res.div(res.C, axis = 0)
 
         if drop_slack:
-            # remove columns with slack variables
             cols = [c for c in res.columns if c.startswith("S")]
             if "C" in res.columns:
                 cols = cols+["C"]
@@ -614,7 +579,7 @@ class Simulation:
 
         left = 0  # The starting index of the list we have to search in
         right = len(self.growth_rates)-1  # the last index of the list we have to search in
-        mid = (right + left)//2  # // means floored division
+        mid = (right + left)//2
         new_mu = self.growth_rates[mid]
         last_mu = -1
         iterations = 1
@@ -623,7 +588,7 @@ class Simulation:
             self.model.update_mu(new_mu)
             egvs = self.model.run_efmtool()
 
-            # no solution (no egvs/zero egvs in non-slack columns) -- growth rate too big
+            # no solution (no egvs/zero egvs in non-slack columns) - growth rate too big
             ncol = self.model.matrix_uc.shape[1]
             if (egvs.shape[1] == 0) or (np.count_nonzero(egvs[:, :ncol], axis=None) == 0):
                 right = mid - 1
@@ -699,10 +664,10 @@ class Simulation:
         """
         Calculates metabolite mass fractions in g/g according to:
         mass_fractions = (Nv/mu)*mw
-        * N: stoichiometric matrix without constraints ("matrix_uc")
-        * v: vector a fluxes ("fluxes")
-        * mu: growth rate ("growth_rates")
-        * mw: vector of molecular masses ("molecular_masses")
+            N: stoichiometric matrix without constraints ("matrix_uc")
+            v: vector a fluxes ("fluxes")
+            mu: growth rate ("growth_rates")
+            mw: vector of molecular masses ("molecular_masses")
         Saves pandas DataFrame as "mass_fractions" attribute
         """
 
@@ -727,7 +692,6 @@ class Simulation:
                 mass_fractions.loc[egv] = matrix_uc.multiply(fluxes).sum(axis=1)/float(growth_rates)
                 mass_fractions.loc[egv] = mass_fractions.loc[egv]*molecular_masses
 
-            # add columns with additional info
             mass_fractions["growth_rate"] = self.fluxes.growth_rate
             mass_fractions["EGVs"] = self.fluxes.EGVs
             mass_fractions["prot_fraction"] = self.fluxes.prot_fraction
@@ -737,22 +701,21 @@ class Simulation:
 
     def calculate_allocations(self):
         """
-        Calculates ribosome allocations to the different proteins in the model
-        Saved in the attribute "allocations"
+        Calculates ribosome allocations to the different proteins with:
 
-        For matrix without ribosome degradation:
-            allocation_i = (mu*n_i*w_i)/(kel*vaf)
-        where
+        allocation_i = (mu*n_i*w_i)/(kel*vaf)
             allocation_i: ribosome allocation to protein i
             mu: growth rate
             n_i: stoichiometric coefficient of protein i
             w_i: synthesis flux of protein i
             kel: translation rate
             vaf: ribosome assembly flux
+        Saved in the attribute "allocations"
         """
 
         if self.fluxes.empty:
             print("No EGVs - nothing to calculate!")
+
         else:
             protein_columns = ["wIG", "wEAA", "wENT", "wRNAP", "wAF"]
             stoich = self.model.stoichiometries
@@ -777,7 +740,6 @@ class Simulation:
             v_af = self.fluxes["vAF"]
             allocations = prot_fluxes.apply(lambda x: x*growth_rates/(v_af*kel))
 
-            # add column with protein fractions
             allocations["prot_fraction"] = prot_fractions
 
             self.allocations = allocations

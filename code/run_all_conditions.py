@@ -20,9 +20,9 @@ from general import Simulation
 prot_fractions = np.arange(0.005, 1, 0.005)  # protein fractions in ribosome
 # add numbers close to 0 and 1 (otherwise no solution, the matrix would have to be changed)
 prot_fractions = np.concatenate(([0.00001], prot_fractions, [0.99999])) 
-growth_rates = np.arange(0.1, 3.5, 0.001)
+growth_rates = np.arange(0.001, 4, 0.001)
 
-parameters = pd.read_csv("../data/parameters_deg.csv")
+parameters = pd.read_csv("../data/parameters.csv")
 
 results = {
     "growth_rates": pd.DataFrame(),

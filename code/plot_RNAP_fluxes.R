@@ -5,9 +5,8 @@ data <- read.csv(here("data", paste0("fluxes_x0.36.csv")))
 fluxes_bremer <- read.csv(here("data", "fluxes_bremer.csv"))
 
 #### define plotting parameters and functions ##################################
-fig_size <- c(18,13)
+fig_size <- c(18,14)
 uni_blue <- "#0063a6"
-uni_red <- "#a71c49"
 uni_green <- "#94c154"
 uni_teal <- "#11897a"
 
@@ -47,10 +46,10 @@ plot_RNAP <- function(data, data2, xlim, colour, point_size){
 
 
 #### plot RNAP fluxes ##########################################################
-to_plot <- c("deg_glc",  
+to_plot <- c("RBA_glc",
+             "deg_glc",  
              "deg_hill-2_glc",
              "deg_hill-6_glc")
-             #"deg_hill-6_glc2")
 sim_types <- c("", "_noacc")
 
 for(dataset in to_plot){
@@ -62,7 +61,7 @@ for(dataset in to_plot){
       res = 300)
   
   for(sim_type in sim_types){
-    colour <- ifelse(grepl("noacc", sim_type), uni_red, "grey60")
+    colour <- ifelse(grepl("noacc", sim_type), uni_blue, "grey60")
     point_size <- ifelse(grepl("noacc", sim_type), 0.9, 0.5)
     dataset_name <- paste0(dataset, sim_type)
     plot_RNAP(data[data$name == dataset_name,], fluxes_bremer, 
@@ -73,51 +72,8 @@ for(dataset in to_plot){
   dev.off()
 }
 
+#### export data for one growth rate to examine the EGVs
+one_mu <- data[data$growth_rate == unique(data$growth_rate)[10], ]
+write.csv(one_mu, here("data", paste0("fluxes_one_mu.csv")))
 
-#### plot vRNase / vRNAP #######################################################
-plot_curve <- function(xdata, ydata, color, ylim){
-  plot(xdata, ydata, 
-       ylim = ylim, xlim = c(-0.1,2.2),
-       col = color, axes = FALSE)
-}
 
-dataset <- "deg_hill-6_glc"
-glc <- data[data$name == dataset,]
-
-png(filename=here("plots", paste0("fluxes_RNase_", dataset, ".png")), 
-    type = "cairo", 
-    units = "cm", 
-    width = 20, 
-    height = 10, 
-    res = 300)
-
-par(mfrow = c(2,5), mar = c(0,0,0,0), oma = c(4,0,0,0))
-for(egm in unique(glc$EGVs)){
-  if(egm == "EGM1"){
-    ylim <- c(0,50)
-  }else{
-    ylim <- c(0,1)
-  }
-  glc1 <- glc[glc$EGVs == egm,]
-  plot_curve(glc1$growth_rate, glc1$vRNase/glc1$vRNAP, "black", ylim)
-  par(new=TRUE)
-  plot_curve(glc1$growth_rate, glc1$vRNase*1000, uni_teal, ylim)
-  par(new=TRUE)
-  plot_curve(glc1$growth_rate, glc1$vRNAP*1000, uni_green, ylim = ylim)
-  par(new=FALSE)
-  box()
-  
-  if(egm == "EGM1"){
-    legend("topright", legend = c("vRNase/vRNAP", "vRNase", "vRNAP"),
-           col = c("black", uni_teal, uni_green),
-           pch = 19, cex = 1.5)
-  }
-  if(egm %in% paste0("EGM", 6:10))
-  axis(1, at = c(seq(0,3,0.5)), cex.axis = 1.3)
-}
-
-title(xlab = expression(paste("Growth rate [h"^"-1"*"]")), 
-      line = 2.8, outer = TRUE, cex.lab = 1.5)
-
-par(mfrow = c(1,1))
-dev.off()

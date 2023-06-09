@@ -2,18 +2,14 @@ library(here)
 library(RColorBrewer)
 
 #### read simulation results and put them in one list ##########################
-filenames <- c("RBA_deg")
 all_data <- list()
-for(filename in filenames){
-  data <- read.csv(here("data", paste0(filename, "_allocations.csv")))
-  for(name in unique(data$name)){
-    all_data[[name]] <- data[data$name == name,]
-  }
+data <- read.csv(here("data", "RBA_deg_allocations.csv"))
+for(name in unique(data$name)){
+  all_data[[name]] <- data[data$name == name,]
 }
 
-
 #### define plotting parameters and functions ##################################
-fig_size <- c(18,13)
+fig_size <- c(18,14)
 
 # find min. concentration/allocation across EGVs (=necessary minimum)
 # everything above that is unnecessary accumulation
@@ -65,7 +61,7 @@ make_plot <- function(data, columns, main, colours){
 
 
 #### plot data #################################################################
-for(dataset in c("deg_hill-6_glc", "RBA_standard")){
+for(dataset in c("deg_hill-6_glc", "deg_hill-2_glc", "deg_glc", "RBA_glc")){
   
   syn_cols <- c("wrP", "wAF", "wRNAP", "wENT", "wEAA", "wIG")
   if(grepl("deg", dataset)){
@@ -82,13 +78,13 @@ for(dataset in c("deg_hill-6_glc", "RBA_standard")){
 
 
 #### Make linear fits for RBA ##################################################
-dataset <- "RBA_standard"
+dataset <- "RBA_glc"
 rba <- all_data[[dataset]]
 proteins <- c("wrP", "wRNAP")
 grouped <-  aggregate(rba[, proteins], list("prot_fraction" = rba$prot_fraction), FUN='min')
 
 colours <- colours[c(1,2)]
-ylims <- c(0.6, 0.01)
+ylims <- c(0.6, 0.055)
 
 png(filename = here("plots", paste0(dataset, "_allocation_fits.png")), 
     type="cairo", units="cm", 
