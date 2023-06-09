@@ -6,36 +6,30 @@ Scripts to study the effect of ribosome composition on growth rate using resourc
 ## code/
 
 ### Simulations
-* general.py -- models, functions and classes used by other scripts, 
-* rba.py -- standard RBA with E.coli parameters / parameters that make RNA more expensive than protein
-* fit_rnapmax.py -- find optimal rnapmax such that the maximum growth rate is reached with xrP=36%
-* rnapmax.py -- RBA with a limit on total RNA polymerase (RNAP)
-                for E. coli in different media and archaea
-* fluxes_rnapmax.py -- RBA with a limit on total RNAP; fixed xrP = 36%; saves RNAP fluxes
-                          with or without accumulation of R or rRNA
-                          with or without limits on the maximum R and RNAP activity
-* init_rate.py -- RBA with a limit on RNAP initiation rate (instead of standard RNAP capacity constraint)
+* general.py -- models, functions and classes used by other scripts 
+* run_all_conditions.py -- RBA simulations that find max. growth rate at each ribosome composition
+* fluxes_vs_growth_rate.py -- vary growth rate at fixed xrP = 36%; save RNAP fluxes
+                              with or without accumulation of R or rRNA
 * kostinski_reproduction.py -- RBA with fixed allocation of R and RNAP
                                parameters from Kostinski & Reuveni 2020
-* analytical_xrP.py -- calculate optimal xrP (protein fraction in ribosome) analytically
-                       for a range of different transcription and translation rates
-* rrna_deg.py -- RBA with ribosome degradation reaction. The degradation rate decreases 
-                 with xrP
 * fit_kdegmax.py -- fit R degradation rate so that the optimal composition is xrP=36%
-* fluxes_rrna_deg.py -- calculate RNAP fluxes at xrP=36% at different growth rates
 
 ### Plots 
 * plot_xrp_vs_mu.R -- plot growth rate vs. ribosome composition
 * plot_allocation.R -- plot ribosome allocation vs. ribosome composition
 * plot_RNAP_fluxes.R -- plot RNAP fluxes vs. growth rate at fixed xrP=36%
-* plot_mass_fraction.R -- plot RNA:protein ratio at different growth rates
-* plot analytical_xrp.R -- plot optiaml xrp calculated analytically for different 
-                           trancription/translation rates
-                           (output of analytical_xrp.py)
+* plot_RP_ratio.R -- plot RNA:protein ratio at different growth rates
+* plot_vdeg_ratio.R -- plot ratio of RNA degradation flux to RNAP flux
 
 
 ## data/
-Outputs of the simulations
+* Outputs of the simulations
+* * RBA_deg_[].csv -- output of run_all_conditions.py
+* * fluxes_x0.36.csv -- output of fluxes_vs_growth_rate.py
+* * Kostinski_reproduction_growth_rates.csv -- output of kostinski_reproduction.py
+* parameters.csv - parameters for simulations in run_all_conditions.py
+* gausing_RNA_deg.csv - fraction of degraded RNA at different growth rates from Gausing 1977 (extracted with WebPlotDigitizer)
+* fluxes_bremer.csv -- fluxes from Bremer 1996, converted to mmol/gh with fluxes_vs_growth_rate.py
 
 
 ## plots/
