@@ -2,6 +2,8 @@
 # coding: utf-8
 
 """
+Author: Diana Szeliova
+
 RBA with fixed allocation of resources like in Kostinski & Reuveni 2020
 * iterated over 6 different media
 """
@@ -38,9 +40,5 @@ for name, par in parameters.items():
     temp_results = sim.max_growth_rates
     temp_results["name"] = f"{MATRIX_TYPE}_{name}"
     growth_rates_res = pd.concat([growth_rates_res, temp_results])
-    
-    #all_last_mus[medium] = sim.max_growth_rates["growth_rate"]
 
-#res = pd.DataFrame(all_last_mus)
-#res.set_index(prot_fractions, inplace=True)
 growth_rates_res.to_csv(f"../data/{MATRIX_TYPE}_reproduction_growth_rates.csv")

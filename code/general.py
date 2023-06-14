@@ -65,8 +65,6 @@ class Model:
         - changes some parameters from defaults in "set_specific_parameters()"
     matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
         - "RBA": standard RBA (default)
-        - "RBA_init": RBA with RNAP capacity constraint on initiation
-                      instead of elongation
         - "deg", "deg_mito", "deg_hill-[n]", "deg_hill_mito-[n]": 
                 matrices with rRNA degradation reaction
                 deg: constant rate, deg_hill-[n] - calculated with
@@ -100,7 +98,6 @@ class Model:
         - kel: translation rate [aa/h]
         - kexo: exonuclease rate (RNase R) [nt/h]
     kdeg_max: max. degradation rate [1/h]
-    kin_max: max. transcription initiation rate [1/h]
     matrix_uc: np.array - matrix without constraints
     matrix_c: np.array - matrix with constraints
     rows_uc, rows_c: row names for unconstrained / constrained matrices
@@ -109,7 +106,7 @@ class Model:
     
     # allowed attributes
     __slots__ = ["parameter_set", "matrix_type", "medium", "frac", 
-                 "growth_rate", "kin_max", "kdeg_max", 
+                 "growth_rate", "kdeg_max", 
                  "stoichiometries", "mol_masses", "kinetics", 
                  "rows_c", "columns_c", "matrix_c", 
                  "rows_uc", "columns_uc", "matrix_uc"]
@@ -120,7 +117,6 @@ class Model:
         self.medium = 2
         self.frac = 0.36
         self.growth_rate = 1
-        self.kin_max = 1000
         self.kdeg_max = 0
 
         avg_protein_length = 325
@@ -176,7 +172,7 @@ class Model:
         of "Model.medium" and "Model.parameter_set"
         """
         # check if parameter set/medium are valid
-        if self.parameter_set not in ["default", "activities", "activities2", 
+        if self.parameter_set not in ["default", "activities", #"activities2", 
                                       "archaea", "rna_expensive", "Kostinski"]:
             print(f"Unknown parameter set: {self.parameter_set}, using default parameters")
 
@@ -220,8 +216,8 @@ class Model:
             self.kinetics["kel"] *= active_ribosome_fraction
             self.kinetics["ktr"] *= active_rnap_fraction
 
-            if self.parameter_set == "activities2":
-                self.kinetics["ktr"] *= rnap_allocation_rrna
+            # if self.parameter_set == "activities2":
+            #     self.kinetics["ktr"] *= rnap_allocation_rrna
 
         if self.parameter_set == "Kostinski":
             # translation rates from Kostinski & Reuveni
@@ -355,8 +351,6 @@ class Model:
         
         mwc = self.mol_masses["C"]
         krnap = self.kinetics["ktr"]/nrrna  # convert nt/h -> 1/h
-        if "_init_rate" in self.matrix_type:
-            krnap = self.kin_max  # if initiation rate is limiting
 
         # get submatrix with metabolite rows (met_matrix) and add slack columnes
         ncol = 9
@@ -368,7 +362,7 @@ class Model:
         met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
 
         # "RBA" matrix - enzyme capacity + dry mass constraints
-        if self.matrix_type in ["RBA", "RBA_init_rate"]:
+        if self.matrix_type in ["RBA"]:
             constraints = np.array(
               [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
                [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),

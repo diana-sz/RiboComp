@@ -1,7 +1,0 @@
-Optimal deg. rate (parameter_set=default, matrix=R_deg): 124.30
-Optimal deg. rate (parameter_set=activities, matrix=R_deg): 21.00
-Optimal deg. rate (parameter_set=default, matrix=R_deg_hill-6): 619.40
-Optimal deg. rate (parameter_set=activities, matrix=R_deg_hill-6): 112.50
-Optimal deg. rate (parameter_set=activities2, matrix=R_deg_hill-6): 41.10
-Optimal deg. rate (parameter_set=default, matrix=R_deg_hill-2): 210.40
-Optimal deg. rate (parameter_set=activities, matrix=R_deg_hill-2): 36.00

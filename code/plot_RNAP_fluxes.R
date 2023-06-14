@@ -8,7 +8,7 @@ fluxes_bremer <- read.csv(here("data", "fluxes_bremer.csv"))
 fig_size <- c(18,14)
 uni_blue <- "#0063a6"
 uni_green <- "#94c154"
-uni_teal <- "#11897a"
+leg_size <- 1.4
 
 plot_RNAP <- function(data, data2, xlim, colour, point_size){
   par(mar = c(4.5,5.5,0.5,0.5))
@@ -28,7 +28,7 @@ plot_RNAP <- function(data, data2, xlim, colour, point_size){
   plot(fluxes_corrected ~ mu, data2,
        log = "y",
        ylim = ylim, xlim = xlim,
-       col = uni_teal,
+       col = "grey15",
        pch = 17, cex = 1.8,
        xlab = NA, ylab = NA,
        axes = FALSE)
@@ -69,10 +69,20 @@ for(dataset in to_plot){
     par(new = TRUE)
   }
   par(new=FALSE)
+
+  if(dataset %in% c("RBA_glc", "deg_glc")){
+    legend("bottomright", 
+           legend = c("Glc", "Experimental", "Experimental (corr.)"),
+           pch = c(19, 17, 18),
+           col = c(uni_blue, "grey15", uni_green),
+           bty = "n", 
+           cex = leg_size)
+  }
   dev.off()
 }
 
-#### export data for one growth rate to examine the EGVs
+
+#### export data for one random growth rate to examine the EGVs ################
 one_mu <- data[data$growth_rate == unique(data$growth_rate)[10], ]
 write.csv(one_mu, here("data", paste0("fluxes_one_mu.csv")))
 

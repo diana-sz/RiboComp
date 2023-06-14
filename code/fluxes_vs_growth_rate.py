@@ -2,7 +2,8 @@
 # coding: utf-8
 
 """
-Run RBA with rRNA degradation rate:
+Author: Diana Szeliova
+Run RBA with or without rRNA degradation rate:
     * fixed ribosome composition (0.36% protein)
     * mu increased step by step
     * save RNAP fluxes
@@ -13,7 +14,7 @@ import pandas as pd
 from general import Model
 
 # simulation done only for some parameters to save time
-parameters = pd.read_csv("../data/parameters_deg.csv")
+parameters = pd.read_csv("../data/parameters.csv")
 parameter_subset = parameters.query("name == 'glc'")
 
 # duplicate the conditions and label them 'noacc'

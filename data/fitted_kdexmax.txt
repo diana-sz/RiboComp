@@ -1,0 +1,3 @@
+Optimal deg. rate (matrix=R_deg): 21.00
+Optimal deg. rate (matrix=R_deg_hill-6): 112.50
+Optimal deg. rate (matrix=R_deg_hill-2): 36.00

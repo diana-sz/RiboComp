@@ -99,7 +99,7 @@ for(index in 1:length(proteins)){
        xlim = c(0,1), 
        ylim = c(0, ylims[index]),
        xlab = NA,
-       ylab = as.expression(bquote("Ribosome allocation ["*Phi["R"]^"i"*"]")),
+       ylab = as.expression(bquote("Ribosome allocation ["*Phi["i"]^"R"*"]")),
        pch = 19,
        cex.lab = 1.8,
        cex.axis = 1.6)
@@ -116,7 +116,7 @@ for(index in 1:length(proteins)){
 
 title(xlab = "Protein mass fraction in ribosome", 
       cex.lab = 1.8, line = 1.8, outer = TRUE)
-title(ylab = as.expression(bquote("Ribosome allocation ["*Phi["R"]^"i"*"]")),
+title(ylab = as.expression(bquote("Ribosome allocation ["*Phi["i"]^"R"*"]")),
       cex.lab = 1.8, line = 0.8, outer = TRUE)
 par(new=FALSE)
 

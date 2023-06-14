@@ -13,15 +13,13 @@ fig_size <- c(18,14)
 leg_size <- 1.4
 mar <- c(4.5,5.5,0.5,0.5)
 uni_blue <- "#0063a6"
-uni_red <- "#a71c49"
 uni_teal <- "#11897a"
 uni_green <- "#94c154"
 uni_yellow <- "#f6a800"
-uni_orange <- "#dd4814"
 colors <- c(uni_yellow, uni_green, uni_teal, uni_blue, "gray26", "gray60")
+exp_color <- "grey15"
 
-
-#### Plot degradtion:RNAP flux ratio ###########################################
+#### Plot degradation:RNAP flux ratio ###########################################
 
 for(name in names){
   data <- all_data[grepl(name, all_data$name),]
@@ -47,29 +45,38 @@ for(name in names){
       res = 300)
   par(mar = mar)
   plot(ratio ~ growth_rate, ratio_opt,
-       xlim = c(0,3.2), ylim = c(0,1),
+       xlim = c(0,3.2), 
+       ylim = c(0,1),
+       type = "l",
+       col = "grey69",
        xlab = expression(paste("Growth rate [h"^"-1"*"]")),
        ylab = "RNAse flux / RNAP flux",
-       col = colors,
        cex.axis = 1.6, 
-       cex.lab = 1.8, 
-       pch = 19,
-       cex = 1.4)
+       cex.lab = 1.8)
+  points(ratio_opt$growth_rate, ratio_opt$ratio,
+         col = colors,
+         pch = 19,
+         cex = 1.4)
   par(new = TRUE)
   plot(percent_degraded/100 ~ growth_rate, fraction_degraded_gausing,
-       xlim = c(0,3.2), ylim = c(0,1), pch = 17, cex = 1.4,
+       type = "l",
+       col = "grey69",
+       xlim = c(0,3.2), ylim = c(0,1), 
        xlab = NA, ylab = NA, axes = FALSE)
+  points(fraction_degraded_gausing$growth_rate,
+         fraction_degraded_gausing$percent_degraded/100,
+         pch = 17, cex = 1.4,
+         col = exp_color)
   par(new = FALSE)
 
   if(name %in% c("deg")){
     legend("bottomright", 
            legend = c(legend_media, "Experimental"),
            pch = c(rep(19, 6), 17),
-           col = c(colors, "black"),
+           col = c(colors, exp_color),
            bty = "n", 
            cex = leg_size)
   }
-  
   dev.off()
 }
 

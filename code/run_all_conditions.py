@@ -2,15 +2,11 @@
 # coding: utf-8
 
 """
-Run RBA with R degradation rate
-    * three types of matrices with different degradation function: R_deg, R_deg2, R_deg_hill
-    * for each matrix, 8 parameter sets
-    * archaea ("arch") / ecoli ("noact") (for activities=False)
-    * 6 media ("glc", "gly", "succ", "LB", "glcAA", "glyAA") (for activities=True)
-values in "deg_rates" optimized with "fit_deg_rate.py"
+Author: Diana Szeliova
 
-Save optimal growth rate and in case of R_deg_hill also fluxes,
-concentrations and ribosome allocations
+Run RBA with or without R degradation rate
+Parameters from "parameters.csv"
+Save optimal growth rate, fluxes, concentrations and ribosome allocations
 """
 
 import numpy as np
@@ -21,7 +17,6 @@ prot_fractions = np.arange(0.005, 1, 0.005)  # protein fractions in ribosome
 # add numbers close to 0 and 1 (otherwise no solution, the matrix would have to be changed)
 prot_fractions = np.concatenate(([0.00001], prot_fractions, [0.99999])) 
 growth_rates = np.arange(0.001, 4, 0.001)
-
 parameters = pd.read_csv("../data/parameters.csv")
 
 results = {
