@@ -29,7 +29,9 @@ Scripts to study the effect of ribosome composition on growth rate using resourc
     * Kostinski_reproduction_growth_rates.csv - output of kostinski_reproduction.py
 * parameters.csv - parameters for simulations in run_all_conditions.py
 * gausing_RNA_deg.csv - fraction of degraded RNA at different growth rates from Gausing 1977 (extracted with WebPlotDigitizer)
-* fluxes_bremer.csv -- fluxes from Bremer 1996, converted to mmol/gh with fluxes_vs_growth_rate.py
+* fluxes_bremer.csv - fluxes from Bremer 1996, converted to mmol/gh with fluxes_vs_growth_rate.py
+* stats.csv - optimal xrP for each condition & growth rate at xrP = 36%, output of plot_xrp_vs_mu.R
+* fluxes_one_mu.csv - fluxes at one growth rate
 
 
 ## plots/
