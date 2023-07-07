@@ -60,17 +60,14 @@ class Model:
 
     Attributes
     ----------
-    parameter_set: one of ["default", "activities", "activities2", 
-                           "archaea", "rna_expensive", "Kostinski"]
-        - changes some parameters from defaults in "set_specific_parameters()"
+    parameter_set: changes some parameters from defaults in "set_specific_parameters()"
+        - substrings: ["activities", "activities2" "archaea", "Kostinski"] change some kinetic parameters
+        - substrings "hill-[n]" change how degradation rate of RNA is calculated (n is an integer)
     matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
-        - "RBA": standard RBA (default)
-        - "deg", "deg_mito", "deg_hill-[n]", "deg_hill_mito-[n]": 
-                matrices with rRNA degradation reaction
-                deg: constant rate, deg_hill-[n] - calculated with
-                Hill function where [n] is the hill factor
-        - "Kostinski" - RBA with fixed ribosome and RNAP allocations
-    medium: influences the values of keaa, mol_masses["C"], ktr (if parameter_set = "activities")
+        - "base": standard RBA (default)
+        - "extended", "extended_mito": matrices with rRNA degradation reaction
+        - "Kostinski": "base" matrix with fixed ribosome and RNAP allocations
+    medium: influences the values of keaa, mol_masses["C"]; ktr (if parameter_set contains "activities")
         - 0: succinate minimal medium
         - 1: glycerol minimal medium
         - 2: glucose minimal medium [default]
@@ -103,17 +100,17 @@ class Model:
     rows_uc, rows_c: row names for unconstrained / constrained matrices
     columns_uc, columns_c: column names for unconstrained / constrained matrices
     """
-    
+
     # allowed attributes
-    __slots__ = ["parameter_set", "matrix_type", "medium", "frac", 
-                 "growth_rate", "kdeg_max", 
-                 "stoichiometries", "mol_masses", "kinetics", 
-                 "rows_c", "columns_c", "matrix_c", 
+    __slots__ = ["parameter_set", "matrix_type", "medium", "frac",
+                 "growth_rate", "kdeg_max",
+                 "stoichiometries", "mol_masses", "kinetics",
+                 "rows_c", "columns_c", "matrix_c",
                  "rows_uc", "columns_uc", "matrix_uc"]
 
     def __init__(self, *model_pars, **kwargs):
         self.parameter_set = "default"
-        self.matrix_type = "RBA"
+        self.matrix_type = "base"
         self.medium = 2
         self.frac = 0.36
         self.growth_rate = 1
@@ -126,17 +123,16 @@ class Model:
                                 "nrnap": 3498,
                                 "naf": avg_protein_length*12,
                                 "nrnase": 813}
-
         self.mol_masses = {"R": 2300,
                            "AA": 0.109,
                            "NT": 0.3243}
-
         self.kinetics = {"kig": 180*TO_H,
                          "kent": 10*TO_H,
                          "kaf": 1/120*TO_H,
                          "ktr": 85*TO_H,
                          "kel": 21*TO_H,
-                         "kexo": 88*TO_H}
+                         "kexo": 88*TO_H,
+                         "kdeg": 0}
 
         # if model_pars / kwargs are provided, update default parameters
         for dictionary in model_pars:
@@ -145,7 +141,7 @@ class Model:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-        self.set_specific_parameters(*model_pars, **kwargs)
+        self.set_specific_parameters()
 
         # calculated stoichiometries - must be placed after all other parameters are set
         self.stoichiometries["naa"] = self.mol_masses["AA"] / self.mol_masses["C"]
@@ -166,16 +162,11 @@ class Model:
         _ = self.calculate_molecular_masses()
 
 
-    def set_specific_parameters(self, *model_pars, **kwargs):
+    def set_specific_parameters(self):
         """
         change a specific set of parameters according to values
         of "Model.medium" and "Model.parameter_set"
         """
-        # check if parameter set/medium are valid
-        if self.parameter_set not in ["default", "activities", #"activities2", 
-                                      "archaea", "rna_expensive", "Kostinski"]:
-            print(f"Unknown parameter set: {self.parameter_set}, using default parameters")
-
         if self.medium not in [0,1,2,3,4,5]:
             print(f"Unknown medium: {self.medium}, using default (2: glucose minimal)")
             self.medium = 2
@@ -197,12 +188,12 @@ class Model:
         # RNAP allocation fractions
         rnap_allocation_rrna = [0.18, 0.28, 0.42, 0.52, 0.60, 0.65][self.medium]
 
-        if self.parameter_set == "archaea":
+        if "archaea" in self.parameter_set:
             self.kinetics["ktr"] = 25*TO_H
             self.kinetics["kel"] = 25/3*TO_H
             self.stoichiometries["nrnap"] = 3338
             self.mol_masses["R"] = 3040
-            
+
             # activities from E. coli
             self.kinetics["kel"] *= active_ribosome_fraction
             self.kinetics["ktr"] *= active_rnap_fraction
@@ -216,14 +207,32 @@ class Model:
             self.kinetics["kel"] *= active_ribosome_fraction
             self.kinetics["ktr"] *= active_rnap_fraction
 
-            # if self.parameter_set == "activities2":
-            #     self.kinetics["ktr"] *= rnap_allocation_rrna
+            # include RNAP allocation
+            if "activities2" in self.parameter_set:
+                self.kinetics["ktr"] *= rnap_allocation_rrna
 
         if self.parameter_set == "Kostinski":
             # translation rates from Kostinski & Reuveni
             kel = [12, 16.83, 21, 20.17, 21, 22.25][self.medium]*TO_H
             self.kinetics["kel"] = kel*active_ribosome_fraction
             self.kinetics["ktr"] *= active_rnap_fraction*rnap_allocation_rrna
+
+        # calculate degradation rate
+        self.calculate_degradation_rate()
+
+
+    def calculate_degradation_rate(self):
+        """
+        calculate degradation rate based on protein content
+        and type of degradation function
+        """
+        kdeg = self.kdeg_max * (1 - self.frac)
+        if "hill" in self.parameter_set:
+            hill = int(self.parameter_set.split("_")[0].split("-")[-1])
+            kdeg = (self.kdeg_max
+                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
+                    * (1 - self.frac))
+        self.kinetics["kdeg"] = kdeg
 
 
     def calculate_molecular_masses(self):
@@ -239,34 +248,10 @@ class Model:
         self.mol_masses["AF"] = self.stoichiometries["naf"]*mw_aa
         self.mol_masses["rP"] = self.stoichiometries["nrp"]*mw_aa
         self.mol_masses["rRNA"] = self.stoichiometries["nrrna"]*mw_nt
-        
+
         mw_list = [self.mol_masses[metabolite] for metabolite in self.rows_uc]
-        
+
         return mw_list
-
-            
-    def caluclate_degradation_rate(self):
-        """
-        Calculate rRNA degradation rate.
-        The rate decreases with protein fraction in the ribosome (frac)
-        * either linearly (matrix_type="deg"),
-        * or according to a Hill function (matrix_type="deg_hill-[n]")
-          where n is the Hill factor
-
-        Returns
-        -------
-        a float with rRNA degradation rate
-        """
-        kdeg = self.kdeg_max * (1 - self.frac)
-
-        if "deg_hill" in self.matrix_type:
-            hill = int(self.matrix_type.split("-")[-1])
-            kdeg = (self.kdeg_max
-                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
-                    * (1-self.frac))
-
-        return kdeg
-
 
     def __str__(self):
         return f"""
@@ -307,7 +292,7 @@ class Model:
                         "IG", "EAA", "ENT", "RNAP", "AF", "R"]
 
         # matrix with ribosome degradation rate
-        if "deg" in self.matrix_type:
+        if "extended" in self.matrix_type:
             self.matrix_uc = np.array(
              [[1,-naa,-nnt,     0,  0,   0,   0,    0,    0,     0,    0,     0,   0],
               [0,   1,  -1,     0,  0,   0,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp],
@@ -326,12 +311,15 @@ class Model:
                                "wIG", "wEAA", "wENT", "wRNAP", "wRNase", "wAF", "wrP"]
             self.rows_uc = ["C", "AA", "NT", "rRNA", "rP", "R",
                             "IG", "EAA", "ENT", "RNAP", "RNase", "AF"]
-            
+
         # for mitochondria, add a rP imoprt reaction
         if "mito" in self.matrix_type:
             rp_import = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]).T
             self.matrix_uc = np.concatenate((self.matrix_uc, rp_import), axis=1)
             self.columns_uc.append("vIrP")
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
 
 
     def make_matrix_c(self):
@@ -348,21 +336,19 @@ class Model:
         nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
         kig, keaa = self.kinetics["kig"], self.kinetics["keaa"]
         kent, kaf, kel = self.kinetics["kent"], self.kinetics["kaf"], self.kinetics["kel"]
-        
         mwc = self.mol_masses["C"]
         krnap = self.kinetics["ktr"]/nrrna  # convert nt/h -> 1/h
 
         # get submatrix with metabolite rows (met_matrix) and add slack columnes
         ncol = 9
-        if ("deg" in self.matrix_type) or (self.matrix_type == "Kostinski"):
+        if ("extended" in self.matrix_type) or (self.matrix_type == "Kostinski"):
             ncol = 11
-    
         slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
                           slack(ncol,0), slack(ncol,1)])
         met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
 
         # "RBA" matrix - enzyme capacity + dry mass constraints
-        if self.matrix_type in ["RBA"]:
+        if self.matrix_type in ["base"]:
             constraints = np.array(
               [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
                [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
@@ -380,7 +366,7 @@ class Model:
             r_allocation_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100
 
             # translation rate "kel" is set in "set_specific_parameters"
-            # the ribsome constraint is split to 3 rows, where "kel" is multiplied 
+            # the ribsome constraint is split to 3 rows, where "kel" is multiplied
             # by the respective allocation fraction for RNAP, rP and the rest
             kel_rnap = r_allocation_rnap*kel
             kel_rp = r_allocation_rp*kel
@@ -398,10 +384,10 @@ class Model:
              [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,   0,   0]+slack(ncol-1)+[mu]])
 
 
-        # constraints like in RBA + minimum rRNA degradation rate enforced
-        if "deg" in self.matrix_type:
+        # constraints like in "base" matrix + minimum rRNA degradation rate enforced
+        if "extended" in self.matrix_type:
             krnase = self.kinetics["kexo"]/nrrna
-            kdeg = self.caluclate_degradation_rate()
+            kdeg = self.kinetics["kdeg"]
 
             constraints = np.array(
              [[-mu,0, 0, 0,  0,     0, kig,    0,    0,     0,    0,    0,   0]+slack(ncol,2),
@@ -414,19 +400,22 @@ class Model:
               [ 0, 0, 0, 0, mu, -kdeg,   0,    0,    0,     0,    0,    0,   0]+slack(ncol,9),
               [-mwc,0,0, 0,  0,     0,   0,    0,    0,     0,    0,    0,   0]+slack(ncol-1)+[mu]]
             )
-            
+
         # 1/3 of rP imported for free
         if "mito" in self.matrix_type:
             mwrp = self.stoichiometries["nrp"]*self.mol_masses["AA"]
-            
+
             # add column for rP import reaction
             column =[0, 0, 0, 0, 0, 0, 0, 0, -mwrp]
             constraints = np.insert(constraints, self.matrix_uc.shape[1]-1, column, axis=1)
 
-            # wrP = vIrP constraint
-            wrP_vIrP_constraint = np.array(
+            # wrP = 2*vIrP constraint - 1/3 rPs are imported
+            import_constraint = np.array(
                 [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -2]+slack(ncol)])
-            constraints = np.concatenate((constraints, wrP_vIrP_constraint), axis = 0)
+            constraints = np.concatenate((constraints, import_constraint), axis = 0)
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
 
         # concatenate stoichiometric matrix with constraint matrix
         self.matrix_c = np.concatenate((met_matrix, constraints), axis=0)
@@ -446,7 +435,7 @@ class Model:
 
     def run_efmtool(self):
         """
-        run efmtool for matrix with constraints (matrix_c), 
+        run efmtool for matrix with constraints (matrix_c),
         return numpy array with fluxes
         """
 
@@ -472,7 +461,8 @@ class Model:
     def update_frac(self, frac):
         """
         Update protein fraction in ribosome (frac),
-        rP and rRNA stoichiometries (nrp and nrrna), then matrices.
+        rP and rRNA stoichiometries (nrp and nrrna),
+        degradation rate, and then matrices.
 
         Parameters
         ----------
@@ -481,6 +471,7 @@ class Model:
         self.frac = frac
         self.stoichiometries["nrp"] = self.mol_masses["R"]*self.frac/self.mol_masses["AA"]
         self.stoichiometries["nrrna"] = self.mol_masses["R"]*(1-self.frac)/self.mol_masses["NT"]
+        self.calculate_degradation_rate()
         self.make_matrix_c()
         self.make_matrix_uc()
 
@@ -543,7 +534,7 @@ class Simulation:
     allocations: pandas DataFrame that stores ribosome allocations from test_xrps()
     mass_fractions: pandas DataFrame that stores mass fractions from test_xrps()
     """
-    __slots__ = ["growth_rates", "prot_fractions", "model", "fluxes", 
+    __slots__ = ["growth_rates", "prot_fractions", "model", "fluxes",
                  "max_growth_rates", "allocations", "mass_fractions"]
 
     def __init__(self,
@@ -630,7 +621,6 @@ class Simulation:
 
         for progress, frac in enumerate(self.prot_fractions):
             self.model.update_frac(frac)
-
             last_mu, fluxes = self.bisection_search_mu()
             last_mus.append(last_mu)
 
@@ -716,7 +706,7 @@ class Simulation:
             protein_stoichiometries = [stoich["nig"], stoich["neaa"], stoich["nent"],
                                        stoich["nrnap"], stoich["naf"]]
 
-            if "deg" in self.model.matrix_type:
+            if "extended" in self.model.matrix_type:
                 protein_columns = protein_columns + ["wRNase"]
                 protein_stoichiometries = protein_stoichiometries + [stoich["nrnase"]]
 

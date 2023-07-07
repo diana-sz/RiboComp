@@ -1,0 +1,4 @@
+Optimal deg. rate (parameter set=activities): 21.00
+Optimal deg. rate (parameter set=hill-2_activities): 36.00
+Optimal deg. rate (parameter set=hill-6_activities): 112.50
+Optimal deg. rate (parameter set=hill-6_activities2): 41.10

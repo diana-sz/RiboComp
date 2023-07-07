@@ -15,9 +15,9 @@ from general import Simulation
 
 prot_fractions = np.arange(0.005, 1, 0.005)  # protein fractions in ribosome
 # add numbers close to 0 and 1 (otherwise no solution, the matrix would have to be changed)
-prot_fractions = np.concatenate(([0.00001], prot_fractions, [0.99999])) 
+prot_fractions = np.concatenate(([0.00001], prot_fractions, [0.99999]))
 growth_rates = np.arange(0.001, 4, 0.001)
-parameters = pd.read_csv("../data/parameters.csv")
+parameters = pd.read_csv("../data/parameters_v2.csv")
 
 results = {
     "growth_rates": pd.DataFrame(),
@@ -32,10 +32,10 @@ for index, row in parameters.iterrows():
     _ = par.pop("name")
     par["medium"] = int(par["medium"])
 
-    sim = Simulation(par, 
-                     growth_rates = growth_rates, 
+    sim = Simulation(par,
+                     growth_rates = growth_rates,
                      prot_fractions = prot_fractions)
-    sim.test_xrps()
+    sim.test_xrps(True)
 
     temp_results = {
         "growth_rates": sim.max_growth_rates, # 1/h
@@ -46,8 +46,8 @@ for index, row in parameters.iterrows():
 
     # add a column with an identifier and concatenate data frames
     for result_type in results:
-        temp_results[result_type]["name"] = f"{par['matrix_type']}_{name}"
+        temp_results[result_type]["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
         results[result_type] = pd.concat([results[result_type], temp_results[result_type]])
 
 for result_type, df in results.items():
-    df.to_csv(f"../data/RBA_deg_{result_type}.csv")
+    df.to_csv(f"../data/RBA_{result_type}.csv")

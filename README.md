@@ -1,6 +1,6 @@
 # Ribosome composition
 
-Scripts to study the effect of ribosome composition on growth rate using resource balance analysis (RBA) and elementary growth vectors
+Scripts to study the effect of ribosome composition on growth rate using resource balance analysis (RBA) and elementary growth vectors (EGVs).
 
 
 ## code/
@@ -8,30 +8,44 @@ Scripts to study the effect of ribosome composition on growth rate using resourc
 ### Simulations
 * general.py - models, functions and classes used by other scripts 
 * run_all_conditions.py - RBA simulations that find max. growth rate at each ribosome composition
+                          for different parameter sets (specified in parameters_v2.csv)
 * fluxes_vs_growth_rate.py - vary growth rate at fixed xrP = 36%; save RNAP fluxes
-                              with or without accumulation of R or rRNA
+                             with or without excess accumulation of R or rRNA / excess RNA degradation
 * kostinski_reproduction.py - RBA with fixed allocation of R and RNAP
-                               parameters from Kostinski & Reuveni 2020
+                              parameters from Kostinski & Reuveni 2020
 * fit_kdegmax.py - fit R degradation rate so that the optimal composition is xrP=36%
 
 ### Plots 
-* plot_xrp_vs_mu.R - plot growth rate vs. ribosome composition
-* plot_allocation.R - plot ribosome allocation vs. ribosome composition
+* plot_growth_rates.R - plot growth rate vs. ribosome composition
+* plot_allocations.R - plot ribosome allocation vs. ribosome composition
 * plot_RNAP_fluxes.R - plot RNAP fluxes vs. growth rate at fixed xrP=36%
-* plot_RP_ratio.R - plot RNA:protein ratio at different growth rates
-* plot_vdeg_ratio.R - plot ratio of RNA degradation flux to RNAP flux
+* plot_RP_ratios.R - plot RNA:protein ratios at different growth rates
+* plot_RNase_RNAP_ratios.R - plot ratios of RNA degradation flux to RNAP flux at max. growth rates
 
 
 ## data/
-* Outputs of the simulations
-    * RBA_deg_[xy].csv - output of run_all_conditions.py
+* outputs of the simulations
+    * RBA_[xy].csv - outputs of run_all_conditions.py (growth rates, fluxes, 
+      ribosome allocations and metabolite mass fractions)
     * fluxes_x0.36.csv - output of fluxes_vs_growth_rate.py
     * Kostinski_reproduction_growth_rates.csv - output of kostinski_reproduction.py
-* parameters.csv - parameters for simulations in run_all_conditions.py
-* gausing_RNA_deg.csv - fraction of degraded RNA at different growth rates from Gausing 1977 (extracted with WebPlotDigitizer)
+* parameters_v2.csv - parameters for simulations in run_all_conditions.py; columns
+    * matrix_type - 
+        * base - matrix without RNA degradation
+        * extended - matrix with RNA degradation by RNase
+        * extended_mito - same as extended but some rPs are imported for free
+    * kdeg_max - maximum degradation rate, values from 'fit_kdegmax.py' or doubled for archaea
+    * medium - 1,3: glycerol; 2,4,5: glucose; 0: succinate
+    * parameter_set - combinations of following strings:
+        * activities - R and RNAP activities included; 
+        * activities2 - R and RNAP activities, and RNAP allocations included
+        * archaea - archaeal parameters
+        * rna_expensive - parameters artificially changed to make RNA more expensive than proteins
+        * hill-[n] - RNA degradation rate calculated with hill function (n = hill factor)
+* gausing_RNA_deg.csv - fraction of degraded RNA at different growth rates from Gausing 1977 
+                        extracted with WebPlotDigitizer
 * fluxes_bremer.csv - fluxes from Bremer 1996, converted to mmol/gh with fluxes_vs_growth_rate.py
-* stats.csv - optimal xrP for each condition & growth rate at xrP = 36%, output of plot_xrp_vs_mu.R
-* fluxes_one_mu.csv - fluxes at one growth rate
+* stats.csv - optimal xrP for each condition & growth rate at xrP = 36%, output of plot_growth_rates.R
 
 
 ## plots/

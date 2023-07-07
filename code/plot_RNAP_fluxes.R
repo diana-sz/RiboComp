@@ -46,14 +46,14 @@ plot_RNAP <- function(data, data2, xlim, colour, point_size){
 
 
 #### plot RNAP fluxes ##########################################################
-to_plot <- c("RBA_glc",
-             "deg_glc",  
-             "deg_hill-2_glc",
-             "deg_hill-6_glc")
+to_plot <- c("base_activities_glc",
+             "extended_activities_glc",  
+             "extended_hill-2_activities_glc",
+             "extended_hill-6_activities_glc")
 sim_types <- c("", "_noacc")
 
 for(dataset in to_plot){
-  png(filename=here("plots", paste0("fluxes_", dataset, ".png")), 
+  png(filename=here("plots", paste0("fluxes_", gsub("_activities", "", dataset), ".png")), 
       type = "cairo", 
       units = "cm", 
       width = fig_size[1], 
@@ -70,20 +70,15 @@ for(dataset in to_plot){
   }
   par(new=FALSE)
 
-  if(dataset %in% c("RBA_glc", "deg_glc")){
+  if(dataset %in% c("base_activities_glc", "extended_activities_glc")){
     legend("bottomright", 
            legend = c("Glc", "Experimental", "Experimental (corr.)"),
-           pch = c(19, 17, 18),
-           col = c(uni_blue, "grey15", uni_green),
+           pch = c(19, 18, 17),
+           col = c(uni_blue, uni_green, "grey15"),
            bty = "n", 
            cex = leg_size)
   }
   dev.off()
 }
-
-
-#### export data for one random growth rate to examine the EGVs ################
-one_mu <- data[data$growth_rate == unique(data$growth_rate)[10], ]
-write.csv(one_mu, here("data", paste0("fluxes_one_mu.csv")))
 
 
