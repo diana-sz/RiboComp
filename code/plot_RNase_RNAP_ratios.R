@@ -3,10 +3,12 @@ library(here)
 all_data <- read.csv(here("data", "RBA_fluxes.csv"))
 fraction_degraded_gausing <- read.csv(here("data", "gausing_RNA_deg.csv"))
 
-names <- c("extended_hill-6_activities", "extended_hill-2_activities", 
-           "extended_activities", "extended_hill-6_activities2")
-media <- c("_LB", "_glcAA", "_glyAA", "_glc", "_gly", "_succ") # without RNAP allcoation
-media2 <- c("_LB2", "_glcAA2", "_glyAA2", "_glc2", "_gly2", "_succ2") # with RNAP allocation
+names <- c("extended_hill-6_activities",
+           "extended_hill-6_activities_var_kel", 
+           "extended_hill-2_activities", 
+           "extended_activities",
+           "extended_hill-6_activities2")
+media <- c("_LB", "_glcAA", "_glyAA", "_glc", "_gly", "_succ")
 legend_media <- c("LB", "Glc+AA", "Gly+AA", "Glc", "Gly", "Succ")
 
 

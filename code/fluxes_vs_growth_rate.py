@@ -11,24 +11,23 @@ Run RBA with or without rRNA degradation rate:
 
 import numpy as np
 import pandas as pd
-from general import Model
+from model_functions import Model
 
 # simulation done only for some parameters to save time
-parameters = pd.read_csv("../data/parameters_v2.csv")
-parameter_subset = parameters.query("name == 'glc'")
+parameters = pd.read_csv("../data/parameters.csv")
+parameter_subset = parameters.query("(name == 'glc') & (matrix_type != 'Kostinski')")
 
 # duplicate the conditions and label them 'noacc'
 # R, rRNA accumulation / excess rRNA degradation will be blocked for these
 noacc = parameter_subset.assign(name=parameter_subset.name + "_noacc")
 parameter_subset = pd.concat([parameter_subset, noacc])
 
-growth_rates = np.geomspace(0.0001, 3, 500) #np.arange(0.0001,3,0.005)
+growth_rates = np.geomspace(0.0001, 3, 500)
 
 all_results = pd.DataFrame()
 for index, row in parameter_subset.iterrows():
     name = row["name"]
     par = dict(row)
-    _ = par.pop("name")
 
     print(f"Running {par['matrix_type']}_{par['parameter_set']}_{name}")
 
@@ -62,17 +61,17 @@ for index, row in parameter_subset.iterrows():
 all_results.to_csv("../data/fluxes_x0.36.csv")
 
 
-# Bremer 1996 data, converted to mmol/g/h
+# Bremer 2008 data, converted to mmol/g/h
 AVOGADRO = 6.022e20
-nrrna = model.mol_masses["R"]*(1-model.frac)/model.mol_masses["NT"]
-growth_rates = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5]]  # doublings/h -> 1/h
-rna_syn = [3, 9.9, 29, 66.4, 132.5]  # stable RNA synthesis rate (10^5 nt/cell/min)
-dry_masses = [mass*10**-15 for mass in [150, 260, 430, 640, 870]]  # dry masses (g/cell)
+nrrna = model.parameters["R"]*(1-model.frac)/model.parameters["NT"]
+growth_rates = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5, 3]]  # doublings/h -> 1/h
+rna_syn = [3.5, 11, 29, 65, 113, 161]  # stable RNA synthesis rate (10^5 nt/cell/min)
+dry_masses = [mass*10**-15 for mass in [226, 374, 555, 774, 921, 1023]]
 fluxes = [rate*10**5*60/nrrna/AVOGADRO for rate in rna_syn]  # to mmol/cell/h
 fluxes = [fluxes[i]/dry_masses[i] for i in range(len(dry_masses))]  # to mmol/g/h
 
 # Gausing 1977 data - correction for fraction of degraded rRNA
-correction_factors = [1.29, 1.14, 1.11, 1.11, 1.11]
+correction_factors = [1.29, 1.14, 1.11, 1.11, 1.11, 1.11]
 corrected_fluxes = [flux*correction for flux,correction in zip(fluxes, correction_factors)]
 
 df = pd.DataFrame({"mu": growth_rates,

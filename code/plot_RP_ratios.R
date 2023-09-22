@@ -1,18 +1,14 @@
 library(here)
 
-#### read simulation results and put them in one list ##########################
-all_data <- list()
-all_allocations <- list()
-filename <- c("RBA")
-data <- read.csv(here("data", paste0(filename, "_mass_fractions.csv")))
-data2 <- read.csv(here("data", paste0(filename, "_allocations.csv")))
+#### read simulation results ###################################################
+all_data <- read.csv(here("data", "RBA_mass_fractions.csv"))
 
-  for(name in unique(data$name)){
-    all_data[[name]] <- data[data$name == name,]
-    all_allocations[[name]] <- data2[data2$name == name,]
-  }
-
-names <- c("extended", "extended_hill-2", "extended_hill-6", "base")
+names <- c("base_activities",
+           "base_activities_var_kel",
+           "extended_activities", 
+           "extended_hill-2_activities", 
+           "extended_hill-6_activities", 
+           "extended_hill-6_activities_var_kel")
 media <- c("_LB", "_glcAA", "_glyAA", "_glc", "_gly", "_succ")
 legend_media <- c("LB", "Glc+AA", "Gly+AA", "Glc", "Gly", "Succ")
 
@@ -44,12 +40,12 @@ x_opt <- 0.36000
 for(name in names){
     opt_RP_ratio <- data.frame()
 
-    for(dataset in paste0(name, "_activities", media)){
+    for(dataset in c(paste0(name, media))){
       protein_cols <- c("R", "AF", "RNAP", "ENT", "EAA", "IG")
       if(grepl("extended", dataset)){
         protein_cols <- c(protein_cols, "RNase")}
   
-      one <- all_data[[dataset]]
+      one <- all_data[all_data$name == dataset, ]
       opt <- group_data(one[one$prot_fraction == x_opt,], c(protein_cols, "growth_rate"))
       opt$rP <- opt$R * x_opt
       opt$RNA <- opt$R * (1-x_opt)
@@ -59,7 +55,8 @@ for(name in names){
 
     fit <- lm(RP_ratio ~ growth_rate, opt_RP_ratio)
     
-    png(filename = here("plots", paste0("ratio_RNA_protein_", name, ".png")), 
+    plot_name <- gsub("_activities", "", name)
+    png(filename = here("plots", paste0("ratio_RNA_protein_", plot_name, ".png")), 
         type="cairo", units="cm", 
         width=18, height=14, res=300)
     par(mar = mar)

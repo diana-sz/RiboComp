@@ -1,12 +1,8 @@
 library(here)
 library(RColorBrewer)
 
-#### read simulation results and put them in one list ##########################
-all_data <- list()
-data <- read.csv(here("data", "RBA_allocations.csv"))
-for(name in unique(data$name)){
-  all_data[[name]] <- data[data$name == name,]
-}
+#### read simulation results ###################################################
+all_data <- read.csv(here("data", "RBA_allocations.csv"))
 
 #### define plotting parameters and functions ##################################
 fig_size <- c(18,14)
@@ -75,8 +71,6 @@ for(dataset in c("extended_hill-6_activities_glc",
   png(filename = here("plots", paste0("allocations_", gsub("_activities", "", dataset), ".png")), 
       type="cairo", units="cm", 
       width=fig_size[1], height=fig_size[2], res=300)
-  make_plot(all_data[[dataset]], syn_cols, dataset, colours)
+  make_plot(all_data[all_data$name == dataset,], syn_cols, dataset, colours)
   dev.off()
 }
-
-

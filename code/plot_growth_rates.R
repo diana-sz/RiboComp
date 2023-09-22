@@ -1,27 +1,22 @@
 library(here)
 
-#### read simulation results and put them in one list ##########################
-filenames <- c("RBA", "Kostinski_reproduction")
-all_data <- list()
-for(filename in filenames){
-  data <- read.csv(here("data", paste0(filename, "_growth_rates.csv")))
-  data$prot_fraction <- round(as.numeric(data$prot_fraction),3)
-  for(name in unique(data$name)){
-    all_data[[name]] <- data[data$name == name,]
-  }
-}
+#### read simulation results ###################################################
+filenames <- c("RBA")
+all_data <- read.csv(here("data", "RBA_growth_rates.csv"))
+all_data$prot_fraction <- round(as.numeric(all_data$prot_fraction),3)
+
 
 #### save max. mu and optimal xrP ##############################################
 stats <- data.frame()
-for(name in names(all_data)){
-  one <- all_data[[name]]
+for(name in unique(all_data$name)){
+  one <- all_data[all_data$name == name,]
   row <- c(one$prot_fraction[which.max(one$growth_rate)],
            max(one$growth_rate), 
-           one$growth_rate[which(one$prot_fraction == 0.6)])
+           one$growth_rate[which(one$prot_fraction == 0.36)])
  stats <- rbind(stats, row)
 }
 colnames(stats) <- c("xrp_opt", "mu_opt", "mu_0.36")
-rownames(stats) <- names(all_data)
+rownames(stats) <- unique(all_data$name)
 
 write.csv(stats, here("data", "stats.csv"))
 
@@ -76,7 +71,7 @@ plot_curves <- function(all_data, stats, dataset_names, colors, ltys, xlim, ylim
   par(new=TRUE)
   
   for(i in 1:length(dataset_names)){
-    dataset <- all_data[[dataset_names[i]]]
+    dataset <- all_data[all_data$name == dataset_names[i],]
     plot_curve(dataset, xlim, ylim, ltys[i], colors[i])
     par(new=TRUE)
   }
@@ -86,7 +81,7 @@ plot_curves <- function(all_data, stats, dataset_names, colors, ltys, xlim, ylim
 
 
 #### RBA reverse ###############################################################
-png(filename = here("plots", "mus_RBA_reverse_mus.png"), type="cairo", units="cm", 
+png(filename = here("plots", "mus_RBA_reverse.png"), type="cairo", units="cm", 
     width=fig_size[1], height=fig_size[2], res=300)
   par(mar = mar)
   
@@ -155,16 +150,25 @@ for(deg_type in c("_hill-2", "_hill-6", "")){
 
 
 #### Six different media #######################################################
-for(deg_type in c("extended_hill-2_activities", "extended_hill-6_activities", 
-                  "extended_hill-6_activities2", "extended_activities", 
-                  "Kostinski", "base_activities")){
+with_legend <- c("extended_activities", 
+                 "base_activities", 
+                 "extended_hill-6_activities2", 
+                 "extended_hill-6_activities_var_kel")
+
+for(deg_type in c("extended_hill-2_activities", 
+                  "extended_hill-6_activities", 
+                  "extended_hill-6_activities_var_kel", 
+                  "extended_hill-6_activities2", 
+                  "extended_activities", 
+                  "base_activities", 
+                  "Kostinski_Kostinski")){
   png(filename = here("plots", paste0("mus_media_", gsub("_activities", "", deg_type), ".png")), 
       type="cairo", units="cm", 
       width=fig_size[1], height=fig_size[2], res=300)
   par(mar = c(mar[1:3], 0.5))
 
   ylim <- 3.5
-  if(deg_type == "Kostinski"){
+  if(deg_type == "Kostinski_Kostinski"){
     ylim <- 2.2
   }else if(deg_type == "base_activities"){
     ylim <- 4
@@ -177,7 +181,7 @@ for(deg_type in c("extended_hill-2_activities", "extended_hill-6_activities",
               max_mu_lines = max_mu_lines)
   par(xpd = NA)
   
-  if(deg_type %in% c("extended_activities", "base_activities")){
+  if(deg_type %in% with_legend){
     legend(0.48, 0.82, legend = legend_media[1:3],
            lty = 1, lwd = lwd,
            col = colors[1:3],
@@ -187,7 +191,7 @@ for(deg_type in c("extended_hill-2_activities", "extended_hill-6_activities",
            col = colors[4:6],
            bty = "n", cex = leg_size)
   }
-  if(deg_type %in% c("Kostinski")){
+  if(deg_type %in% c("Kostinski_Kostinski")){
     legend("topright", 
            legend = legend_media,
            lty = 1, lwd = lwd,
@@ -197,5 +201,3 @@ for(deg_type in c("extended_hill-2_activities", "extended_hill-6_activities",
   par(xpd = FALSE)
   dev.off()
 }
-
-

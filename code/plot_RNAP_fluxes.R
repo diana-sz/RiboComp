@@ -1,7 +1,7 @@
 library(here)
 
 #### read simulated and experimental fluxes ####################################
-data <- read.csv(here("data", paste0("fluxes_x0.36.csv")))
+data <- read.csv(here("data", "fluxes_x0.36.csv"))
 fluxes_bremer <- read.csv(here("data", "fluxes_bremer.csv"))
 
 #### define plotting parameters and functions ##################################

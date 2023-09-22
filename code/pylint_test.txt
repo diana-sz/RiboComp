@@ -1,0 +1,3410 @@
+************* Module model_functions
+model_functions.py:63:0: C0301: Line too long (108/100) (line-too-long)
+model_functions.py:68:0: C0301: Line too long (104/100) (line-too-long)
+model_functions.py:116:0: C0303: Trailing whitespace (trailing-whitespace)
+model_functions.py:123:0: C0303: Trailing whitespace (trailing-whitespace)
+model_functions.py:131:0: C0303: Trailing whitespace (trailing-whitespace)
+model_functions.py:240:0: C0301: Line too long (106/100) (line-too-long)
+model_functions.py:336:0: C0301: Line too long (106/100) (line-too-long)
+model_functions.py:159:8: C0103: Attribute name "IG" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:160:8: C0103: Attribute name "EAA" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:161:8: C0103: Attribute name "ENT" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:162:8: C0103: Attribute name "RNAP" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:163:8: C0103: Attribute name "RNase" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:164:8: C0103: Attribute name "AF" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:165:8: C0103: Attribute name "rP" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:166:8: C0103: Attribute name "rRNA" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:57:0: R0902: Too many instance attributes (28/7) (too-many-instance-attributes)
+model_functions.py:114:8: E1101: Instance of 'Model' has no 'kel' member (no-member)
+model_functions.py:114:20: E1101: Instance of 'Model' has no 'f_R' member (no-member)
+model_functions.py:115:8: E1101: Instance of 'Model' has no 'ktr' member (no-member)
+model_functions.py:115:21: E1101: Instance of 'Model' has no 'f_RNAP' member (no-member)
+model_functions.py:115:33: E1101: Instance of 'Model' has no 'phi_RNAP' member (no-member)
+model_functions.py:118:8: E1101: Instance of 'Model' has no 'kig' member (no-member)
+model_functions.py:119:8: E1101: Instance of 'Model' has no 'kent' member (no-member)
+model_functions.py:120:8: E1101: Instance of 'Model' has no 'keaa' member (no-member)
+model_functions.py:121:8: E1101: Instance of 'Model' has no 'kaf' member (no-member)
+model_functions.py:122:8: E1101: Instance of 'Model' has no 'kexo' member (no-member)
+model_functions.py:127:19: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:127:29: E1101: Instance of 'Model' has no 'C' member (no-member)
+model_functions.py:128:21: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+model_functions.py:128:31: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:128:42: E1101: Instance of 'Model' has no 'C' member (no-member)
+model_functions.py:129:19: E1101: Instance of 'Model' has no 'R' member (no-member)
+model_functions.py:129:40: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:130:22: E1101: Instance of 'Model' has no 'R' member (no-member)
+model_functions.py:130:47: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+model_functions.py:148:15: E1101: Instance of 'Model' has no 'kdeg_max' member (no-member)
+model_functions.py:149:21: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+model_functions.py:150:23: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+model_functions.py:151:20: E1101: Instance of 'Model' has no 'kdeg_max' member (no-member)
+model_functions.py:159:18: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+model_functions.py:159:27: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:160:19: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+model_functions.py:160:29: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:161:19: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+model_functions.py:161:29: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:162:20: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+model_functions.py:162:31: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:163:21: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+model_functions.py:163:33: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:164:18: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+model_functions.py:164:27: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:165:27: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:166:31: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+model_functions.py:175:40: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+model_functions.py:176:38: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:177:33: E1101: Instance of 'Model' has no 'medium' member (no-member)
+model_functions.py:188:21: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+model_functions.py:188:31: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+model_functions.py:189:22: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+model_functions.py:189:33: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+model_functions.py:190:19: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+model_functions.py:191:36: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+model_functions.py:213:25: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:234:21: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:239:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:243:4: R0914: Too many local variables (31/15) (too-many-locals)
+model_functions.py:250:8: C0103: Variable name "mu" doesn't conform to snake_case naming style (invalid-name)
+model_functions.py:251:21: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+model_functions.py:251:31: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+model_functions.py:252:22: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+model_functions.py:252:33: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+model_functions.py:253:19: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+model_functions.py:254:36: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+model_functions.py:255:20: E1101: Instance of 'Model' has no 'kig' member (no-member)
+model_functions.py:255:30: E1101: Instance of 'Model' has no 'keaa' member (no-member)
+model_functions.py:256:25: E1101: Instance of 'Model' has no 'kent' member (no-member)
+model_functions.py:256:36: E1101: Instance of 'Model' has no 'kaf' member (no-member)
+model_functions.py:256:46: E1101: Instance of 'Model' has no 'kel' member (no-member)
+model_functions.py:257:14: E1101: Instance of 'Model' has no 'C' member (no-member)
+model_functions.py:258:16: E1101: Instance of 'Model' has no 'ktr' member (no-member)
+model_functions.py:262:26: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:262:48: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:269:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:281:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:283:68: E1101: Instance of 'Model' has no 'medium' member (no-member)
+model_functions.py:284:65: E1101: Instance of 'Model' has no 'medium' member (no-member)
+model_functions.py:306:25: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:307:21: E1101: Instance of 'Model' has no 'kexo' member (no-member)
+model_functions.py:323:21: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:324:28: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:335:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:389:19: E1101: Instance of 'Model' has no 'R' member (no-member)
+model_functions.py:389:36: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:390:21: E1101: Instance of 'Model' has no 'R' member (no-member)
+model_functions.py:390:42: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+model_functions.py:534:24: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:534:22: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+model_functions.py:534:22: E1101: Instance of 'Model' has no 'medium' member (no-member)
+model_functions.py:622:39: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+model_functions.py:622:55: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+model_functions.py:622:72: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+model_functions.py:623:39: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+model_functions.py:623:57: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+model_functions.py:625:29: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+model_functions.py:627:69: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+model_functions.py:632:18: E1101: Instance of 'Model' has no 'R' member (no-member)
+model_functions.py:633:19: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+model_functions.py:638:18: E1101: Instance of 'Model' has no 'kel' member (no-member)
+************* Module fluxes_vs_growth_rate_v2
+fluxes_vs_growth_rate_v2.py:67:8: E1101: Instance of 'Model' has no 'mol_masses' member (no-member)
+fluxes_vs_growth_rate_v2.py:67:45: E1101: Instance of 'Model' has no 'mol_masses' member (no-member)
+************* Module general
+general.py:64:0: C0301: Line too long (105/100) (line-too-long)
+general.py:70:0: C0301: Line too long (104/100) (line-too-long)
+general.py:179:0: C0303: Trailing whitespace (trailing-whitespace)
+general.py:327:0: C0301: Line too long (106/100) (line-too-long)
+general.py:423:0: C0301: Line too long (106/100) (line-too-long)
+general.py:57:0: R0902: Too many instance attributes (15/7) (too-many-instance-attributes)
+general.py:236:23: C0207: Use self.parameter_set.split('_', maxsplit=1)[0] instead (use-maxsplit-arg)
+general.py:330:4: R0914: Too many local variables (31/15) (too-many-locals)
+general.py:337:8: C0103: Variable name "mu" doesn't conform to snake_case naming style (invalid-name)
+************* Module fit_kdegmax_v2
+fit_kdegmax_v2.py:43:0: C0303: Trailing whitespace (trailing-whitespace)
+************* Module fluxes_vs_growth_rate_v2-checkpoint
+.ipynb_checkpoints/fluxes_vs_growth_rate_v2-checkpoint.py:1:0: C0103: Module name "fluxes_vs_growth_rate_v2-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/fluxes_vs_growth_rate_v2-checkpoint.py:67:8: E1101: Instance of 'Model' has no 'mol_masses' member (no-member)
+.ipynb_checkpoints/fluxes_vs_growth_rate_v2-checkpoint.py:67:45: E1101: Instance of 'Model' has no 'mol_masses' member (no-member)
+************* Module run_all_conditions-checkpoint
+.ipynb_checkpoints/run_all_conditions-checkpoint.py:1:0: C0103: Module name "run_all_conditions-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+************* Module fit_kdegmax_v2-checkpoint
+.ipynb_checkpoints/fit_kdegmax_v2-checkpoint.py:43:0: C0303: Trailing whitespace (trailing-whitespace)
+.ipynb_checkpoints/fit_kdegmax_v2-checkpoint.py:1:0: C0103: Module name "fit_kdegmax_v2-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+************* Module kostinski_reproduction-checkpoint
+.ipynb_checkpoints/kostinski_reproduction-checkpoint.py:1:0: C0103: Module name "kostinski_reproduction-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+************* Module general-checkpoint
+.ipynb_checkpoints/general-checkpoint.py:64:0: C0301: Line too long (105/100) (line-too-long)
+.ipynb_checkpoints/general-checkpoint.py:70:0: C0301: Line too long (104/100) (line-too-long)
+.ipynb_checkpoints/general-checkpoint.py:179:0: C0303: Trailing whitespace (trailing-whitespace)
+.ipynb_checkpoints/general-checkpoint.py:327:0: C0301: Line too long (106/100) (line-too-long)
+.ipynb_checkpoints/general-checkpoint.py:423:0: C0301: Line too long (106/100) (line-too-long)
+.ipynb_checkpoints/general-checkpoint.py:1:0: C0103: Module name "general-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/general-checkpoint.py:57:0: R0902: Too many instance attributes (15/7) (too-many-instance-attributes)
+.ipynb_checkpoints/general-checkpoint.py:236:23: C0207: Use self.parameter_set.split('_', maxsplit=1)[0] instead (use-maxsplit-arg)
+.ipynb_checkpoints/general-checkpoint.py:330:4: R0914: Too many local variables (31/15) (too-many-locals)
+.ipynb_checkpoints/general-checkpoint.py:337:8: C0103: Variable name "mu" doesn't conform to snake_case naming style (invalid-name)
+************* Module fluxes_vs_growth_rate-checkpoint
+.ipynb_checkpoints/fluxes_vs_growth_rate-checkpoint.py:1:0: C0103: Module name "fluxes_vs_growth_rate-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+************* Module fit_kdegmax-checkpoint
+.ipynb_checkpoints/fit_kdegmax-checkpoint.py:1:0: C0103: Module name "fit_kdegmax-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+************* Module run_all_conditions_v2-checkpoint
+.ipynb_checkpoints/run_all_conditions_v2-checkpoint.py:1:0: C0103: Module name "run_all_conditions_v2-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+************* Module model_functions-checkpoint
+.ipynb_checkpoints/model_functions-checkpoint.py:63:0: C0301: Line too long (108/100) (line-too-long)
+.ipynb_checkpoints/model_functions-checkpoint.py:68:0: C0301: Line too long (104/100) (line-too-long)
+.ipynb_checkpoints/model_functions-checkpoint.py:116:0: C0303: Trailing whitespace (trailing-whitespace)
+.ipynb_checkpoints/model_functions-checkpoint.py:123:0: C0303: Trailing whitespace (trailing-whitespace)
+.ipynb_checkpoints/model_functions-checkpoint.py:131:0: C0303: Trailing whitespace (trailing-whitespace)
+.ipynb_checkpoints/model_functions-checkpoint.py:240:0: C0301: Line too long (106/100) (line-too-long)
+.ipynb_checkpoints/model_functions-checkpoint.py:336:0: C0301: Line too long (106/100) (line-too-long)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: C0103: Module name "model_functions-checkpoint" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:159:8: C0103: Attribute name "IG" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:160:8: C0103: Attribute name "EAA" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:161:8: C0103: Attribute name "ENT" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:162:8: C0103: Attribute name "RNAP" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:163:8: C0103: Attribute name "RNase" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:164:8: C0103: Attribute name "AF" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:165:8: C0103: Attribute name "rP" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:166:8: C0103: Attribute name "rRNA" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:57:0: R0902: Too many instance attributes (28/7) (too-many-instance-attributes)
+.ipynb_checkpoints/model_functions-checkpoint.py:114:8: E1101: Instance of 'Model' has no 'kel' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:114:20: E1101: Instance of 'Model' has no 'f_R' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:115:8: E1101: Instance of 'Model' has no 'ktr' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:115:21: E1101: Instance of 'Model' has no 'f_RNAP' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:115:33: E1101: Instance of 'Model' has no 'phi_RNAP' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:118:8: E1101: Instance of 'Model' has no 'kig' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:119:8: E1101: Instance of 'Model' has no 'kent' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:120:8: E1101: Instance of 'Model' has no 'keaa' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:121:8: E1101: Instance of 'Model' has no 'kaf' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:122:8: E1101: Instance of 'Model' has no 'kexo' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:127:19: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:127:29: E1101: Instance of 'Model' has no 'C' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:128:21: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:128:31: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:128:42: E1101: Instance of 'Model' has no 'C' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:129:19: E1101: Instance of 'Model' has no 'R' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:129:40: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:130:22: E1101: Instance of 'Model' has no 'R' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:130:47: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:148:15: E1101: Instance of 'Model' has no 'kdeg_max' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:149:21: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:150:23: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:151:20: E1101: Instance of 'Model' has no 'kdeg_max' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:159:18: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:159:27: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:160:19: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:160:29: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:161:19: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:161:29: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:162:20: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:162:31: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:163:21: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:163:33: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:164:18: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:164:27: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:165:27: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:166:31: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:175:40: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:176:38: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:177:33: E1101: Instance of 'Model' has no 'medium' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:188:21: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:188:31: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:189:22: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:189:33: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:190:19: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:191:36: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:213:25: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:234:21: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:239:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:243:4: R0914: Too many local variables (31/15) (too-many-locals)
+.ipynb_checkpoints/model_functions-checkpoint.py:250:8: C0103: Variable name "mu" doesn't conform to snake_case naming style (invalid-name)
+.ipynb_checkpoints/model_functions-checkpoint.py:251:21: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:251:31: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:252:22: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:252:33: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:253:19: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:254:36: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:255:20: E1101: Instance of 'Model' has no 'kig' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:255:30: E1101: Instance of 'Model' has no 'keaa' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:256:25: E1101: Instance of 'Model' has no 'kent' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:256:36: E1101: Instance of 'Model' has no 'kaf' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:256:46: E1101: Instance of 'Model' has no 'kel' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:257:14: E1101: Instance of 'Model' has no 'C' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:258:16: E1101: Instance of 'Model' has no 'ktr' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:262:26: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:262:48: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:269:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:281:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:283:68: E1101: Instance of 'Model' has no 'medium' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:284:65: E1101: Instance of 'Model' has no 'medium' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:306:25: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:307:21: E1101: Instance of 'Model' has no 'kexo' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:323:21: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:324:28: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:335:11: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:389:19: E1101: Instance of 'Model' has no 'R' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:389:36: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:390:21: E1101: Instance of 'Model' has no 'R' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:390:42: E1101: Instance of 'Model' has no 'NT' member; maybe 'ENT'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:534:24: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:534:22: E1101: Instance of 'Model' has no 'parameter_set' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:534:22: E1101: Instance of 'Model' has no 'medium' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:622:39: E1101: Instance of 'Model' has no 'nig' member; maybe 'kig'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:622:55: E1101: Instance of 'Model' has no 'neaa' member; maybe 'keaa'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:622:72: E1101: Instance of 'Model' has no 'nent' member; maybe 'kent'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:623:39: E1101: Instance of 'Model' has no 'nrnap' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:623:57: E1101: Instance of 'Model' has no 'naf' member; maybe 'kaf'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:625:29: E1101: Instance of 'Model' has no 'matrix_type' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:627:69: E1101: Instance of 'Model' has no 'nrnase' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:632:18: E1101: Instance of 'Model' has no 'R' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:633:19: E1101: Instance of 'Model' has no 'AA' member; maybe 'EAA'? (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:638:18: E1101: Instance of 'Model' has no 'kel' member (no-member)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[14:734]
+==general:[14:734]
+TO_H = 3600  # factor to convert from seconds to hours
+
+def slack(n_columns, position = -100):
+    """make a list with zeroes, optionally with -1 at a specified position"""
+    zeros = np.zeros(n_columns, dtype = int)
+    if position in range(len(zeros)):
+        zeros[position] = -1
+    return list(zeros)
+
+
+def initiate_progress_plot(title):
+    """
+    Make an empty plot in the terminal
+    it will be updated with the function "fill_progress_plot()"
+
+    Parameters
+    ----------
+    title: title of the plot
+    """
+    plt.title(title)
+    plt.xlabel("Protein fraction in ribosome")
+    plt.ylabel("Growth rate [1/h]")
+    plt.theme("clear")
+    plt.plot_size(70, 25)
+
+
+def fill_progress_plot(xdata, ydata, ymin=0, ymax=4):
+    """
+    Plot data into the plot initiated with "initiate_progress_plot()"
+
+    Parameters
+    ----------
+    xdata, ydata: x and y coordinates
+    ymin, ymax: min and max limits of y-axis
+    """
+    plt.clt()
+    plt.ylim(ymin, ymax)
+    plt.xlim(0,1)
+    plt.scatter(xdata, ydata, marker="heart", color=125)
+    plt.show()
+
+
+class Model:
+    """
+    Class to store models and results of a single run of efmtool
+
+    Attributes
+    ----------
+    parameter_set: changes some parameters from defaults in "set_specific_parameters()"
+        - substrings: ["activities", "activities2" "archaea", "Kostinski"] change some kinetic parameters
+        - substrings "hill-[n]" change how degradation rate of RNA is calculated (n is an integer)
+    matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
+        - "base": standard RBA (default)
+        - "extended", "extended_mito": matrices with rRNA degradation reaction
+        - "Kostinski": "base" matrix with fixed ribosome and RNAP allocations
+    medium: influences the values of keaa, mol_masses["C"]; ktr (if parameter_set contains "activities")
+        - 0: succinate minimal medium
+        - 1: glycerol minimal medium
+        - 2: glucose minimal medium [default]
+        - 3: glycerol + amino acids
+        - 4: glucose + amino acids
+        - 5: LB
+    frac: protein mass fraction in the ribosome
+    mu: growth rate
+    mol_masses: a dictionary of molecular masses (g/mmol) of ribosome (R),
+                average amino acid (AA), average nucleotide (NT), carbon source (C)
+    stoichiometries: a dictionary of stoichiometric coefficients
+        - nig, neaa, nent, nrnap, naf, nrnase - transporter (nig),
+          AA/NT synthesis enzymes (neaa/nent), RNAP (nrnap),
+          ribosome assembly factors (naf) and RNase R (nrnase)
+        - naa, nnt - stoich. coefficients for synthesis of AA, NT,
+                     depend on the molecular mass of carbon source (mol_masses["C"])
+        - nrp, nrrna - stoich. coefficients for synthesis of rP and rRNA, depend on "frac"
+    kinetics: a dictionary of kinetic parameters
+        - kig: kcat of substrate importer [1/h]
+        - kent: kcat of NT synthesis [1/h]
+        - kaf: kcat of R assembly [1/h]
+        - keaa - kcat of AA synthesis, depends on the value of "medium"
+        - ktr: transcription rate [nt/h]
+        - krnap: transcription rate [1/h]
+        - kel: translation rate [aa/h]
+        - kexo: exonuclease rate (RNase R) [nt/h]
+    kdeg_max: max. degradation rate [1/h]
+    matrix_uc: np.array - matrix without constraints
+    matrix_c: np.array - matrix with constraints
+    rows_uc, rows_c: row names for unconstrained / constrained matrices
+    columns_uc, columns_c: column names for unconstrained / constrained matrices
+    """
+
+    # allowed attributes
+    __slots__ = ["parameter_set", "matrix_type", "medium", "frac",
+                 "growth_rate", "kdeg_max",
+                 "stoichiometries", "mol_masses", "kinetics",
+                 "rows_c", "columns_c", "matrix_c",
+                 "rows_uc", "columns_uc", "matrix_uc"]
+
+    def __init__(self, *model_pars, **kwargs):
+        self.parameter_set = "default"
+        self.matrix_type = "base"
+        self.medium = 2
+        self.frac = 0.36
+        self.growth_rate = 1
+        self.kdeg_max = 0
+
+        avg_protein_length = 325
+        self.stoichiometries = {"nig": 646,
+                                "neaa": avg_protein_length*15,
+                                "nent": avg_protein_length*15,
+                                "nrnap": 3498,
+                                "naf": avg_protein_length*12,
+                                "nrnase": 813}
+        self.mol_masses = {"R": 2300,
+                           "AA": 0.109,
+                           "NT": 0.3243}
+        self.kinetics = {"kig": 180*TO_H,
+                         "kent": 10*TO_H,
+                         "keaa": 10*TO_H,
+                         "kaf": 1/120*TO_H,
+                         "ktr": 85*TO_H,
+                         "kel": 21*TO_H,
+                         "kexo": 88*TO_H,
+                         "kdeg": 0}
+
+        # if model_pars / kwargs are provided, update default parameters
+        for dictionary in model_pars:
+            for key, value in dictionary.items():
+                setattr(self, key, value)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+        self.set_specific_parameters()
+
+        # calculated stoichiometries - must be placed after all other parameters are set
+        self.stoichiometries["naa"] = self.mol_masses["AA"] / self.mol_masses["C"]
+        self.stoichiometries["nnt"] = ((self.mol_masses["NT"] - self.mol_masses["AA"])
+                                       / self.mol_masses["C"])
+        self.stoichiometries["nrp"] = self.mol_masses["R"] * self.frac / self.mol_masses["AA"]
+        self.stoichiometries["nrrna"] = (self.mol_masses["R"] * (1-self.frac)
+                                         / self.mol_masses["NT"])
+
+        # initialize row and column names of matrices
+        self.rows_c = []
+        self.columns_c = []
+
+        # create matrices
+        self.make_matrix_uc()
+        self.make_matrix_c()
+
+        _ = self.calculate_molecular_masses()
+
+
+    def set_specific_parameters(self):
+        """
+        change a specific set of parameters according to values
+        of "Model.medium" and "Model.parameter_set"
+        """
+        if self.medium not in [0,1,2,3,4,5]:
+            print(f"Unknown medium: {self.medium}, using default (2: glucose minimal)")
+            self.medium = 2
+
+        # medium specific parameters - always set
+        # kcat of AA synthesis, 1/h
+        self.kinetics["keaa"] = [2, 3.5, 5, 7, 8.5, 10.5][self.medium]*TO_H
+        self.kinetics["kent"] = [2, 3.5, 5, 7, 8.5, 10.5][self.medium]*TO_H
+
+        if "var_kel" in self.parameter_set:
+            self.kinetics["kel"] = [12, 16.83, 21, 20.17, 21, 22.25][self.medium]*TO_H
+
+        # molecular mass of the carbon source
+        # 1,3: glycerol; 2,4,5: glucose; 0: succinate
+        carbon_sources = {5: 0.18, 4: 0.18, 3: 0.092,
+                          2: 0.18, 1: 0.092, 0: 0.118}
+        self.mol_masses["C"] = carbon_sources[self.medium]
+
+        # active fractions of R and RNAP
+        active_ribosome_fraction = 0.85
+        active_rnap_fraction = [13.2, 14.4, 15.0, 18.8, 24.2, 31.0][self.medium]/100
+
+        # RNAP allocation fractions
+        rnap_allocation_rrna = [0.18, 0.28, 0.42, 0.52, 0.60, 0.65][self.medium]
+
+        if "archaea" in self.parameter_set:
+            self.kinetics["ktr"] = 25*TO_H
+            self.kinetics["kel"] = 25/3*TO_H
+            self.stoichiometries["nrnap"] = 3338
+            self.mol_masses["R"] = 3040
+
+            # activities from E. coli
+            self.kinetics["kel"] *= active_ribosome_fraction
+            self.kinetics["ktr"] *= active_rnap_fraction
+
+        if self.parameter_set == "rna_expensive":
+            self.stoichiometries["nrnap"] = 3498*15
+            self.kinetics["kel"] = 21*TO_H*3
+            self.kinetics["ktr"] = 85/10*TO_H
+
+        if "activities" in self.parameter_set:
+            self.kinetics["kel"] *= active_ribosome_fraction
+            self.kinetics["ktr"] *= active_rnap_fraction
+
+            # include RNAP allocation
+            if "activities2" in self.parameter_set:
+                self.kinetics["ktr"] *= rnap_allocation_rrna
+
+        if self.parameter_set == "Kostinski":
+            # translation rates from Kostinski & Reuveni
+            kel = [12, 16.83, 21, 20.17, 21, 22.25][self.medium]*TO_H
+            self.kinetics["kel"] = kel*active_ribosome_fraction
+            self.kinetics["ktr"] *= active_rnap_fraction*rnap_allocation_rrna
+
+        # calculate degradation rate
+        self.calculate_degradation_rate()
+
+
+    def calculate_degradation_rate(self):
+        """
+        calculate degradation rate based on protein content
+        and type of degradation function
+        """
+        kdeg = self.kdeg_max * (1 - self.frac)
+        if "hill" in self.parameter_set:
+            hill = int(self.parameter_set.split("_")[0].split("-")[-1])
+            kdeg = (self.kdeg_max
+                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
+                    * (1 - self.frac))
+        self.kinetics["kdeg"] = kdeg
+
+
+    def calculate_molecular_masses(self):
+        """generate a list of molecular masses based on matrix row names"""
+        mw_aa = self.mol_masses["AA"]
+        mw_nt = self.mol_masses["NT"]
+
+        self.mol_masses["IG"] = self.stoichiometries["nig"]*mw_aa
+        self.mol_masses["EAA"] = self.stoichiometries["neaa"]*mw_aa
+        self.mol_masses["ENT"] = self.stoichiometries["nent"]*mw_aa
+        self.mol_masses["RNAP"] = self.stoichiometries["nrnap"]*mw_aa
+        self.mol_masses["RNase"] = self.stoichiometries["nrnase"]*mw_aa
+        self.mol_masses["AF"] = self.stoichiometries["naf"]*mw_aa
+        self.mol_masses["rP"] = self.stoichiometries["nrp"]*mw_aa
+        self.mol_masses["rRNA"] = self.stoichiometries["nrrna"]*mw_nt
+
+        mw_list = [self.mol_masses[metabolite] for metabolite in self.rows_uc]
+
+        return mw_list
+
+    def __str__(self):
+        return f"""
+        Parameter set: {self.parameter_set}
+        Matrix type: {self.matrix_type}
+        Medium: {self.medium}
+        """
+
+
+    def make_matrix_uc(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_uc"),
+        row names (list stored as "rows_uc") and column names (list stored as "columns_uc")
+        based on the value of "matrix_type" attribute
+        """
+        naa, nnt, = self.stoichiometries["naa"], self.stoichiometries["nnt"]
+        nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
+        nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
+        naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
+        nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
+
+        self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,    0,    0,     0,   0,   0],
+              [0,   1,  -1,     0,  0,-nig,-neaa,-nent,-nrnap,-naf,-nrp],
+              [0,   0,   1,-nrrna,  0,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     1, -1,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0, -1,   0,    0,    0,     0,   0,   1],
+              [0,   0,   0,     0,  0,   1,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    1,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    1,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     1,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     0,   1,   0],
+              [0,   0,   0,     0,  1,   0,    0,    0,     0,   0,   0]]
+        )
+        self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vAF",
+                           "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
+        self.rows_uc = ["C", "AA", "NT", "rRNA", "rP",
+                        "IG", "EAA", "ENT", "RNAP", "AF", "R"]
+
+        # matrix with ribosome degradation rate
+        if "extended" in self.matrix_type:
+            self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   1,  -1,     0,  0,   0,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp],
+              [0,   0,   1,-nrrna,nrrna, 0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     1, -1,  -1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,  -1,   0,    0,    0,     0,    0,     0,   1],
+              [0,   0,   0,     0,  0,   1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   1,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    1,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    1,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     1,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    1,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    0,     1,   0]]
+            )
+            self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vRNase", "vAF",
+                               "wIG", "wEAA", "wENT", "wRNAP", "wRNase", "wAF", "wrP"]
+            self.rows_uc = ["C", "AA", "NT", "rRNA", "rP", "R",
+                            "IG", "EAA", "ENT", "RNAP", "RNase", "AF"]
+
+        # for mitochondria, add a rP imoprt reaction
+        if "mito" in self.matrix_type:
+            rp_import = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]).T
+            self.matrix_uc = np.concatenate((self.matrix_uc, rp_import), axis=1)
+            self.columns_uc.append("vIrP")
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+
+    def make_matrix_c(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_c"),
+        row names (list stored as "rows_c") and column names (list stored as "columns_c")
+        based on the value of "matrix_type" attribute
+        """
+        # get parameters
+        mu = self.growth_rate
+        nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
+        nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
+        naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
+        nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
+        kig, keaa = self.kinetics["kig"], self.kinetics["keaa"]
+        kent, kaf, kel = self.kinetics["kent"], self.kinetics["kaf"], self.kinetics["kel"]
+        mwc = self.mol_masses["C"]
+        krnap = self.kinetics["ktr"]/nrrna  # convert nt/h -> 1/h
+
+        # get submatrix with metabolite rows (met_matrix) and add slack columnes
+        ncol = 9
+        if ("extended" in self.matrix_type) or (self.matrix_type == "Kostinski"):
+            ncol = 11
+        slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                          slack(ncol,0), slack(ncol,1)])
+        met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
+
+        # "RBA" matrix - enzyme capacity + dry mass constraints
+        if self.matrix_type in ["base"]:
+            constraints = np.array(
+              [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
+               [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
+               [  0,  0,-mu,  0,     0,   0,    0, kent,     0,   0,   0]+slack(ncol,4),
+               [  0,  0,  0,-mu,     0,   0,    0,    0, krnap,   0,   0]+slack(ncol,5),
+               [  0,  0,  0,  0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(ncol,6),
+               [  0,  0,  0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(ncol,7),
+               [-mwc, 0,  0,  0,     0,   0,    0,    0,    0,   0,    0]+slack(ncol-1)+[mu]]
+            )
+
+        # "Kostinski" matrix - like RBA but with fixed allocations of ribosome
+        if self.matrix_type == "Kostinski":
+            # ribosome allocation to RNAP and rP (%) from Kostinski & Reuveni
+            r_allocation_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100
+            r_allocation_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100
+
+            # translation rate "kel" is set in "set_specific_parameters"
+            # the ribsome constraint is split to 3 rows, where "kel" is multiplied
+            # by the respective allocation fraction for RNAP, rP and the rest
+            kel_rnap = r_allocation_rnap*kel
+            kel_rp = r_allocation_rp*kel
+            kel_rest = (1-r_allocation_rnap-r_allocation_rp)*kel # all other proteins
+
+            constraints = np.array(
+            [[-mu,   0,   0,   0,        0,  kig,   0,    0,    0,   0,   0]+slack(ncol,2),
+             [  0, -mu,   0,   0,        0,   0,  keaa,   0,    0,   0,   0]+slack(ncol,3),
+             [  0,   0, -mu,   0,        0,   0,    0,  kent,   0,   0,   0]+slack(ncol,4),
+             [  0,   0,   0, -mu,        0,   0,    0,    0, krnap,  0,   0]+slack(ncol,5),
+             [  0,   0,   0,   0,      -mu,   0,    0,    0,    0, kaf,   0]+slack(ncol,6),
+             [  0,   0,   0,   0,kel_rest/mu,-nig,-neaa,-nent,  0,-naf,   0]+slack(ncol,7),
+             [  0,   0,   0,   0,kel_rnap/mu, 0,    0,    0,-nrnap,  0,   0]+slack(ncol,8),
+             [  0,   0,   0,   0, kel_rp/mu,  0,    0,    0,    0,   0,-nrp]+slack(ncol,9),
+             [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,   0,   0]+slack(ncol-1)+[mu]])
+
+
+        # constraints like in "base" matrix + minimum rRNA degradation rate enforced
+        if "extended" in self.matrix_type:
+            krnase = self.kinetics["kexo"]/nrrna
+            kdeg = self.kinetics["kdeg"]
+
+            constraints = np.array(
+             [[-mu,0, 0, 0,  0,     0, kig,    0,    0,     0,    0,    0,   0]+slack(ncol,2),
+              [ 0,-mu,0, 0,  0,     0,   0, keaa,    0,     0,    0,    0,   0]+slack(ncol,3),
+              [ 0, 0,-mu,0,  0,     0,   0,    0, kent,     0,    0,    0,   0]+slack(ncol,4),
+              [ 0, 0, 0,-mu, 0,     0,   0,    0,    0, krnap,    0,    0,   0]+slack(ncol,5),
+              [ 0, 0, 0, 0,-mu,     0,   0,    0,    0,     0, krnase,  0,   0]+slack(ncol,6),
+              [ 0, 0, 0, 0,  0,   -mu,   0,    0,    0,     0,    0,   kaf,  0]+slack(ncol,7),
+              [ 0, 0, 0, 0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp]+slack(ncol,8),
+              [ 0, 0, 0, 0, mu, -kdeg,   0,    0,    0,     0,    0,    0,   0]+slack(ncol,9),
+              [-mwc,0,0, 0,  0,     0,   0,    0,    0,     0,    0,    0,   0]+slack(ncol-1)+[mu]]
+            )
+
+        # 1/3 of rP imported for free
+        if "mito" in self.matrix_type:
+            mwrp = self.stoichiometries["nrp"]*self.mol_masses["AA"]
+
+            # add column for rP import reaction
+            column =[0, 0, 0, 0, 0, 0, 0, 0, -mwrp]
+            constraints = np.insert(constraints, self.matrix_uc.shape[1]-1, column, axis=1)
+
+            # wrP = 2*vIrP constraint - 1/3 rPs are imported
+            import_constraint = np.array(
+                [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -2]+slack(ncol)])
+            constraints = np.concatenate((constraints, import_constraint), axis = 0)
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+        # concatenate stoichiometric matrix with constraint matrix
+        self.matrix_c = np.concatenate((met_matrix, constraints), axis=0)
+        self.generate_row_and_column_names()
+
+
+    def generate_row_and_column_names(self):
+        """add row (rows_c) and column names (columns_c) based on the shape of matrix_c"""
+
+        rows =  self.rows_uc[:5]
+        n_slack_row = self.matrix_c.shape[0]-len(rows)
+        n_slack_col = self.matrix_c.shape[1]-len(self.columns_uc)-1
+
+        self.rows_c = rows +  [f"C{i}" for i in range(n_slack_row)]
+        self.columns_c = self.columns_uc + [f"S{i}" for i in range(n_slack_col)] + ["C"]
+
+
+    def run_efmtool(self):
+        """
+        run efmtool for matrix with constraints (matrix_c),
+        return numpy array with fluxes
+        """
+
+        options = efmtool.get_default_options()
+        options["arithmetic"] = "fractional"
+        options['level'] = 'WARNING'
+        egvs = efmtool.calculate_efms(stoichiometry = self.matrix_c,
+                                      reversibilities = [0]*self.matrix_c.shape[1],
+                                      reaction_names = self.columns_c,
+                                      metabolite_names = self.rows_c,
+                                      options = options)
+                                      #, jvm_options = ["--illegal-access=deny"])
+        return egvs
+
+
+    def update_mu(self, growth_rate):
+        """Update matrices with new growth rate"""
+        self.growth_rate = growth_rate
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def update_frac(self, frac):
+        """
+        Update protein fraction in ribosome (frac),
+        rP and rRNA stoichiometries (nrp and nrrna),
+        degradation rate, and then matrices.
+
+        Parameters
+        ----------
+        frac: protein mass fraction in ribosome
+        """
+        self.frac = frac
+        self.stoichiometries["nrp"] = self.mol_masses["R"]*self.frac/self.mol_masses["AA"]
+        self.stoichiometries["nrrna"] = self.mol_masses["R"]*(1-self.frac)/self.mol_masses["NT"]
+        self.calculate_degradation_rate()
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def make_nice_results(self, egvs, drop_slack = True):
+        """
+        Convert ugly array from efmtool into a nice pandas DataFrame
+        Store as Model.nice_fluxes
+
+        Parameters
+        ----------
+        egvs: numpy array with the output of "run_efmtool()"
+        drop_slack: bool, if True, slack columns are removed
+
+        Returns
+        -------
+        pandas Data Frame with fluxes
+        """
+
+        if egvs.shape[1] == 0:
+            return pd.DataFrame()
+
+        # solve "ValueError: Big-endian buffer not supported on little-endian compiler"
+        egms = egvs.byteswap().newbyteorder()
+
+        # remove zero flux EGVs
+        # subtract one because zero EGVs have 1 for a slack variable
+        nonzeros = (np.count_nonzero(egms, axis=0)-1).astype(bool)
+        egms = egms.T[nonzeros]
+
+        res = pd.DataFrame(egms,
+                           index = [f"EGM{(i+1)}" for i in range(egms.shape[0])],
+                           columns = self.columns_c)
+
+        # normalize values by the column C
+        if "C" in res.columns:
+            res = res.div(res.C, axis = 0)
+
+        if drop_slack:
+            cols = [c for c in res.columns if c.startswith("S")]
+            if "C" in res.columns:
+                cols = cols+["C"]
+            res = res[res.columns.drop(cols)]
+
+        return res
+
+
+class Simulation:
+    """
+    Class to run simulations with efmtool and find optimal growth rate
+    and protein fraciton in the ribosome
+
+    Attributes
+    ----------
+    mu_list: np.array of growth rates to test
+    prot_fractions: np.array of ribosome protein mass fractions (xrps) to test
+    model: an instance of Model()
+    fluxes: pandas DataFrame that stores growth fluxes from test_xrps()
+    growth_rates: pandas DataFrame that stores growth rates from test_xrps()
+    allocations: pandas DataFrame that stores ribosome allocations from test_xrps()
+    mass_fractions: pandas DataFrame that stores mass fractions from test_xrps()
+    """
+    __slots__ = ["growth_rates", "prot_fractions", "model", "fluxes",
+                 "max_growth_rates", "allocations", "mass_fractions"]
+
+    def __init__(self,
+                 *model_pars,
+                 growth_rates = np.arange(0.1, 4, 0.1),
+                 prot_fractions = np.arange(0.01, 1, 0.1),
+                 **kwargs):
+
+        self.growth_rates = growth_rates
+        self.prot_fractions = prot_fractions
+        self.model = Model(*model_pars, **kwargs)
+        self.fluxes = pd.DataFrame()
+        self.max_growth_rates = pd.DataFrame()
+        self.allocations = pd.DataFrame()
+        self.mass_fractions = pd.DataFrame()
+
+
+    def bisection_search_mu(self):
+        """quickly find the biggest possible growth rate with bisection search
+
+        Returns
+        -------
+        a tuple with:
+            - maximum growth rate
+            - pandas DataFrame of fluxes at maximum growth rate
+        """
+
+        left = 0  # The starting index of the list we have to search in
+        right = len(self.growth_rates)-1  # the last index of the list we have to search in
+        mid = (right + left)//2
+        new_mu = self.growth_rates[mid]
+        last_mu = -1
+        iterations = 1
+
+        while new_mu != last_mu: # check if we already found the last mu
+            self.model.update_mu(new_mu)
+            egvs = self.model.run_efmtool()
+
+            # no solution (no egvs/zero egvs in non-slack columns) - growth rate too big
+            ncol = self.model.matrix_uc.shape[1]
+            if (egvs.shape[1] == 0) or (np.count_nonzero(egvs[:, :ncol], axis=None) == 0):
+                right = mid - 1
+
+            # otherwise growth rate is too small (or just right)
+            else:
+                left = mid + 1
+                last_mu = new_mu
+
+            mid = (right + left)//2
+            new_mu = self.growth_rates[mid]
+
+            iterations += 1
+            if iterations > len(self.growth_rates):
+                print("Optimal growth rate not found")
+                last_mu = 0
+
+        # recalculate egvs for last_mu (the last feasible solution)
+        self.model.update_mu(growth_rate=last_mu)
+        egvs = self.model.run_efmtool()
+
+        return (last_mu, self.model.make_nice_results(egvs))
+
+
+    def test_xrps(self, plot=True):
+        """
+        Vary protein fraction in ribosome (xrp) and for each xrp calculat:
+        * maximum growth rate (saved in attribute "growth_rate")
+        * fluxes (EGVs - elementary growth vectors) (saved in attribute "fluxes")
+        * metabolite mass fractions (saved in attribute "mass_fractions")
+        * ribosome allocations (saved in attribute "allocations")
+
+        Parameters
+        ----------
+        plot: bool, if True, progress is printed in the terminal
+        """
+        last_mus = []
+        all_fluxes = pd.DataFrame()
+
+        if plot:
+            title = (f"{self.model.matrix_type}, "
+                     f"parameter set: {self.model.parameter_set}, "
+                     f"medium: {self.model.medium}")
+            initiate_progress_plot(title)
+
+        for progress, frac in enumerate(self.prot_fractions):
+            self.model.update_frac(frac)
+            last_mu, fluxes = self.bisection_search_mu()
+            last_mus.append(last_mu)
+
+            fluxes["prot_fraction"] = str(round(self.model.frac, 5))
+            fluxes["growth_rate"] = last_mu
+            fluxes["EGVs"] = fluxes.index
+            fluxes = fluxes.set_index([fluxes["prot_fraction"]+fluxes.index])
+            all_fluxes = pd.concat([all_fluxes, fluxes])
+
+            if plot:
+                fill_progress_plot(self.prot_fractions[:progress], last_mus, 0.1, 4)
+
+        # clear plot
+        if plot:
+            plt.clf()
+
+        self.fluxes = all_fluxes
+        self.max_growth_rates = pd.DataFrame({"prot_fraction": self.prot_fractions,
+                                              "growth_rate": last_mus})
+        self.calculate_mass_fractions()
+        self.calculate_allocations()
+
+
+    def calculate_mass_fractions(self):
+        """
+        Calculates metabolite mass fractions in g/g according to:
+        mass_fractions = (Nv/mu)*mw
+            N: stoichiometric matrix without constraints ("matrix_uc")
+            v: vector a fluxes ("fluxes")
+            mu: growth rate ("growth_rates")
+            mw: vector of molecular masses ("molecular_masses")
+        Saves pandas DataFrame as "mass_fractions" attribute
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            mass_fractions = pd.DataFrame(columns = self.model.rows_uc,
+                                          index = self.fluxes.index)
+            for egv in self.fluxes.index:
+                frac = self.fluxes.loc[egv, "prot_fraction"]
+                self.model.update_frac(float(frac))
+
+                matrix_uc = pd.DataFrame(self.model.matrix_uc,
+                                         index = self.model.rows_uc,
+                                         columns = self.model.columns_uc)
+                molecular_masses = self.model.calculate_molecular_masses()
+                growth_rates = self.fluxes.loc[egv, "growth_rate"]
+                fluxes = self.fluxes.loc[egv][:matrix_uc.shape[1]]
+
+                # calculate mass fractions with (Nv/mu)*mw
+                mass_fractions.loc[egv] = matrix_uc.multiply(fluxes).sum(axis=1)/float(growth_rates)
+                mass_fractions.loc[egv] = mass_fractions.loc[egv]*molecular_masses
+
+            mass_fractions["growth_rate"] = self.fluxes.growth_rate
+            mass_fractions["EGVs"] = self.fluxes.EGVs
+            mass_fractions["prot_fraction"] = self.fluxes.prot_fraction
+
+            self.mass_fractions = mass_fractions
+
+
+    def calculate_allocations(self):
+        """
+        Calculates ribosome allocations to the different proteins with:
+
+        allocation_i = (mu*n_i*w_i)/(kel*vaf)
+            allocation_i: ribosome allocation to protein i
+            mu: growth rate
+            n_i: stoichiometric coefficient of protein i
+            w_i: synthesis flux of protein i
+            kel: translation rate
+            vaf: ribosome assembly flux
+        Saved in the attribute "allocations"
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            protein_columns = ["wIG", "wEAA", "wENT", "wRNAP", "wAF"]
+            stoich = self.model.stoichiometries
+            protein_stoichiometries = [stoich["nig"], stoich["neaa"], stoich["nent"],
+                                       stoich["nrnap"], stoich["naf"]]
+
+            if "extended" in self.model.matrix_type:
+                protein_columns = protein_columns + ["wRNase"]
+                protein_stoichiometries = protein_stoichiometries + [stoich["nrnase"]]
+
+            prot_fluxes = self.fluxes[protein_columns].multiply(protein_stoichiometries)
+
+            # rP stoichiometry calculated from 'prot_fraction' (rP mass fraction in ribosome)
+            mwr = self.model.mol_masses["R"]
+            mwaa = self.model.mol_masses["AA"]
+            prot_fractions = self.fluxes["prot_fraction"]
+            prot_fluxes["wrP"] = self.fluxes["wrP"]*mwr*prot_fractions.astype(float)/mwaa
+
+            # multiply with growth rates and divide with assembly flux and elongation rate
+            kel = self.model.kinetics["kel"]
+            growth_rates = self.fluxes["growth_rate"]
+            v_af = self.fluxes["vAF"]
+            allocations = prot_fluxes.apply(lambda x: x*growth_rates/(v_af*kel))
+
+            allocations["prot_fraction"] = prot_fractions
+
+            self.allocations = allocations (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==model_functions-checkpoint:[14:645]
+==model_functions:[14:645]
+TO_H = 3600  # factor to convert from seconds to hours
+
+def slack(n_columns, position = -100):
+    """make a list with zeroes, optionally with -1 at a specified position"""
+    zeros = np.zeros(n_columns, dtype = int)
+    if position in range(len(zeros)):
+        zeros[position] = -1
+    return list(zeros)
+
+
+def initiate_progress_plot(title):
+    """
+    Make an empty plot in the terminal
+    it will be updated with the function "fill_progress_plot()"
+
+    Parameters
+    ----------
+    title: title of the plot
+    """
+    plt.title(title)
+    plt.xlabel("Protein fraction in ribosome")
+    plt.ylabel("Growth rate [1/h]")
+    plt.theme("clear")
+    plt.plot_size(70, 25)
+
+
+def fill_progress_plot(xdata, ydata, ymin=0, ymax=4):
+    """
+    Plot data into the plot initiated with "initiate_progress_plot()"
+
+    Parameters
+    ----------
+    xdata, ydata: x and y coordinates
+    ymin, ymax: min and max limits of y-axis
+    """
+    plt.clt()
+    plt.ylim(ymin, ymax)
+    plt.xlim(0,1)
+    plt.scatter(xdata, ydata, marker="heart", color=125)
+    plt.show()
+
+
+class Model:
+    """
+    Class to store models and results of a single run of efmtool
+
+    Attributes
+    ----------
+    parameter_set: substrings "hill-[n]" changes how degradation rate of RNA is calculated (n is an integer)
+    matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
+        - "base": standard RBA (default)
+        - "extended", "extended_mito": matrices with rRNA degradation reaction
+        - "Kostinski": "base" matrix with fixed ribosome and RNAP allocations
+    medium: influences the values of keaa, mol_masses["C"]; ktr (if parameter_set contains "activities")
+        - 0: succinate minimal medium
+        - 1: glycerol minimal medium
+        - 2: glucose minimal medium [default]
+        - 3: glycerol + amino acids
+        - 4: glucose + amino acids
+        - 5: LB
+    frac: protein mass fraction in the ribosome
+    mu: growth rate
+    mol_masses: a dictionary of molecular masses (g/mmol) of ribosome (R),
+                average amino acid (AA), average nucleotide (NT), carbon source (C)
+    stoichiometries: a dictionary of stoichiometric coefficients
+        - nig, neaa, nent, nrnap, naf, nrnase - transporter (nig),
+          AA/NT synthesis enzymes (neaa/nent), RNAP (nrnap),
+          ribosome assembly factors (naf) and RNase R (nrnase)
+        - naa, nnt - stoich. coefficients for synthesis of AA, NT,
+                     depend on the molecular mass of carbon source (mol_masses["C"])
+        - nrp, nrrna - stoich. coefficients for synthesis of rP and rRNA, depend on "frac"
+    kinetics: a dictionary of kinetic parameters
+        - kig: kcat of substrate importer [1/h]
+        - kent: kcat of NT synthesis [1/h]
+        - kaf: kcat of R assembly [1/h]
+        - keaa - kcat of AA synthesis, depends on the value of "medium"
+        - ktr: transcription rate [nt/h]
+        - krnap: transcription rate [1/h]
+        - kel: translation rate [aa/h]
+        - kexo: exonuclease rate (RNase R) [nt/h]
+    kdeg_max: max. degradation rate [1/h]
+    matrix_uc: np.array - matrix without constraints
+    matrix_c: np.array - matrix with constraints
+    rows_uc, rows_c: row names for unconstrained / constrained matrices
+    columns_uc, columns_c: column names for unconstrained / constrained matrices
+    """
+
+    def __init__(self, *model_pars, **kwargs):
+        self.frac = 0.36
+        self.growth_rate = 1
+
+        # set model parameters
+        for dictionary in model_pars:
+            for key, value in dictionary.items():
+                setattr(self, key, value)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+        # calculate effective transcription and translation rates
+        self.kel *= self.f_R*TO_H
+        self.ktr *= (self.f_RNAP*self.phi_RNAP)*TO_H
+
+        # convert rates to 1/h
+        self.kig *= TO_H
+        self.kent *= TO_H
+        self.keaa *= TO_H
+        self.kaf *= TO_H
+        self.kexo *= TO_H
+
+        self.calculate_degradation_rate()
+
+        # calculated stoichiometries - must be placed after all other parameters are set
+        self.naa = self.AA / self.C
+        self.nnt = ((self.NT - self.AA) / self.C)
+        self.nrp = self.R * self.frac / self.AA
+        self.nrrna = (self.R * (1-self.frac) / self.NT)
+
+        # initialize row and column names of matrices
+        self.rows_c = []
+        self.columns_c = []
+
+        # create matrices
+        self.make_matrix_uc()
+        self.make_matrix_c()
+
+        _ = self.calculate_molecular_masses()
+
+
+    def calculate_degradation_rate(self):
+        """
+        calculate degradation rate based on protein content
+        and type of degradation function
+        """
+        kdeg = self.kdeg_max * (1 - self.frac)
+        if "hill" in self.parameter_set:
+            hill = int(self.parameter_set.split("_")[0].split("-")[-1])
+            kdeg = (self.kdeg_max
+                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
+                    * (1 - self.frac))
+        self.kdeg = kdeg
+
+
+    def calculate_molecular_masses(self):
+        """generate a list of molecular masses based on matrix row names"""
+        self.IG = self.nig*self.AA
+        self.EAA = self.neaa*self.AA
+        self.ENT = self.nent*self.AA
+        self.RNAP = self.nrnap*self.AA
+        self.RNase = self.nrnase*self.AA
+        self.AF = self.naf*self.AA
+        self.rP = self.nrp*self.AA
+        self.rRNA = self.nrrna*self.NT
+
+        mw_list = [getattr(self, metabolite) for metabolite in self.rows_uc]
+
+        return mw_list
+
+
+    def __str__(self):
+        return f"""
+        Parameter set: {self.parameter_set}
+        Matrix type: {self.matrix_type}
+        Medium: {self.medium}
+        """
+
+
+    def make_matrix_uc(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_uc"),
+        row names (list stored as "rows_uc") and column names (list stored as "columns_uc")
+        based on the value of "matrix_type" attribute
+        """
+        naa, nnt, = self.naa, self.nnt
+        nig, neaa, = self.nig, self.neaa
+        nent, nrnap = self.nent, self.nrnap
+        naf, nrp = self.naf, self.nrp
+        nrrna, nrnase = self.nrrna, self.nrnase
+
+        # "base" matrix - without rRNA degradation rate
+        self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,    0,    0,     0,   0,   0],
+              [0,   1,  -1,     0,  0,-nig,-neaa,-nent,-nrnap,-naf,-nrp],
+              [0,   0,   1,-nrrna,  0,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     1, -1,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0, -1,   0,    0,    0,     0,   0,   1],
+              [0,   0,   0,     0,  0,   1,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    1,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    1,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     1,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     0,   1,   0],
+              [0,   0,   0,     0,  1,   0,    0,    0,     0,   0,   0]]
+        )
+        self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vAF",
+                           "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
+        self.rows_uc = ["C", "AA", "NT", "rRNA", "rP",
+                        "IG", "EAA", "ENT", "RNAP", "AF", "R"]
+
+        # matrix with rRNA degradation rate
+        if "extended" in self.matrix_type:
+            self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   1,  -1,     0,  0,   0,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp],
+              [0,   0,   1,-nrrna,nrrna, 0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     1, -1,  -1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,  -1,   0,    0,    0,     0,    0,     0,   1],
+              [0,   0,   0,     0,  0,   1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   1,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    1,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    1,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     1,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    1,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    0,     1,   0]]
+            )
+            self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vRNase", "vAF",
+                               "wIG", "wEAA", "wENT", "wRNAP", "wRNase", "wAF", "wrP"]
+            self.rows_uc = ["C", "AA", "NT", "rRNA", "rP", "R",
+                            "IG", "EAA", "ENT", "RNAP", "RNase", "AF"]
+
+        # for mitochondria, add a rP imoprt reaction
+        if "mito" in self.matrix_type:
+            rp_import = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]).T
+            self.matrix_uc = np.concatenate((self.matrix_uc, rp_import), axis=1)
+            self.columns_uc.append("vIrP")
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+
+    def make_matrix_c(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_c"),
+        row names (list stored as "rows_c") and column names (list stored as "columns_c")
+        based on the value of "matrix_type" attribute
+        """
+        # get parameters
+        mu = self.growth_rate
+        nig, neaa, = self.nig, self.neaa
+        nent, nrnap = self.nent, self.nrnap
+        naf, nrp = self.naf, self.nrp
+        nrrna, nrnase = self.nrrna, self.nrnase
+        kig, keaa = self.kig, self.keaa
+        kent, kaf, kel = self.kent, self.kaf, self.kel
+        mwc = self.C
+        krnap = self.ktr/nrrna  # convert nt/h -> 1/h
+
+        # get submatrix with metabolite rows (met_matrix) and add slack columnes
+        ncol = 9
+        if ("extended" in self.matrix_type) or (self.matrix_type == "Kostinski"):
+            ncol = 11
+        slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                          slack(ncol,0), slack(ncol,1)])
+        met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
+
+        # "RBA" matrix - enzyme capacity + dry mass constraints
+        if self.matrix_type in ["base"]:
+            constraints = np.array(
+              [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
+               [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
+               [  0,  0,-mu,  0,     0,   0,    0, kent,     0,   0,   0]+slack(ncol,4),
+               [  0,  0,  0,-mu,     0,   0,    0,    0, krnap,   0,   0]+slack(ncol,5),
+               [  0,  0,  0,  0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(ncol,6),
+               [  0,  0,  0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(ncol,7),
+               [-mwc, 0,  0,  0,     0,   0,    0,    0,    0,   0,    0]+slack(ncol-1)+[mu]]
+            )
+
+        # "Kostinski" matrix - like RBA but with fixed allocations of ribosome
+        if self.matrix_type == "Kostinski":
+            # ribosome allocation to RNAP and rP (%) from Kostinski & Reuveni
+            r_allocation_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100
+            r_allocation_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100
+
+            # translation rate "kel" is set in "set_specific_parameters"
+            # the ribsome constraint is split to 3 rows, where "kel" is multiplied
+            # by the respective allocation fraction for RNAP, rP and the rest
+            kel_rnap = r_allocation_rnap*kel
+            kel_rp = r_allocation_rp*kel
+            kel_rest = (1-r_allocation_rnap-r_allocation_rp)*kel # all other proteins
+
+            constraints = np.array(
+            [[-mu,   0,   0,   0,        0,  kig,   0,    0,    0,   0,   0]+slack(ncol,2),
+             [  0, -mu,   0,   0,        0,   0,  keaa,   0,    0,   0,   0]+slack(ncol,3),
+             [  0,   0, -mu,   0,        0,   0,    0,  kent,   0,   0,   0]+slack(ncol,4),
+             [  0,   0,   0, -mu,        0,   0,    0,    0, krnap,  0,   0]+slack(ncol,5),
+             [  0,   0,   0,   0,      -mu,   0,    0,    0,    0, kaf,   0]+slack(ncol,6),
+             [  0,   0,   0,   0,kel_rest/mu,-nig,-neaa,-nent,  0,-naf,   0]+slack(ncol,7),
+             [  0,   0,   0,   0,kel_rnap/mu, 0,    0,    0,-nrnap,  0,   0]+slack(ncol,8),
+             [  0,   0,   0,   0, kel_rp/mu,  0,    0,    0,    0,   0,-nrp]+slack(ncol,9),
+             [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,   0,   0]+slack(ncol-1)+[mu]])
+
+
+        # constraints like in "base" matrix + minimum rRNA degradation rate enforced
+        if "extended" in self.matrix_type:
+            krnase = self.kexo/nrrna
+            kdeg = self.kdeg
+
+            constraints = np.array(
+             [[-mu,0, 0, 0,  0,     0, kig,    0,    0,     0,    0,    0,   0]+slack(ncol,2),
+              [ 0,-mu,0, 0,  0,     0,   0, keaa,    0,     0,    0,    0,   0]+slack(ncol,3),
+              [ 0, 0,-mu,0,  0,     0,   0,    0, kent,     0,    0,    0,   0]+slack(ncol,4),
+              [ 0, 0, 0,-mu, 0,     0,   0,    0,    0, krnap,    0,    0,   0]+slack(ncol,5),
+              [ 0, 0, 0, 0,-mu,     0,   0,    0,    0,     0, krnase,  0,   0]+slack(ncol,6),
+              [ 0, 0, 0, 0,  0,   -mu,   0,    0,    0,     0,    0,   kaf,  0]+slack(ncol,7),
+              [ 0, 0, 0, 0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp]+slack(ncol,8),
+              [ 0, 0, 0, 0, mu, -kdeg,   0,    0,    0,     0,    0,    0,   0]+slack(ncol,9),
+              [-mwc,0,0, 0,  0,     0,   0,    0,    0,     0,    0,    0,   0]+slack(ncol-1)+[mu]]
+            )
+
+        # 1/3 of rP imported for free
+        if "mito" in self.matrix_type:
+            mwrp = self.nrp*self.AA
+
+            # add column for rP import reaction
+            column =[0, 0, 0, 0, 0, 0, 0, 0, -mwrp]
+            constraints = np.insert(constraints, self.matrix_uc.shape[1]-1, column, axis=1)
+
+            # wrP = 2*vIrP constraint - 1/3 rPs are imported
+            import_constraint = np.array(
+                [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -2]+slack(ncol)])
+            constraints = np.concatenate((constraints, import_constraint), axis = 0)
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+        # concatenate stoichiometric matrix with constraint matrix
+        self.matrix_c = np.concatenate((met_matrix, constraints), axis=0)
+        self.generate_row_and_column_names()
+
+
+    def generate_row_and_column_names(self):
+        """add row (rows_c) and column names (columns_c) based on the shape of matrix_c"""
+
+        rows =  self.rows_uc[:5]
+        n_slack_row = self.matrix_c.shape[0]-len(rows)
+        n_slack_col = self.matrix_c.shape[1]-len(self.columns_uc)-1
+
+        self.rows_c = rows +  [f"C{i}" for i in range(n_slack_row)]
+        self.columns_c = self.columns_uc + [f"S{i}" for i in range(n_slack_col)] + ["C"]
+
+
+    def run_efmtool(self):
+        """
+        run efmtool for matrix with constraints (matrix_c),
+        return numpy array with fluxes
+        """
+
+        options = efmtool.get_default_options()
+        options["arithmetic"] = "fractional"
+        options['level'] = 'WARNING'
+        egvs = efmtool.calculate_efms(stoichiometry = self.matrix_c,
+                                      reversibilities = [0]*self.matrix_c.shape[1],
+                                      reaction_names = self.columns_c,
+                                      metabolite_names = self.rows_c,
+                                      options = options)
+        return egvs
+
+
+    def update_mu(self, growth_rate):
+        """Update matrices with new growth rate"""
+        self.growth_rate = growth_rate
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def update_frac(self, frac):
+        """
+        Update protein fraction in ribosome (frac),
+        rP and rRNA stoichiometries (nrp and nrrna),
+        degradation rate, and then matrices.
+
+        Parameters
+        ----------
+        frac: protein mass fraction in ribosome
+        """
+        self.frac = frac
+        self.nrp = self.R*self.frac/self.AA
+        self.nrrna = self.R*(1-self.frac)/self.NT
+        self.calculate_degradation_rate()
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def make_nice_results(self, egvs, drop_slack = True):
+        """
+        Convert ugly array from efmtool into a nice pandas DataFrame
+        Store as Model.nice_fluxes
+
+        Parameters
+        ----------
+        egvs: numpy array with the output of "run_efmtool()"
+        drop_slack: bool, if True, slack columns are removed
+
+        Returns
+        -------
+        pandas Data Frame with fluxes
+        """
+
+        if egvs.shape[1] == 0:
+            return pd.DataFrame()
+
+        # solve "ValueError: Big-endian buffer not supported on little-endian compiler"
+        egms = egvs.byteswap().newbyteorder()
+
+        # remove zero flux EGVs
+        # subtract one because zero EGVs have 1 for a slack variable
+        nonzeros = (np.count_nonzero(egms, axis=0)-1).astype(bool)
+        egms = egms.T[nonzeros]
+
+        res = pd.DataFrame(egms,
+                           index = [f"EGM{(i+1)}" for i in range(egms.shape[0])],
+                           columns = self.columns_c)
+
+        # normalize values by the column C
+        if "C" in res.columns:
+            res = res.div(res.C, axis = 0)
+
+        if drop_slack:
+            cols = [c for c in res.columns if c.startswith("S")]
+            if "C" in res.columns:
+                cols = cols+["C"]
+            res = res[res.columns.drop(cols)]
+
+        return res
+
+
+class Simulation:
+    """
+    Class to run simulations with efmtool and find optimal growth rate
+    and protein fraciton in the ribosome
+
+    Attributes
+    ----------
+    mu_list: np.array of growth rates to test
+    prot_fractions: np.array of ribosome protein mass fractions (xrps) to test
+    model: an instance of Model()
+    fluxes: pandas DataFrame that stores growth fluxes from test_xrps()
+    growth_rates: pandas DataFrame that stores growth rates from test_xrps()
+    allocations: pandas DataFrame that stores ribosome allocations from test_xrps()
+    mass_fractions: pandas DataFrame that stores mass fractions from test_xrps()
+    """
+    __slots__ = ["growth_rates", "prot_fractions", "model", "fluxes",
+                 "max_growth_rates", "allocations", "mass_fractions"]
+
+    def __init__(self,
+                 *model_pars,
+                 growth_rates = np.arange(0.1, 4, 0.1),
+                 prot_fractions = np.arange(0.01, 1, 0.1),
+                 **kwargs):
+
+        self.growth_rates = growth_rates
+        self.prot_fractions = prot_fractions
+        self.model = Model(*model_pars, **kwargs)
+        self.fluxes = pd.DataFrame()
+        self.max_growth_rates = pd.DataFrame()
+        self.allocations = pd.DataFrame()
+        self.mass_fractions = pd.DataFrame()
+
+
+    def bisection_search_mu(self):
+        """quickly find the highest possible growth rate with bisection search
+
+        Returns
+        -------
+        a tuple with:
+            - maximum growth rate
+            - pandas DataFrame of fluxes at maximum growth rate
+        """
+
+        left = 0  # The starting index of the list we have to search in
+        right = len(self.growth_rates)-1  # the last index of the list we have to search in
+        mid = (right + left)//2
+        new_mu = self.growth_rates[mid]
+        last_mu = -1
+        iterations = 1
+
+        while new_mu != last_mu: # check if we already found the last mu
+            self.model.update_mu(new_mu)
+            egvs = self.model.run_efmtool()
+
+            # no solution (no egvs/zero egvs in non-slack columns) - growth rate too big
+            ncol = self.model.matrix_uc.shape[1]
+            if (egvs.shape[1] == 0) or (np.count_nonzero(egvs[:, :ncol], axis=None) == 0):
+                right = mid - 1
+
+            # otherwise growth rate is too small (or just right)
+            else:
+                left = mid + 1
+                last_mu = new_mu
+
+            mid = (right + left)//2
+            new_mu = self.growth_rates[mid]
+
+            iterations += 1
+            if iterations > len(self.growth_rates):
+                print("Optimal growth rate not found")
+                last_mu = 0
+
+        # recalculate egvs for last_mu (the last feasible solution)
+        self.model.update_mu(growth_rate=last_mu)
+        egvs = self.model.run_efmtool()
+
+        return (last_mu, self.model.make_nice_results(egvs))
+
+
+    def test_xrps(self, plot=True):
+        """
+        Vary protein fraction in ribosome (xrp) and for each xrp calculat:
+        * maximum growth rate (saved in attribute "growth_rate")
+        * fluxes (EGVs - elementary growth vectors) (saved in attribute "fluxes")
+        * metabolite mass fractions (saved in attribute "mass_fractions")
+        * ribosome allocations (saved in attribute "allocations")
+
+        Parameters
+        ----------
+        plot: bool, if True, progress is printed in the terminal
+        """
+        last_mus = []
+        all_fluxes = pd.DataFrame()
+
+        if plot:
+            title = (f"{self.model.matrix_type}, "
+                     f"parameter set: {self.model.parameter_set}, "
+                     f"medium: {self.model.medium}")
+            initiate_progress_plot(title)
+
+        for progress, frac in enumerate(self.prot_fractions):
+            self.model.update_frac(frac)
+            last_mu, fluxes = self.bisection_search_mu()
+            last_mus.append(last_mu)
+
+            fluxes["prot_fraction"] = str(round(self.model.frac, 5))
+            fluxes["growth_rate"] = last_mu
+            fluxes["EGVs"] = fluxes.index
+            fluxes = fluxes.set_index([fluxes["prot_fraction"]+fluxes.index])
+            all_fluxes = pd.concat([all_fluxes, fluxes])
+
+            if plot:
+                fill_progress_plot(self.prot_fractions[:progress], last_mus, 0.1, 4)
+
+        # clear plot
+        if plot:
+            plt.clf()
+
+        self.fluxes = all_fluxes
+        self.max_growth_rates = pd.DataFrame({"prot_fraction": self.prot_fractions,
+                                              "growth_rate": last_mus})
+        self.calculate_mass_fractions()
+        self.calculate_allocations()
+
+
+    def calculate_mass_fractions(self):
+        """
+        Calculates metabolite mass fractions in g/g according to:
+        mass_fractions = (Nv/mu)*mw
+            N: stoichiometric matrix without constraints ("matrix_uc")
+            v: vector a fluxes ("fluxes")
+            mu: growth rate ("growth_rates")
+            mw: vector of molecular masses ("molecular_masses")
+        Saves pandas DataFrame as "mass_fractions" attribute
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            mass_fractions = pd.DataFrame(columns = self.model.rows_uc,
+                                          index = self.fluxes.index)
+            for egv in self.fluxes.index:
+                frac = self.fluxes.loc[egv, "prot_fraction"]
+                self.model.update_frac(float(frac))
+
+                matrix_uc = pd.DataFrame(self.model.matrix_uc,
+                                         index = self.model.rows_uc,
+                                         columns = self.model.columns_uc)
+                molecular_masses = self.model.calculate_molecular_masses()
+                growth_rates = self.fluxes.loc[egv, "growth_rate"]
+                fluxes = self.fluxes.loc[egv][:matrix_uc.shape[1]]
+
+                # calculate mass fractions with (Nv/mu)*mw
+                mass_fractions.loc[egv] = matrix_uc.multiply(fluxes).sum(axis=1)/float(growth_rates)
+                mass_fractions.loc[egv] = mass_fractions.loc[egv]*molecular_masses
+
+            mass_fractions["growth_rate"] = self.fluxes.growth_rate
+            mass_fractions["EGVs"] = self.fluxes.EGVs
+            mass_fractions["prot_fraction"] = self.fluxes.prot_fraction
+
+            self.mass_fractions = mass_fractions
+
+
+    def calculate_allocations(self):
+        """
+        Calculates ribosome allocations to the different proteins with:
+
+        allocation_i = (mu*n_i*w_i)/(kel*vaf)
+            allocation_i: ribosome allocation to protein i
+            mu: growth rate
+            n_i: stoichiometric coefficient of protein i
+            w_i: synthesis flux of protein i
+            kel: translation rate
+            vaf: ribosome assembly flux
+        Saved in the attribute "allocations"
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            protein_columns = ["wIG", "wEAA", "wENT", "wRNAP", "wAF"]
+            protein_stoichiometries = [self.model.nig, self.model.neaa, self.model.nent,
+                                       self.model.nrnap, self.model.naf]
+
+            if "extended" in self.model.matrix_type:
+                protein_columns = protein_columns + ["wRNase"]
+                protein_stoichiometries = protein_stoichiometries + [self.model.nrnase]
+
+            prot_fluxes = self.fluxes[protein_columns].multiply(protein_stoichiometries)
+
+            # rP stoichiometry calculated from 'prot_fraction' (rP mass fraction in ribosome)
+            mwr = self.model.R
+            mwaa = self.model.AA
+            prot_fractions = self.fluxes["prot_fraction"]
+            prot_fluxes["wrP"] = self.fluxes["wrP"]*mwr*prot_fractions.astype(float)/mwaa
+
+            # multiply with growth rates and divide with assembly flux and elongation rate
+            kel = self.model.kel
+            growth_rates = self.fluxes["growth_rate"]
+            v_af = self.fluxes["vAF"]
+            allocations = prot_fluxes.apply(lambda x: x*growth_rates/(v_af*kel))
+
+            allocations["prot_fraction"] = prot_fractions
+
+            self.allocations = allocations (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[478:709]
+==model_functions-checkpoint:[390:621]
+        self.calculate_degradation_rate()
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def make_nice_results(self, egvs, drop_slack = True):
+        """
+        Convert ugly array from efmtool into a nice pandas DataFrame
+        Store as Model.nice_fluxes
+
+        Parameters
+        ----------
+        egvs: numpy array with the output of "run_efmtool()"
+        drop_slack: bool, if True, slack columns are removed
+
+        Returns
+        -------
+        pandas Data Frame with fluxes
+        """
+
+        if egvs.shape[1] == 0:
+            return pd.DataFrame()
+
+        # solve "ValueError: Big-endian buffer not supported on little-endian compiler"
+        egms = egvs.byteswap().newbyteorder()
+
+        # remove zero flux EGVs
+        # subtract one because zero EGVs have 1 for a slack variable
+        nonzeros = (np.count_nonzero(egms, axis=0)-1).astype(bool)
+        egms = egms.T[nonzeros]
+
+        res = pd.DataFrame(egms,
+                           index = [f"EGM{(i+1)}" for i in range(egms.shape[0])],
+                           columns = self.columns_c)
+
+        # normalize values by the column C
+        if "C" in res.columns:
+            res = res.div(res.C, axis = 0)
+
+        if drop_slack:
+            cols = [c for c in res.columns if c.startswith("S")]
+            if "C" in res.columns:
+                cols = cols+["C"]
+            res = res[res.columns.drop(cols)]
+
+        return res
+
+
+class Simulation:
+    """
+    Class to run simulations with efmtool and find optimal growth rate
+    and protein fraciton in the ribosome
+
+    Attributes
+    ----------
+    mu_list: np.array of growth rates to test
+    prot_fractions: np.array of ribosome protein mass fractions (xrps) to test
+    model: an instance of Model()
+    fluxes: pandas DataFrame that stores growth fluxes from test_xrps()
+    growth_rates: pandas DataFrame that stores growth rates from test_xrps()
+    allocations: pandas DataFrame that stores ribosome allocations from test_xrps()
+    mass_fractions: pandas DataFrame that stores mass fractions from test_xrps()
+    """
+    __slots__ = ["growth_rates", "prot_fractions", "model", "fluxes",
+                 "max_growth_rates", "allocations", "mass_fractions"]
+
+    def __init__(self,
+                 *model_pars,
+                 growth_rates = np.arange(0.1, 4, 0.1),
+                 prot_fractions = np.arange(0.01, 1, 0.1),
+                 **kwargs):
+
+        self.growth_rates = growth_rates
+        self.prot_fractions = prot_fractions
+        self.model = Model(*model_pars, **kwargs)
+        self.fluxes = pd.DataFrame()
+        self.max_growth_rates = pd.DataFrame()
+        self.allocations = pd.DataFrame()
+        self.mass_fractions = pd.DataFrame()
+
+
+    def bisection_search_mu(self):
+        """quickly find the highest possible growth rate with bisection search
+
+        Returns
+        -------
+        a tuple with:
+            - maximum growth rate
+            - pandas DataFrame of fluxes at maximum growth rate
+        """
+
+        left = 0  # The starting index of the list we have to search in
+        right = len(self.growth_rates)-1  # the last index of the list we have to search in
+        mid = (right + left)//2
+        new_mu = self.growth_rates[mid]
+        last_mu = -1
+        iterations = 1
+
+        while new_mu != last_mu: # check if we already found the last mu
+            self.model.update_mu(new_mu)
+            egvs = self.model.run_efmtool()
+
+            # no solution (no egvs/zero egvs in non-slack columns) - growth rate too big
+            ncol = self.model.matrix_uc.shape[1]
+            if (egvs.shape[1] == 0) or (np.count_nonzero(egvs[:, :ncol], axis=None) == 0):
+                right = mid - 1
+
+            # otherwise growth rate is too small (or just right)
+            else:
+                left = mid + 1
+                last_mu = new_mu
+
+            mid = (right + left)//2
+            new_mu = self.growth_rates[mid]
+
+            iterations += 1
+            if iterations > len(self.growth_rates):
+                print("Optimal growth rate not found")
+                last_mu = 0
+
+        # recalculate egvs for last_mu (the last feasible solution)
+        self.model.update_mu(growth_rate=last_mu)
+        egvs = self.model.run_efmtool()
+
+        return (last_mu, self.model.make_nice_results(egvs))
+
+
+    def test_xrps(self, plot=True):
+        """
+        Vary protein fraction in ribosome (xrp) and for each xrp calculat:
+        * maximum growth rate (saved in attribute "growth_rate")
+        * fluxes (EGVs - elementary growth vectors) (saved in attribute "fluxes")
+        * metabolite mass fractions (saved in attribute "mass_fractions")
+        * ribosome allocations (saved in attribute "allocations")
+
+        Parameters
+        ----------
+        plot: bool, if True, progress is printed in the terminal
+        """
+        last_mus = []
+        all_fluxes = pd.DataFrame()
+
+        if plot:
+            title = (f"{self.model.matrix_type}, "
+                     f"parameter set: {self.model.parameter_set}, "
+                     f"medium: {self.model.medium}")
+            initiate_progress_plot(title)
+
+        for progress, frac in enumerate(self.prot_fractions):
+            self.model.update_frac(frac)
+            last_mu, fluxes = self.bisection_search_mu()
+            last_mus.append(last_mu)
+
+            fluxes["prot_fraction"] = str(round(self.model.frac, 5))
+            fluxes["growth_rate"] = last_mu
+            fluxes["EGVs"] = fluxes.index
+            fluxes = fluxes.set_index([fluxes["prot_fraction"]+fluxes.index])
+            all_fluxes = pd.concat([all_fluxes, fluxes])
+
+            if plot:
+                fill_progress_plot(self.prot_fractions[:progress], last_mus, 0.1, 4)
+
+        # clear plot
+        if plot:
+            plt.clf()
+
+        self.fluxes = all_fluxes
+        self.max_growth_rates = pd.DataFrame({"prot_fraction": self.prot_fractions,
+                                              "growth_rate": last_mus})
+        self.calculate_mass_fractions()
+        self.calculate_allocations()
+
+
+    def calculate_mass_fractions(self):
+        """
+        Calculates metabolite mass fractions in g/g according to:
+        mass_fractions = (Nv/mu)*mw
+            N: stoichiometric matrix without constraints ("matrix_uc")
+            v: vector a fluxes ("fluxes")
+            mu: growth rate ("growth_rates")
+            mw: vector of molecular masses ("molecular_masses")
+        Saves pandas DataFrame as "mass_fractions" attribute
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            mass_fractions = pd.DataFrame(columns = self.model.rows_uc,
+                                          index = self.fluxes.index)
+            for egv in self.fluxes.index:
+                frac = self.fluxes.loc[egv, "prot_fraction"]
+                self.model.update_frac(float(frac))
+
+                matrix_uc = pd.DataFrame(self.model.matrix_uc,
+                                         index = self.model.rows_uc,
+                                         columns = self.model.columns_uc)
+                molecular_masses = self.model.calculate_molecular_masses()
+                growth_rates = self.fluxes.loc[egv, "growth_rate"]
+                fluxes = self.fluxes.loc[egv][:matrix_uc.shape[1]]
+
+                # calculate mass fractions with (Nv/mu)*mw
+                mass_fractions.loc[egv] = matrix_uc.multiply(fluxes).sum(axis=1)/float(growth_rates)
+                mass_fractions.loc[egv] = mass_fractions.loc[egv]*molecular_masses
+
+            mass_fractions["growth_rate"] = self.fluxes.growth_rate
+            mass_fractions["EGVs"] = self.fluxes.EGVs
+            mass_fractions["prot_fraction"] = self.fluxes.prot_fraction
+
+            self.mass_fractions = mass_fractions
+
+
+    def calculate_allocations(self):
+        """
+        Calculates ribosome allocations to the different proteins with:
+
+        allocation_i = (mu*n_i*w_i)/(kel*vaf)
+            allocation_i: ribosome allocation to protein i
+            mu: growth rate
+            n_i: stoichiometric coefficient of protein i
+            w_i: synthesis flux of protein i
+            kel: translation rate
+            vaf: ribosome assembly flux
+        Saved in the attribute "allocations"
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            protein_columns = ["wIG", "wEAA", "wENT", "wRNAP", "wAF"] (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[478:709]
+==model_functions:[390:621]
+        self.calculate_degradation_rate()
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def make_nice_results(self, egvs, drop_slack = True):
+        """
+        Convert ugly array from efmtool into a nice pandas DataFrame
+        Store as Model.nice_fluxes
+
+        Parameters
+        ----------
+        egvs: numpy array with the output of "run_efmtool()"
+        drop_slack: bool, if True, slack columns are removed
+
+        Returns
+        -------
+        pandas Data Frame with fluxes
+        """
+
+        if egvs.shape[1] == 0:
+            return pd.DataFrame()
+
+        # solve "ValueError: Big-endian buffer not supported on little-endian compiler"
+        egms = egvs.byteswap().newbyteorder()
+
+        # remove zero flux EGVs
+        # subtract one because zero EGVs have 1 for a slack variable
+        nonzeros = (np.count_nonzero(egms, axis=0)-1).astype(bool)
+        egms = egms.T[nonzeros]
+
+        res = pd.DataFrame(egms,
+                           index = [f"EGM{(i+1)}" for i in range(egms.shape[0])],
+                           columns = self.columns_c)
+
+        # normalize values by the column C
+        if "C" in res.columns:
+            res = res.div(res.C, axis = 0)
+
+        if drop_slack:
+            cols = [c for c in res.columns if c.startswith("S")]
+            if "C" in res.columns:
+                cols = cols+["C"]
+            res = res[res.columns.drop(cols)]
+
+        return res
+
+
+class Simulation:
+    """
+    Class to run simulations with efmtool and find optimal growth rate
+    and protein fraciton in the ribosome
+
+    Attributes
+    ----------
+    mu_list: np.array of growth rates to test
+    prot_fractions: np.array of ribosome protein mass fractions (xrps) to test
+    model: an instance of Model()
+    fluxes: pandas DataFrame that stores growth fluxes from test_xrps()
+    growth_rates: pandas DataFrame that stores growth rates from test_xrps()
+    allocations: pandas DataFrame that stores ribosome allocations from test_xrps()
+    mass_fractions: pandas DataFrame that stores mass fractions from test_xrps()
+    """
+    __slots__ = ["growth_rates", "prot_fractions", "model", "fluxes",
+                 "max_growth_rates", "allocations", "mass_fractions"]
+
+    def __init__(self,
+                 *model_pars,
+                 growth_rates = np.arange(0.1, 4, 0.1),
+                 prot_fractions = np.arange(0.01, 1, 0.1),
+                 **kwargs):
+
+        self.growth_rates = growth_rates
+        self.prot_fractions = prot_fractions
+        self.model = Model(*model_pars, **kwargs)
+        self.fluxes = pd.DataFrame()
+        self.max_growth_rates = pd.DataFrame()
+        self.allocations = pd.DataFrame()
+        self.mass_fractions = pd.DataFrame()
+
+
+    def bisection_search_mu(self):
+        """quickly find the biggest possible growth rate with bisection search
+
+        Returns
+        -------
+        a tuple with:
+            - maximum growth rate
+            - pandas DataFrame of fluxes at maximum growth rate
+        """
+
+        left = 0  # The starting index of the list we have to search in
+        right = len(self.growth_rates)-1  # the last index of the list we have to search in
+        mid = (right + left)//2
+        new_mu = self.growth_rates[mid]
+        last_mu = -1
+        iterations = 1
+
+        while new_mu != last_mu: # check if we already found the last mu
+            self.model.update_mu(new_mu)
+            egvs = self.model.run_efmtool()
+
+            # no solution (no egvs/zero egvs in non-slack columns) - growth rate too big
+            ncol = self.model.matrix_uc.shape[1]
+            if (egvs.shape[1] == 0) or (np.count_nonzero(egvs[:, :ncol], axis=None) == 0):
+                right = mid - 1
+
+            # otherwise growth rate is too small (or just right)
+            else:
+                left = mid + 1
+                last_mu = new_mu
+
+            mid = (right + left)//2
+            new_mu = self.growth_rates[mid]
+
+            iterations += 1
+            if iterations > len(self.growth_rates):
+                print("Optimal growth rate not found")
+                last_mu = 0
+
+        # recalculate egvs for last_mu (the last feasible solution)
+        self.model.update_mu(growth_rate=last_mu)
+        egvs = self.model.run_efmtool()
+
+        return (last_mu, self.model.make_nice_results(egvs))
+
+
+    def test_xrps(self, plot=True):
+        """
+        Vary protein fraction in ribosome (xrp) and for each xrp calculat:
+        * maximum growth rate (saved in attribute "growth_rate")
+        * fluxes (EGVs - elementary growth vectors) (saved in attribute "fluxes")
+        * metabolite mass fractions (saved in attribute "mass_fractions")
+        * ribosome allocations (saved in attribute "allocations")
+
+        Parameters
+        ----------
+        plot: bool, if True, progress is printed in the terminal
+        """
+        last_mus = []
+        all_fluxes = pd.DataFrame()
+
+        if plot:
+            title = (f"{self.model.matrix_type}, "
+                     f"parameter set: {self.model.parameter_set}, "
+                     f"medium: {self.model.medium}")
+            initiate_progress_plot(title)
+
+        for progress, frac in enumerate(self.prot_fractions):
+            self.model.update_frac(frac)
+            last_mu, fluxes = self.bisection_search_mu()
+            last_mus.append(last_mu)
+
+            fluxes["prot_fraction"] = str(round(self.model.frac, 5))
+            fluxes["growth_rate"] = last_mu
+            fluxes["EGVs"] = fluxes.index
+            fluxes = fluxes.set_index([fluxes["prot_fraction"]+fluxes.index])
+            all_fluxes = pd.concat([all_fluxes, fluxes])
+
+            if plot:
+                fill_progress_plot(self.prot_fractions[:progress], last_mus, 0.1, 4)
+
+        # clear plot
+        if plot:
+            plt.clf()
+
+        self.fluxes = all_fluxes
+        self.max_growth_rates = pd.DataFrame({"prot_fraction": self.prot_fractions,
+                                              "growth_rate": last_mus})
+        self.calculate_mass_fractions()
+        self.calculate_allocations()
+
+
+    def calculate_mass_fractions(self):
+        """
+        Calculates metabolite mass fractions in g/g according to:
+        mass_fractions = (Nv/mu)*mw
+            N: stoichiometric matrix without constraints ("matrix_uc")
+            v: vector a fluxes ("fluxes")
+            mu: growth rate ("growth_rates")
+            mw: vector of molecular masses ("molecular_masses")
+        Saves pandas DataFrame as "mass_fractions" attribute
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            mass_fractions = pd.DataFrame(columns = self.model.rows_uc,
+                                          index = self.fluxes.index)
+            for egv in self.fluxes.index:
+                frac = self.fluxes.loc[egv, "prot_fraction"]
+                self.model.update_frac(float(frac))
+
+                matrix_uc = pd.DataFrame(self.model.matrix_uc,
+                                         index = self.model.rows_uc,
+                                         columns = self.model.columns_uc)
+                molecular_masses = self.model.calculate_molecular_masses()
+                growth_rates = self.fluxes.loc[egv, "growth_rate"]
+                fluxes = self.fluxes.loc[egv][:matrix_uc.shape[1]]
+
+                # calculate mass fractions with (Nv/mu)*mw
+                mass_fractions.loc[egv] = matrix_uc.multiply(fluxes).sum(axis=1)/float(growth_rates)
+                mass_fractions.loc[egv] = mass_fractions.loc[egv]*molecular_masses
+
+            mass_fractions["growth_rate"] = self.fluxes.growth_rate
+            mass_fractions["EGVs"] = self.fluxes.EGVs
+            mass_fractions["prot_fraction"] = self.fluxes.prot_fraction
+
+            self.mass_fractions = mass_fractions
+
+
+    def calculate_allocations(self):
+        """
+        Calculates ribosome allocations to the different proteins with:
+
+        allocation_i = (mu*n_i*w_i)/(kel*vaf)
+            allocation_i: ribosome allocation to protein i
+            mu: growth rate
+            n_i: stoichiometric coefficient of protein i
+            w_i: synthesis flux of protein i
+            kel: translation rate
+            vaf: ribosome assembly flux
+        Saved in the attribute "allocations"
+        """
+
+        if self.fluxes.empty:
+            print("No EGVs - nothing to calculate!")
+
+        else:
+            protein_columns = ["wIG", "wEAA", "wENT", "wRNAP", "wAF"] (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fluxes_vs_growth_rate-checkpoint:[16:83]
+==fluxes_vs_growth_rate:[16:83]
+parameters = pd.read_csv("../data/parameters_v2.csv")
+parameter_subset = parameters.query("name == 'glc'")
+
+# duplicate the conditions and label them 'noacc'
+# R, rRNA accumulation / excess rRNA degradation will be blocked for these
+noacc = parameter_subset.assign(name=parameter_subset.name + "_noacc")
+parameter_subset = pd.concat([parameter_subset, noacc])
+
+growth_rates = np.geomspace(0.0001, 3, 500) #np.arange(0.0001,3,0.005)
+
+all_results = pd.DataFrame()
+for index, row in parameter_subset.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+
+    print(f"Running {par['matrix_type']}_{par['parameter_set']}_{name}")
+
+    model = Model(par)
+
+    for mu in growth_rates:
+        model.update_mu(mu)
+
+        # remove rRNA & R accumulation / excess rRNA degradation
+        if ("noacc" in name) and ("extended" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [13, 21, 22], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S8")
+            model.columns_c.remove("S9")
+
+        # remove rRNA & R accumulation
+        elif ("noacc" in name) and ("base" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [11, 18], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S7")
+
+        egvs = model.run_efmtool()
+        res = model.make_nice_results(egvs, drop_slack = False)
+
+        res["growth_rate"] = mu
+        res["prot_fraction"] = model.frac
+        res["EGVs"] = res.index
+        res["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        all_results = pd.concat([all_results, res])
+
+all_results.to_csv("../data/fluxes_x0.36.csv")
+
+
+# Bremer 1996 data, converted to mmol/g/h
+AVOGADRO = 6.022e20
+nrrna = model.mol_masses["R"]*(1-model.frac)/model.mol_masses["NT"]
+growth_rates = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5, 3]]  # doublings/h -> 1/h
+#rna_syn = [3, 9.9, 29, 66.4, 132.5]  # stable RNA synthesis rate (10^5 nt/cell/min)
+rna_syn = [3.5, 11, 29, 65, 113, 161]  # stable RNA synthesis rate (10^5 nt/cell/min)
+#dry_masses = [mass*10**-15 for mass in [150, 260, 430, 640, 870]]  # dry masses (g/cell)
+dry_masses = [mass*10**-15 for mass in [226, 374, 555, 774, 921, 1023]]
+fluxes = [rate*10**5*60/nrrna/AVOGADRO for rate in rna_syn]  # to mmol/cell/h
+fluxes = [fluxes[i]/dry_masses[i] for i in range(len(dry_masses))]  # to mmol/g/h
+
+# Gausing 1977 data - correction for fraction of degraded rRNA
+correction_factors = [1.29, 1.14, 1.11, 1.11, 1.11, 1.11]
+corrected_fluxes = [flux*correction for flux,correction in zip(fluxes, correction_factors)]
+
+df = pd.DataFrame({"mu": growth_rates,
+                   "fluxes": fluxes,
+                   "fluxes_corrected": corrected_fluxes})
+df.to_csv("../data/fluxes_bremer.csv", index = False) (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fluxes_vs_growth_rate_v2-checkpoint:[16:83]
+==fluxes_vs_growth_rate_v2:[16:83]
+parameters = pd.read_csv("../data/parameters_v3.csv")
+parameter_subset = parameters.query("(name == 'glc') & (matrix_type != 'Kostinski')")
+
+# duplicate the conditions and label them 'noacc'
+# R, rRNA accumulation / excess rRNA degradation will be blocked for these
+noacc = parameter_subset.assign(name=parameter_subset.name + "_noacc")
+parameter_subset = pd.concat([parameter_subset, noacc])
+
+growth_rates = np.geomspace(0.0001, 3, 500) #np.arange(0.0001,3,0.005)
+
+all_results = pd.DataFrame()
+for index, row in parameter_subset.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+
+    print(f"Running {par['matrix_type']}_{par['parameter_set']}_{name}")
+
+    model = Model(par)
+
+    for mu in growth_rates:
+        model.update_mu(mu)
+
+        # remove rRNA & R accumulation / excess rRNA degradation
+        if ("noacc" in name) and ("extended" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [13, 21, 22], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S8")
+            model.columns_c.remove("S9")
+
+        # remove rRNA & R accumulation
+        elif ("noacc" in name) and ("base" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [11, 18], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S7")
+
+        egvs = model.run_efmtool()
+        res = model.make_nice_results(egvs, drop_slack = False)
+
+        res["growth_rate"] = mu
+        res["prot_fraction"] = model.frac
+        res["EGVs"] = res.index
+        res["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        all_results = pd.concat([all_results, res])
+
+all_results.to_csv("../data/fluxes_x0.36.csv")
+
+
+# Bremer 1996 data, converted to mmol/g/h
+AVOGADRO = 6.022e20
+nrrna = model.mol_masses["R"]*(1-model.frac)/model.mol_masses["NT"]
+growth_rates = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5, 3]]  # doublings/h -> 1/h
+#rna_syn = [3, 9.9, 29, 66.4, 132.5]  # stable RNA synthesis rate (10^5 nt/cell/min)
+rna_syn = [3.5, 11, 29, 65, 113, 161]  # stable RNA synthesis rate (10^5 nt/cell/min)
+#dry_masses = [mass*10**-15 for mass in [150, 260, 430, 640, 870]]  # dry masses (g/cell)
+dry_masses = [mass*10**-15 for mass in [226, 374, 555, 774, 921, 1023]]
+fluxes = [rate*10**5*60/nrrna/AVOGADRO for rate in rna_syn]  # to mmol/cell/h
+fluxes = [fluxes[i]/dry_masses[i] for i in range(len(dry_masses))]  # to mmol/g/h
+
+# Gausing 1977 data - correction for fraction of degraded rRNA
+correction_factors = [1.29, 1.14, 1.11, 1.11, 1.11, 1.11]
+corrected_fluxes = [flux*correction for flux,correction in zip(fluxes, correction_factors)]
+
+df = pd.DataFrame({"mu": growth_rates,
+                   "fluxes": fluxes,
+                   "fluxes_corrected": corrected_fluxes})
+df.to_csv("../data/fluxes_bremer.csv", index = False) (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fluxes_vs_growth_rate-checkpoint:[21:83]
+==fluxes_vs_growth_rate_v2-checkpoint:[21:83]
+noacc = parameter_subset.assign(name=parameter_subset.name + "_noacc")
+parameter_subset = pd.concat([parameter_subset, noacc])
+
+growth_rates = np.geomspace(0.0001, 3, 500) #np.arange(0.0001,3,0.005)
+
+all_results = pd.DataFrame()
+for index, row in parameter_subset.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+
+    print(f"Running {par['matrix_type']}_{par['parameter_set']}_{name}")
+
+    model = Model(par)
+
+    for mu in growth_rates:
+        model.update_mu(mu)
+
+        # remove rRNA & R accumulation / excess rRNA degradation
+        if ("noacc" in name) and ("extended" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [13, 21, 22], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S8")
+            model.columns_c.remove("S9")
+
+        # remove rRNA & R accumulation
+        elif ("noacc" in name) and ("base" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [11, 18], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S7")
+
+        egvs = model.run_efmtool()
+        res = model.make_nice_results(egvs, drop_slack = False)
+
+        res["growth_rate"] = mu
+        res["prot_fraction"] = model.frac
+        res["EGVs"] = res.index
+        res["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        all_results = pd.concat([all_results, res])
+
+all_results.to_csv("../data/fluxes_x0.36.csv")
+
+
+# Bremer 1996 data, converted to mmol/g/h
+AVOGADRO = 6.022e20
+nrrna = model.mol_masses["R"]*(1-model.frac)/model.mol_masses["NT"]
+growth_rates = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5, 3]]  # doublings/h -> 1/h
+#rna_syn = [3, 9.9, 29, 66.4, 132.5]  # stable RNA synthesis rate (10^5 nt/cell/min)
+rna_syn = [3.5, 11, 29, 65, 113, 161]  # stable RNA synthesis rate (10^5 nt/cell/min)
+#dry_masses = [mass*10**-15 for mass in [150, 260, 430, 640, 870]]  # dry masses (g/cell)
+dry_masses = [mass*10**-15 for mass in [226, 374, 555, 774, 921, 1023]]
+fluxes = [rate*10**5*60/nrrna/AVOGADRO for rate in rna_syn]  # to mmol/cell/h
+fluxes = [fluxes[i]/dry_masses[i] for i in range(len(dry_masses))]  # to mmol/g/h
+
+# Gausing 1977 data - correction for fraction of degraded rRNA
+correction_factors = [1.29, 1.14, 1.11, 1.11, 1.11, 1.11]
+corrected_fluxes = [flux*correction for flux,correction in zip(fluxes, correction_factors)]
+
+df = pd.DataFrame({"mu": growth_rates,
+                   "fluxes": fluxes,
+                   "fluxes_corrected": corrected_fluxes})
+df.to_csv("../data/fluxes_bremer.csv", index = False) (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fluxes_vs_growth_rate:[21:83]
+==fluxes_vs_growth_rate_v2:[21:83]
+noacc = parameter_subset.assign(name=parameter_subset.name + "_noacc")
+parameter_subset = pd.concat([parameter_subset, noacc])
+
+growth_rates = np.geomspace(0.0001, 3, 500) #np.arange(0.0001,3,0.005)
+
+all_results = pd.DataFrame()
+for index, row in parameter_subset.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+
+    print(f"Running {par['matrix_type']}_{par['parameter_set']}_{name}")
+
+    model = Model(par)
+
+    for mu in growth_rates:
+        model.update_mu(mu)
+
+        # remove rRNA & R accumulation / excess rRNA degradation
+        if ("noacc" in name) and ("extended" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [13, 21, 22], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S8")
+            model.columns_c.remove("S9")
+
+        # remove rRNA & R accumulation
+        elif ("noacc" in name) and ("base" in par['matrix_type']):
+            model.matrix_c = np.delete(model.matrix_c, [11, 18], 1)
+            model.columns_c.remove("S0")
+            model.columns_c.remove("S7")
+
+        egvs = model.run_efmtool()
+        res = model.make_nice_results(egvs, drop_slack = False)
+
+        res["growth_rate"] = mu
+        res["prot_fraction"] = model.frac
+        res["EGVs"] = res.index
+        res["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        all_results = pd.concat([all_results, res])
+
+all_results.to_csv("../data/fluxes_x0.36.csv")
+
+
+# Bremer 1996 data, converted to mmol/g/h
+AVOGADRO = 6.022e20
+nrrna = model.mol_masses["R"]*(1-model.frac)/model.mol_masses["NT"]
+growth_rates = [np.log(2)*mu for mu in [0.6, 1.0, 1.5, 2.0, 2.5, 3]]  # doublings/h -> 1/h
+#rna_syn = [3, 9.9, 29, 66.4, 132.5]  # stable RNA synthesis rate (10^5 nt/cell/min)
+rna_syn = [3.5, 11, 29, 65, 113, 161]  # stable RNA synthesis rate (10^5 nt/cell/min)
+#dry_masses = [mass*10**-15 for mass in [150, 260, 430, 640, 870]]  # dry masses (g/cell)
+dry_masses = [mass*10**-15 for mass in [226, 374, 555, 774, 921, 1023]]
+fluxes = [rate*10**5*60/nrrna/AVOGADRO for rate in rna_syn]  # to mmol/cell/h
+fluxes = [fluxes[i]/dry_masses[i] for i in range(len(dry_masses))]  # to mmol/g/h
+
+# Gausing 1977 data - correction for fraction of degraded rRNA
+correction_factors = [1.29, 1.14, 1.11, 1.11, 1.11, 1.11]
+corrected_fluxes = [flux*correction for flux,correction in zip(fluxes, correction_factors)]
+
+df = pd.DataFrame({"mu": growth_rates,
+                   "fluxes": fluxes,
+                   "fluxes_corrected": corrected_fluxes})
+df.to_csv("../data/fluxes_bremer.csv", index = False) (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax_v2-checkpoint:[19:60]
+==fit_kdegmax_v2:[19:60]
+parameters = pd.read_csv("../data/parameters_v3.csv")
+prot_fractions = np.arange(0.35, 0.37, 0.005)  # protein fractions to test
+growth_rates = np.arange(1,3.5,0.001)  # growth rates to test
+
+deg_rates_dic = {
+    "activities": np.arange(19, 20, 0.1),
+    "hill-2_activities": np.arange(32, 33, 0.1),
+    "hill-6_activities": np.arange(100.3, 101, 0.1),
+    "hill-6_activities2": np.arange(37, 42, 0.1),
+    "hill-6_activities_var_kel": np.arange(112, 113, 0.1)
+}
+
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+
+    if par["matrix_type"] in ["Kostinski", "base"]:
+        continue
+    if name != "glc":
+        continue
+
+    for k_deg in deg_rates_dic[par["parameter_set"]]:
+        par["kdeg_max"] = k_deg
+        sim = Simulation(par,
+                         growth_rates = growth_rates,
+                         prot_fractions = prot_fractions)
+        sim.test_xrps(plot = False)
+
+        mu_opt = sim.max_growth_rates.max()["growth_rate"]
+        mu_idx = sim.max_growth_rates.idxmax()["growth_rate"]
+        xrp_opt = sim.max_growth_rates.loc[mu_idx]["prot_fraction"]
+
+        if abs(xrp_opt - 0.36) <= 0.001:
+            to_print = f"(parameter set={par['parameter_set']}): {k_deg:.2f}"
+            print(f"{par['parameter_set']}: optimal deg. rate {to_print}")
+            break
+    else:
+        print("Optimal deg. rate not found") (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==run_all_conditions-checkpoint:[15:53]
+==run_all_conditions:[15:53]
+prot_fractions = np.arange(0.005, 1, 0.1)  # protein fractions in ribosome
+# add numbers close to 0 and 1 (otherwise no solution, the matrix would have to be changed)
+prot_fractions = np.concatenate(([0.00001], prot_fractions, [0.99999]))
+growth_rates = np.arange(0.001, 4, 0.01)
+parameters = pd.read_csv("../data/parameters_v2.csv")
+
+results = {
+    "growth_rates": pd.DataFrame(),
+    "allocations": pd.DataFrame(),
+    "mass_fractions": pd.DataFrame(),
+    "fluxes": pd.DataFrame()
+}
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+
+    sim = Simulation(par,
+                     growth_rates = growth_rates,
+                     prot_fractions = prot_fractions)
+    sim.test_xrps(True)
+
+    temp_results = {
+        "growth_rates": sim.max_growth_rates, # 1/h
+        "allocations": sim.allocations, # ribosome allocations
+        "mass_fractions": sim.mass_fractions, # g/g
+        "fluxes": sim.fluxes # mmol/gh
+    }
+
+    # add a column with an identifier and concatenate data frames
+    for result_type in results:
+        temp_results[result_type]["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        results[result_type] = pd.concat([results[result_type], temp_results[result_type]])
+
+for result_type, df in results.items():
+    df.to_csv(f"../data/RBA_{result_type}.csv") (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==run_all_conditions_v2-checkpoint:[15:53]
+==run_all_conditions_v2:[15:53]
+prot_fractions = np.arange(0.01, 1, 0.01)  # protein fractions in ribosome
+# add numbers close to 0 and 1 (otherwise no solution, the matrix would have to be changed)
+prot_fractions = np.concatenate(([0.00001], prot_fractions, [0.99999]))
+growth_rates = np.arange(0.001, 4, 0.001)
+parameters = pd.read_csv("../data/parameters_v3.csv")
+
+results = {
+    "growth_rates": pd.DataFrame(),
+    "allocations": pd.DataFrame(),
+    "mass_fractions": pd.DataFrame(),
+    "fluxes": pd.DataFrame()
+}
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+
+    sim = Simulation(par,
+                     growth_rates = growth_rates,
+                     prot_fractions = prot_fractions)
+    sim.test_xrps(True)
+
+    temp_results = {
+        "growth_rates": sim.max_growth_rates, # 1/h
+        "allocations": sim.allocations, # ribosome allocations
+        "mass_fractions": sim.mass_fractions, # g/g
+        "fluxes": sim.fluxes # mmol/gh
+    }
+
+    # add a column with an identifier and concatenate data frames
+    for result_type in results:
+        temp_results[result_type]["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        results[result_type] = pd.concat([results[result_type], temp_results[result_type]])
+
+for result_type, df in results.items():
+    df.to_csv(f"../data/RBA_{result_type}_v2.csv") (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax-checkpoint:[18:48]
+==fit_kdegmax:[18:48]
+prot_fractions = np.arange(0.35, 0.37, 0.005)  # protein fractions to test
+growth_rates = np.arange(1,3.5,0.001)  # growth rates to test
+
+deg_rates_dic = {
+    "activities": np.arange(19, 20, 0.1),
+    "hill-2_activities": np.arange(32, 33, 0.1),
+    "hill-6_activities": np.arange(100.3, 101, 0.1),
+    "hill-6_activities2": np.arange(37, 42, 0.1),
+}
+
+for parameter_set, deg_rates in deg_rates_dic.items():
+    for k_deg in deg_rates:
+        par = {"matrix_type": "extended",
+               "kdeg_max": k_deg,
+               "parameter_set": parameter_set}
+        sim = Simulation(par,
+                         growth_rates = growth_rates,
+                         prot_fractions = prot_fractions)
+        sim.test_xrps(plot = False)
+
+        mu_opt = sim.max_growth_rates.max()["growth_rate"]
+        mu_idx = sim.max_growth_rates.idxmax()["growth_rate"]
+        xrp_opt = sim.max_growth_rates.loc[mu_idx]["prot_fraction"]
+
+        if abs(xrp_opt - 0.36) <= 0.001:
+            to_print = f"(parameter set={parameter_set}): {k_deg:.2f}"
+            print(f"Optimal deg. rate {to_print}")
+            break
+    else:
+        print("Optimal deg. rate not found") (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==run_all_conditions-checkpoint:[21:52]
+==run_all_conditions_v2-checkpoint:[21:52]
+results = {
+    "growth_rates": pd.DataFrame(),
+    "allocations": pd.DataFrame(),
+    "mass_fractions": pd.DataFrame(),
+    "fluxes": pd.DataFrame()
+}
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+
+    sim = Simulation(par,
+                     growth_rates = growth_rates,
+                     prot_fractions = prot_fractions)
+    sim.test_xrps(True)
+
+    temp_results = {
+        "growth_rates": sim.max_growth_rates, # 1/h
+        "allocations": sim.allocations, # ribosome allocations
+        "mass_fractions": sim.mass_fractions, # g/g
+        "fluxes": sim.fluxes # mmol/gh
+    }
+
+    # add a column with an identifier and concatenate data frames
+    for result_type in results:
+        temp_results[result_type]["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        results[result_type] = pd.concat([results[result_type], temp_results[result_type]])
+
+for result_type, df in results.items(): (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==run_all_conditions:[21:52]
+==run_all_conditions_v2:[21:52]
+results = {
+    "growth_rates": pd.DataFrame(),
+    "allocations": pd.DataFrame(),
+    "mass_fractions": pd.DataFrame(),
+    "fluxes": pd.DataFrame()
+}
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+
+    sim = Simulation(par,
+                     growth_rates = growth_rates,
+                     prot_fractions = prot_fractions)
+    sim.test_xrps(True)
+
+    temp_results = {
+        "growth_rates": sim.max_growth_rates, # 1/h
+        "allocations": sim.allocations, # ribosome allocations
+        "mass_fractions": sim.mass_fractions, # g/g
+        "fluxes": sim.fluxes # mmol/gh
+    }
+
+    # add a column with an identifier and concatenate data frames
+    for result_type in results:
+        temp_results[result_type]["name"] = f"{par['matrix_type']}_{par['parameter_set']}_{name}"
+        results[result_type] = pd.concat([results[result_type], temp_results[result_type]])
+
+for result_type, df in results.items(): (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[258:476]
+==model_functions-checkpoint:[169:388]
+        return mw_list
+
+    def __str__(self):
+        return f"""
+        Parameter set: {self.parameter_set}
+        Matrix type: {self.matrix_type}
+        Medium: {self.medium}
+        """
+
+
+    def make_matrix_uc(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_uc"),
+        row names (list stored as "rows_uc") and column names (list stored as "columns_uc")
+        based on the value of "matrix_type" attribute
+        """
+        naa, nnt, = self.stoichiometries["naa"], self.stoichiometries["nnt"]
+        nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
+        nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
+        naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
+        nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
+
+        self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,    0,    0,     0,   0,   0],
+              [0,   1,  -1,     0,  0,-nig,-neaa,-nent,-nrnap,-naf,-nrp],
+              [0,   0,   1,-nrrna,  0,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     1, -1,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0, -1,   0,    0,    0,     0,   0,   1],
+              [0,   0,   0,     0,  0,   1,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    1,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    1,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     1,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     0,   1,   0],
+              [0,   0,   0,     0,  1,   0,    0,    0,     0,   0,   0]]
+        )
+        self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vAF",
+                           "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
+        self.rows_uc = ["C", "AA", "NT", "rRNA", "rP",
+                        "IG", "EAA", "ENT", "RNAP", "AF", "R"]
+
+        # matrix with ribosome degradation rate
+        if "extended" in self.matrix_type:
+            self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   1,  -1,     0,  0,   0,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp],
+              [0,   0,   1,-nrrna,nrrna, 0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     1, -1,  -1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,  -1,   0,    0,    0,     0,    0,     0,   1],
+              [0,   0,   0,     0,  0,   1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   1,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    1,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    1,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     1,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    1,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    0,     1,   0]]
+            )
+            self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vRNase", "vAF",
+                               "wIG", "wEAA", "wENT", "wRNAP", "wRNase", "wAF", "wrP"]
+            self.rows_uc = ["C", "AA", "NT", "rRNA", "rP", "R",
+                            "IG", "EAA", "ENT", "RNAP", "RNase", "AF"]
+
+        # for mitochondria, add a rP imoprt reaction
+        if "mito" in self.matrix_type:
+            rp_import = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]).T
+            self.matrix_uc = np.concatenate((self.matrix_uc, rp_import), axis=1)
+            self.columns_uc.append("vIrP")
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+
+    def make_matrix_c(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_c"),
+        row names (list stored as "rows_c") and column names (list stored as "columns_c")
+        based on the value of "matrix_type" attribute
+        """
+        # get parameters
+        mu = self.growth_rate
+        nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
+        nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
+        naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
+        nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
+        kig, keaa = self.kinetics["kig"], self.kinetics["keaa"]
+        kent, kaf, kel = self.kinetics["kent"], self.kinetics["kaf"], self.kinetics["kel"]
+        mwc = self.mol_masses["C"]
+        krnap = self.kinetics["ktr"]/nrrna  # convert nt/h -> 1/h
+
+        # get submatrix with metabolite rows (met_matrix) and add slack columnes
+        ncol = 9
+        if ("extended" in self.matrix_type) or (self.matrix_type == "Kostinski"):
+            ncol = 11
+        slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                          slack(ncol,0), slack(ncol,1)])
+        met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
+
+        # "RBA" matrix - enzyme capacity + dry mass constraints
+        if self.matrix_type in ["base"]:
+            constraints = np.array(
+              [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
+               [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
+               [  0,  0,-mu,  0,     0,   0,    0, kent,     0,   0,   0]+slack(ncol,4),
+               [  0,  0,  0,-mu,     0,   0,    0,    0, krnap,   0,   0]+slack(ncol,5),
+               [  0,  0,  0,  0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(ncol,6),
+               [  0,  0,  0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(ncol,7),
+               [-mwc, 0,  0,  0,     0,   0,    0,    0,    0,   0,    0]+slack(ncol-1)+[mu]]
+            )
+
+        # "Kostinski" matrix - like RBA but with fixed allocations of ribosome
+        if self.matrix_type == "Kostinski":
+            # ribosome allocation to RNAP and rP (%) from Kostinski & Reuveni
+            r_allocation_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100
+            r_allocation_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100
+
+            # translation rate "kel" is set in "set_specific_parameters"
+            # the ribsome constraint is split to 3 rows, where "kel" is multiplied
+            # by the respective allocation fraction for RNAP, rP and the rest
+            kel_rnap = r_allocation_rnap*kel
+            kel_rp = r_allocation_rp*kel
+            kel_rest = (1-r_allocation_rnap-r_allocation_rp)*kel # all other proteins
+
+            constraints = np.array(
+            [[-mu,   0,   0,   0,        0,  kig,   0,    0,    0,   0,   0]+slack(ncol,2),
+             [  0, -mu,   0,   0,        0,   0,  keaa,   0,    0,   0,   0]+slack(ncol,3),
+             [  0,   0, -mu,   0,        0,   0,    0,  kent,   0,   0,   0]+slack(ncol,4),
+             [  0,   0,   0, -mu,        0,   0,    0,    0, krnap,  0,   0]+slack(ncol,5),
+             [  0,   0,   0,   0,      -mu,   0,    0,    0,    0, kaf,   0]+slack(ncol,6),
+             [  0,   0,   0,   0,kel_rest/mu,-nig,-neaa,-nent,  0,-naf,   0]+slack(ncol,7),
+             [  0,   0,   0,   0,kel_rnap/mu, 0,    0,    0,-nrnap,  0,   0]+slack(ncol,8),
+             [  0,   0,   0,   0, kel_rp/mu,  0,    0,    0,    0,   0,-nrp]+slack(ncol,9),
+             [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,   0,   0]+slack(ncol-1)+[mu]])
+
+
+        # constraints like in "base" matrix + minimum rRNA degradation rate enforced
+        if "extended" in self.matrix_type:
+            krnase = self.kinetics["kexo"]/nrrna
+            kdeg = self.kinetics["kdeg"]
+
+            constraints = np.array(
+             [[-mu,0, 0, 0,  0,     0, kig,    0,    0,     0,    0,    0,   0]+slack(ncol,2),
+              [ 0,-mu,0, 0,  0,     0,   0, keaa,    0,     0,    0,    0,   0]+slack(ncol,3),
+              [ 0, 0,-mu,0,  0,     0,   0,    0, kent,     0,    0,    0,   0]+slack(ncol,4),
+              [ 0, 0, 0,-mu, 0,     0,   0,    0,    0, krnap,    0,    0,   0]+slack(ncol,5),
+              [ 0, 0, 0, 0,-mu,     0,   0,    0,    0,     0, krnase,  0,   0]+slack(ncol,6),
+              [ 0, 0, 0, 0,  0,   -mu,   0,    0,    0,     0,    0,   kaf,  0]+slack(ncol,7),
+              [ 0, 0, 0, 0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp]+slack(ncol,8),
+              [ 0, 0, 0, 0, mu, -kdeg,   0,    0,    0,     0,    0,    0,   0]+slack(ncol,9),
+              [-mwc,0,0, 0,  0,     0,   0,    0,    0,     0,    0,    0,   0]+slack(ncol-1)+[mu]]
+            )
+
+        # 1/3 of rP imported for free
+        if "mito" in self.matrix_type:
+            mwrp = self.stoichiometries["nrp"]*self.mol_masses["AA"]
+
+            # add column for rP import reaction
+            column =[0, 0, 0, 0, 0, 0, 0, 0, -mwrp]
+            constraints = np.insert(constraints, self.matrix_uc.shape[1]-1, column, axis=1)
+
+            # wrP = 2*vIrP constraint - 1/3 rPs are imported
+            import_constraint = np.array(
+                [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -2]+slack(ncol)])
+            constraints = np.concatenate((constraints, import_constraint), axis = 0)
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+        # concatenate stoichiometric matrix with constraint matrix
+        self.matrix_c = np.concatenate((met_matrix, constraints), axis=0)
+        self.generate_row_and_column_names()
+
+
+    def generate_row_and_column_names(self):
+        """add row (rows_c) and column names (columns_c) based on the shape of matrix_c"""
+
+        rows =  self.rows_uc[:5]
+        n_slack_row = self.matrix_c.shape[0]-len(rows)
+        n_slack_col = self.matrix_c.shape[1]-len(self.columns_uc)-1
+
+        self.rows_c = rows +  [f"C{i}" for i in range(n_slack_row)]
+        self.columns_c = self.columns_uc + [f"S{i}" for i in range(n_slack_col)] + ["C"]
+
+
+    def run_efmtool(self):
+        """
+        run efmtool for matrix with constraints (matrix_c),
+        return numpy array with fluxes
+        """
+
+        options = efmtool.get_default_options()
+        options["arithmetic"] = "fractional"
+        options['level'] = 'WARNING'
+        egvs = efmtool.calculate_efms(stoichiometry = self.matrix_c,
+                                      reversibilities = [0]*self.matrix_c.shape[1],
+                                      reaction_names = self.columns_c,
+                                      metabolite_names = self.rows_c,
+                                      options = options)
+                                      #, jvm_options = ["--illegal-access=deny"])
+        return egvs
+
+
+    def update_mu(self, growth_rate):
+        """Update matrices with new growth rate"""
+        self.growth_rate = growth_rate
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def update_frac(self, frac):
+        """
+        Update protein fraction in ribosome (frac),
+        rP and rRNA stoichiometries (nrp and nrrna),
+        degradation rate, and then matrices.
+
+        Parameters
+        ----------
+        frac: protein mass fraction in ribosome
+        """
+        self.frac = frac (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[258:476]
+==model_functions:[169:388]
+        return mw_list
+
+    def __str__(self):
+        return f"""
+        Parameter set: {self.parameter_set}
+        Matrix type: {self.matrix_type}
+        Medium: {self.medium}
+        """
+
+
+    def make_matrix_uc(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_uc"),
+        row names (list stored as "rows_uc") and column names (list stored as "columns_uc")
+        based on the value of "matrix_type" attribute
+        """
+        naa, nnt, = self.stoichiometries["naa"], self.stoichiometries["nnt"]
+        nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
+        nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
+        naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
+        nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
+
+        self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,    0,    0,     0,   0,   0],
+              [0,   1,  -1,     0,  0,-nig,-neaa,-nent,-nrnap,-naf,-nrp],
+              [0,   0,   1,-nrrna,  0,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     1, -1,   0,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0, -1,   0,    0,    0,     0,   0,   1],
+              [0,   0,   0,     0,  0,   1,    0,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    1,    0,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    1,     0,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     1,   0,   0],
+              [0,   0,   0,     0,  0,   0,    0,    0,     0,   1,   0],
+              [0,   0,   0,     0,  1,   0,    0,    0,     0,   0,   0]]
+        )
+        self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vAF",
+                           "wIG", "wEAA", "wENT", "wRNAP", "wAF", "wrP"]
+        self.rows_uc = ["C", "AA", "NT", "rRNA", "rP",
+                        "IG", "EAA", "ENT", "RNAP", "AF", "R"]
+
+        # matrix with ribosome degradation rate
+        if "extended" in self.matrix_type:
+            self.matrix_uc = np.array(
+             [[1,-naa,-nnt,     0,  0,   0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   1,  -1,     0,  0,   0,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp],
+              [0,   0,   1,-nrrna,nrrna, 0,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     1, -1,  -1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,  -1,   0,    0,    0,     0,    0,     0,   1],
+              [0,   0,   0,     0,  0,   1,   0,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   1,    0,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    1,    0,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    1,     0,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     1,    0,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    1,     0,   0],
+              [0,   0,   0,     0,  0,   0,   0,    0,    0,     0,    0,     1,   0]]
+            )
+            self.columns_uc = ["vIG", "vEAA", "vENT", "vRNAP", "vRNase", "vAF",
+                               "wIG", "wEAA", "wENT", "wRNAP", "wRNase", "wAF", "wrP"]
+            self.rows_uc = ["C", "AA", "NT", "rRNA", "rP", "R",
+                            "IG", "EAA", "ENT", "RNAP", "RNase", "AF"]
+
+        # for mitochondria, add a rP imoprt reaction
+        if "mito" in self.matrix_type:
+            rp_import = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]]).T
+            self.matrix_uc = np.concatenate((self.matrix_uc, rp_import), axis=1)
+            self.columns_uc.append("vIrP")
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+
+    def make_matrix_c(self):
+        """
+        Create stoichiometric matrix without constraints (numpy array stored as "matrix_c"),
+        row names (list stored as "rows_c") and column names (list stored as "columns_c")
+        based on the value of "matrix_type" attribute
+        """
+        # get parameters
+        mu = self.growth_rate
+        nig, neaa, = self.stoichiometries["nig"], self.stoichiometries["neaa"]
+        nent, nrnap = self.stoichiometries["nent"], self.stoichiometries["nrnap"]
+        naf, nrp = self.stoichiometries["naf"], self.stoichiometries["nrp"]
+        nrrna, nrnase = self.stoichiometries["nrrna"], self.stoichiometries["nrnase"]
+        kig, keaa = self.kinetics["kig"], self.kinetics["keaa"]
+        kent, kaf, kel = self.kinetics["kent"], self.kinetics["kaf"], self.kinetics["kel"]
+        mwc = self.mol_masses["C"]
+        krnap = self.kinetics["ktr"]/nrrna  # convert nt/h -> 1/h
+
+        # get submatrix with metabolite rows (met_matrix) and add slack columnes
+        ncol = 9
+        if ("extended" in self.matrix_type) or (self.matrix_type == "Kostinski"):
+            ncol = 11
+        slacks = np.array([slack(ncol), slack(ncol), slack(ncol),
+                          slack(ncol,0), slack(ncol,1)])
+        met_matrix = np.concatenate((self.matrix_uc[0:5, :], slacks), axis=1)
+
+        # "RBA" matrix - enzyme capacity + dry mass constraints
+        if self.matrix_type in ["base"]:
+            constraints = np.array(
+              [[-mu,  0,  0,  0,     0, kig,    0,    0,     0,   0,   0]+slack(ncol,2),
+               [  0,-mu,  0,  0,     0,   0, keaa,    0,     0,   0,   0]+slack(ncol,3),
+               [  0,  0,-mu,  0,     0,   0,    0, kent,     0,   0,   0]+slack(ncol,4),
+               [  0,  0,  0,-mu,     0,   0,    0,    0, krnap,   0,   0]+slack(ncol,5),
+               [  0,  0,  0,  0,   -mu,   0,    0,    0,     0, kaf,   0]+slack(ncol,6),
+               [  0,  0,  0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-naf,-nrp]+slack(ncol,7),
+               [-mwc, 0,  0,  0,     0,   0,    0,    0,    0,   0,    0]+slack(ncol-1)+[mu]]
+            )
+
+        # "Kostinski" matrix - like RBA but with fixed allocations of ribosome
+        if self.matrix_type == "Kostinski":
+            # ribosome allocation to RNAP and rP (%) from Kostinski & Reuveni
+            r_allocation_rnap = [0.93, 1.14, 1.35, 1.5, 1.61, 1.66][self.medium]/100
+            r_allocation_rp = [7.8, 9.4, 11.8, 15.3, 19.2, 23.1][self.medium]/100
+
+            # translation rate "kel" is set in "set_specific_parameters"
+            # the ribsome constraint is split to 3 rows, where "kel" is multiplied
+            # by the respective allocation fraction for RNAP, rP and the rest
+            kel_rnap = r_allocation_rnap*kel
+            kel_rp = r_allocation_rp*kel
+            kel_rest = (1-r_allocation_rnap-r_allocation_rp)*kel # all other proteins
+
+            constraints = np.array(
+            [[-mu,   0,   0,   0,        0,  kig,   0,    0,    0,   0,   0]+slack(ncol,2),
+             [  0, -mu,   0,   0,        0,   0,  keaa,   0,    0,   0,   0]+slack(ncol,3),
+             [  0,   0, -mu,   0,        0,   0,    0,  kent,   0,   0,   0]+slack(ncol,4),
+             [  0,   0,   0, -mu,        0,   0,    0,    0, krnap,  0,   0]+slack(ncol,5),
+             [  0,   0,   0,   0,      -mu,   0,    0,    0,    0, kaf,   0]+slack(ncol,6),
+             [  0,   0,   0,   0,kel_rest/mu,-nig,-neaa,-nent,  0,-naf,   0]+slack(ncol,7),
+             [  0,   0,   0,   0,kel_rnap/mu, 0,    0,    0,-nrnap,  0,   0]+slack(ncol,8),
+             [  0,   0,   0,   0, kel_rp/mu,  0,    0,    0,    0,   0,-nrp]+slack(ncol,9),
+             [-mwc,  0,   0,   0,        0,   0,    0,    0,    0,   0,   0]+slack(ncol-1)+[mu]])
+
+
+        # constraints like in "base" matrix + minimum rRNA degradation rate enforced
+        if "extended" in self.matrix_type:
+            krnase = self.kinetics["kexo"]/nrrna
+            kdeg = self.kinetics["kdeg"]
+
+            constraints = np.array(
+             [[-mu,0, 0, 0,  0,     0, kig,    0,    0,     0,    0,    0,   0]+slack(ncol,2),
+              [ 0,-mu,0, 0,  0,     0,   0, keaa,    0,     0,    0,    0,   0]+slack(ncol,3),
+              [ 0, 0,-mu,0,  0,     0,   0,    0, kent,     0,    0,    0,   0]+slack(ncol,4),
+              [ 0, 0, 0,-mu, 0,     0,   0,    0,    0, krnap,    0,    0,   0]+slack(ncol,5),
+              [ 0, 0, 0, 0,-mu,     0,   0,    0,    0,     0, krnase,  0,   0]+slack(ncol,6),
+              [ 0, 0, 0, 0,  0,   -mu,   0,    0,    0,     0,    0,   kaf,  0]+slack(ncol,7),
+              [ 0, 0, 0, 0,  0,kel/mu,-nig,-neaa,-nent,-nrnap,-nrnase,-naf,-nrp]+slack(ncol,8),
+              [ 0, 0, 0, 0, mu, -kdeg,   0,    0,    0,     0,    0,    0,   0]+slack(ncol,9),
+              [-mwc,0,0, 0,  0,     0,   0,    0,    0,     0,    0,    0,   0]+slack(ncol-1)+[mu]]
+            )
+
+        # 1/3 of rP imported for free
+        if "mito" in self.matrix_type:
+            mwrp = self.stoichiometries["nrp"]*self.mol_masses["AA"]
+
+            # add column for rP import reaction
+            column =[0, 0, 0, 0, 0, 0, 0, 0, -mwrp]
+            constraints = np.insert(constraints, self.matrix_uc.shape[1]-1, column, axis=1)
+
+            # wrP = 2*vIrP constraint - 1/3 rPs are imported
+            import_constraint = np.array(
+                [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, -2]+slack(ncol)])
+            constraints = np.concatenate((constraints, import_constraint), axis = 0)
+
+        if self.matrix_type not in ["base", "extended", "extended_mito", "Kostinski"]:
+            raise Exception("Choose valid matrix type ('base', 'extended', 'extended_mito', 'Kostinski')")
+
+        # concatenate stoichiometric matrix with constraint matrix
+        self.matrix_c = np.concatenate((met_matrix, constraints), axis=0)
+        self.generate_row_and_column_names()
+
+
+    def generate_row_and_column_names(self):
+        """add row (rows_c) and column names (columns_c) based on the shape of matrix_c"""
+
+        rows =  self.rows_uc[:5]
+        n_slack_row = self.matrix_c.shape[0]-len(rows)
+        n_slack_col = self.matrix_c.shape[1]-len(self.columns_uc)-1
+
+        self.rows_c = rows +  [f"C{i}" for i in range(n_slack_row)]
+        self.columns_c = self.columns_uc + [f"S{i}" for i in range(n_slack_col)] + ["C"]
+
+
+    def run_efmtool(self):
+        """
+        run efmtool for matrix with constraints (matrix_c),
+        return numpy array with fluxes
+        """
+
+        options = efmtool.get_default_options()
+        options["arithmetic"] = "fractional"
+        options['level'] = 'WARNING'
+        egvs = efmtool.calculate_efms(stoichiometry = self.matrix_c,
+                                      reversibilities = [0]*self.matrix_c.shape[1],
+                                      reaction_names = self.columns_c,
+                                      metabolite_names = self.rows_c,
+                                      options = options)
+                                      #, jvm_options = ["--illegal-access=deny"])
+        return egvs
+
+
+    def update_mu(self, growth_rate):
+        """Update matrices with new growth rate"""
+        self.growth_rate = growth_rate
+        self.make_matrix_c()
+        self.make_matrix_uc()
+
+
+    def update_frac(self, frac):
+        """
+        Update protein fraction in ribosome (frac),
+        rP and rRNA stoichiometries (nrp and nrrna),
+        degradation rate, and then matrices.
+
+        Parameters
+        ----------
+        frac: protein mass fraction in ribosome
+        """
+        self.frac = frac (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==kostinski_reproduction-checkpoint:[15:44]
+==kostinski_reproduction:[15:44]
+MATRIX_TYPE = "Kostinski"
+
+prot_fractions = np.arange(0.01,1,0.005)
+growth_rates = np.arange(0.01,2.5,0.001)
+
+parameters = {"glc": {"medium": 2},
+              "gly": {"medium": 1},
+              "succ": {"medium": 0},
+              "LB": {"medium": 5},
+              "glcAA": {"medium": 4},
+              "glyAA": {"medium": 3}}
+
+growth_rates_res = pd.DataFrame()
+
+for name, par in parameters.items():
+    print(f"Medium {name}")
+
+    sim = Simulation(growth_rates = growth_rates,
+                     prot_fractions = prot_fractions,
+                     matrix_type = MATRIX_TYPE,
+                     medium = par["medium"],
+                     parameter_set = MATRIX_TYPE)
+    sim.test_xrps(plot=False)
+
+    temp_results = sim.max_growth_rates
+    temp_results["name"] = f"{MATRIX_TYPE}_{name}"
+    growth_rates_res = pd.concat([growth_rates_res, temp_results])
+
+growth_rates_res.to_csv(f"../data/{MATRIX_TYPE}_reproduction_growth_rates.csv") (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[14:104]
+==model_functions-checkpoint:[14:102]
+TO_H = 3600  # factor to convert from seconds to hours
+
+def slack(n_columns, position = -100):
+    """make a list with zeroes, optionally with -1 at a specified position"""
+    zeros = np.zeros(n_columns, dtype = int)
+    if position in range(len(zeros)):
+        zeros[position] = -1
+    return list(zeros)
+
+
+def initiate_progress_plot(title):
+    """
+    Make an empty plot in the terminal
+    it will be updated with the function "fill_progress_plot()"
+
+    Parameters
+    ----------
+    title: title of the plot
+    """
+    plt.title(title)
+    plt.xlabel("Protein fraction in ribosome")
+    plt.ylabel("Growth rate [1/h]")
+    plt.theme("clear")
+    plt.plot_size(70, 25)
+
+
+def fill_progress_plot(xdata, ydata, ymin=0, ymax=4):
+    """
+    Plot data into the plot initiated with "initiate_progress_plot()"
+
+    Parameters
+    ----------
+    xdata, ydata: x and y coordinates
+    ymin, ymax: min and max limits of y-axis
+    """
+    plt.clt()
+    plt.ylim(ymin, ymax)
+    plt.xlim(0,1)
+    plt.scatter(xdata, ydata, marker="heart", color=125)
+    plt.show()
+
+
+class Model:
+    """
+    Class to store models and results of a single run of efmtool
+
+    Attributes
+    ----------
+    parameter_set: changes some parameters from defaults in "set_specific_parameters()"
+        - substrings: ["activities", "activities2" "archaea", "Kostinski"] change some kinetic parameters
+        - substrings "hill-[n]" change how degradation rate of RNA is calculated (n is an integer)
+    matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
+        - "base": standard RBA (default)
+        - "extended", "extended_mito": matrices with rRNA degradation reaction
+        - "Kostinski": "base" matrix with fixed ribosome and RNAP allocations
+    medium: influences the values of keaa, mol_masses["C"]; ktr (if parameter_set contains "activities")
+        - 0: succinate minimal medium
+        - 1: glycerol minimal medium
+        - 2: glucose minimal medium [default]
+        - 3: glycerol + amino acids
+        - 4: glucose + amino acids
+        - 5: LB
+    frac: protein mass fraction in the ribosome
+    mu: growth rate
+    mol_masses: a dictionary of molecular masses (g/mmol) of ribosome (R),
+                average amino acid (AA), average nucleotide (NT), carbon source (C)
+    stoichiometries: a dictionary of stoichiometric coefficients
+        - nig, neaa, nent, nrnap, naf, nrnase - transporter (nig),
+          AA/NT synthesis enzymes (neaa/nent), RNAP (nrnap),
+          ribosome assembly factors (naf) and RNase R (nrnase)
+        - naa, nnt - stoich. coefficients for synthesis of AA, NT,
+                     depend on the molecular mass of carbon source (mol_masses["C"])
+        - nrp, nrrna - stoich. coefficients for synthesis of rP and rRNA, depend on "frac"
+    kinetics: a dictionary of kinetic parameters
+        - kig: kcat of substrate importer [1/h]
+        - kent: kcat of NT synthesis [1/h]
+        - kaf: kcat of R assembly [1/h]
+        - keaa - kcat of AA synthesis, depends on the value of "medium"
+        - ktr: transcription rate [nt/h]
+        - krnap: transcription rate [1/h]
+        - kel: translation rate [aa/h]
+        - kexo: exonuclease rate (RNase R) [nt/h]
+    kdeg_max: max. degradation rate [1/h]
+    matrix_uc: np.array - matrix without constraints
+    matrix_c: np.array - matrix with constraints
+    rows_uc, rows_c: row names for unconstrained / constrained matrices
+    columns_uc, columns_c: column names for unconstrained / constrained matrices
+    """
+
+    # allowed attributes (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[14:104]
+==model_functions:[14:102]
+TO_H = 3600  # factor to convert from seconds to hours
+
+def slack(n_columns, position = -100):
+    """make a list with zeroes, optionally with -1 at a specified position"""
+    zeros = np.zeros(n_columns, dtype = int)
+    if position in range(len(zeros)):
+        zeros[position] = -1
+    return list(zeros)
+
+
+def initiate_progress_plot(title):
+    """
+    Make an empty plot in the terminal
+    it will be updated with the function "fill_progress_plot()"
+
+    Parameters
+    ----------
+    title: title of the plot
+    """
+    plt.title(title)
+    plt.xlabel("Protein fraction in ribosome")
+    plt.ylabel("Growth rate [1/h]")
+    plt.theme("clear")
+    plt.plot_size(70, 25)
+
+
+def fill_progress_plot(xdata, ydata, ymin=0, ymax=4):
+    """
+    Plot data into the plot initiated with "initiate_progress_plot()"
+
+    Parameters
+    ----------
+    xdata, ydata: x and y coordinates
+    ymin, ymax: min and max limits of y-axis
+    """
+    plt.clt()
+    plt.ylim(ymin, ymax)
+    plt.xlim(0,1)
+    plt.scatter(xdata, ydata, marker="heart", color=125)
+    plt.show()
+
+
+class Model:
+    """
+    Class to store models and results of a single run of efmtool
+
+    Attributes
+    ----------
+    parameter_set: changes some parameters from defaults in "set_specific_parameters()"
+        - substrings: ["activities", "activities2" "archaea", "Kostinski"] change some kinetic parameters
+        - substrings "hill-[n]" change how degradation rate of RNA is calculated (n is an integer)
+    matrix_type: see funcions "make_matrix_uc", "make_matrix_c"
+        - "base": standard RBA (default)
+        - "extended", "extended_mito": matrices with rRNA degradation reaction
+        - "Kostinski": "base" matrix with fixed ribosome and RNAP allocations
+    medium: influences the values of keaa, mol_masses["C"]; ktr (if parameter_set contains "activities")
+        - 0: succinate minimal medium
+        - 1: glycerol minimal medium
+        - 2: glucose minimal medium [default]
+        - 3: glycerol + amino acids
+        - 4: glucose + amino acids
+        - 5: LB
+    frac: protein mass fraction in the ribosome
+    mu: growth rate
+    mol_masses: a dictionary of molecular masses (g/mmol) of ribosome (R),
+                average amino acid (AA), average nucleotide (NT), carbon source (C)
+    stoichiometries: a dictionary of stoichiometric coefficients
+        - nig, neaa, nent, nrnap, naf, nrnase - transporter (nig),
+          AA/NT synthesis enzymes (neaa/nent), RNAP (nrnap),
+          ribosome assembly factors (naf) and RNase R (nrnase)
+        - naa, nnt - stoich. coefficients for synthesis of AA, NT,
+                     depend on the molecular mass of carbon source (mol_masses["C"])
+        - nrp, nrrna - stoich. coefficients for synthesis of rP and rRNA, depend on "frac"
+    kinetics: a dictionary of kinetic parameters
+        - kig: kcat of substrate importer [1/h]
+        - kent: kcat of NT synthesis [1/h]
+        - kaf: kcat of R assembly [1/h]
+        - keaa - kcat of AA synthesis, depends on the value of "medium"
+        - ktr: transcription rate [nt/h]
+        - krnap: transcription rate [1/h]
+        - kel: translation rate [aa/h]
+        - kexo: exonuclease rate (RNase R) [nt/h]
+    kdeg_max: max. degradation rate [1/h]
+    matrix_uc: np.array - matrix without constraints
+    matrix_c: np.array - matrix with constraints
+    rows_uc, rows_c: row names for unconstrained / constrained matrices
+    columns_uc, columns_c: column names for unconstrained / constrained matrices
+    """
+
+    # allowed attributes (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax-checkpoint:[33:43]
+==fit_kdegmax_v2-checkpoint:[45:55]
+        sim = Simulation(par,
+                         growth_rates = growth_rates,
+                         prot_fractions = prot_fractions)
+        sim.test_xrps(plot = False)
+
+        mu_opt = sim.max_growth_rates.max()["growth_rate"]
+        mu_idx = sim.max_growth_rates.idxmax()["growth_rate"]
+        xrp_opt = sim.max_growth_rates.loc[mu_idx]["prot_fraction"]
+
+        if abs(xrp_opt - 0.36) <= 0.001: (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax:[33:43]
+==fit_kdegmax_v2:[45:55]
+        sim = Simulation(par,
+                         growth_rates = growth_rates,
+                         prot_fractions = prot_fractions)
+        sim.test_xrps(plot = False)
+
+        mu_opt = sim.max_growth_rates.max()["growth_rate"]
+        mu_idx = sim.max_growth_rates.idxmax()["growth_rate"]
+        xrp_opt = sim.max_growth_rates.loc[mu_idx]["prot_fraction"]
+
+        if abs(xrp_opt - 0.36) <= 0.001: (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax-checkpoint:[18:26]
+==fit_kdegmax_v2-checkpoint:[20:28]
+prot_fractions = np.arange(0.35, 0.37, 0.005)  # protein fractions to test
+growth_rates = np.arange(1,3.5,0.001)  # growth rates to test
+
+deg_rates_dic = {
+    "activities": np.arange(19, 20, 0.1),
+    "hill-2_activities": np.arange(32, 33, 0.1),
+    "hill-6_activities": np.arange(100.3, 101, 0.1),
+    "hill-6_activities2": np.arange(37, 42, 0.1), (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax:[18:26]
+==fit_kdegmax_v2:[20:28]
+prot_fractions = np.arange(0.35, 0.37, 0.005)  # protein fractions to test
+growth_rates = np.arange(1,3.5,0.001)  # growth rates to test
+
+deg_rates_dic = {
+    "activities": np.arange(19, 20, 0.1),
+    "hill-2_activities": np.arange(32, 33, 0.1),
+    "hill-6_activities": np.arange(100.3, 101, 0.1),
+    "hill-6_activities2": np.arange(37, 42, 0.1), (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[233:239]
+==model_functions-checkpoint:[147:153]
+        kdeg = self.kdeg_max * (1 - self.frac)
+        if "hill" in self.parameter_set:
+            hill = int(self.parameter_set.split("_")[0].split("-")[-1])
+            kdeg = (self.kdeg_max
+                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
+                    * (1 - self.frac)) (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax_v2-checkpoint:[29:38]
+==run_all_conditions:[26:34]
+}
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+ (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==fit_kdegmax_v2:[29:38]
+==run_all_conditions_v2:[26:34]
+}
+
+for index, row in parameters.iterrows():
+    name = row["name"]
+    par = dict(row)
+    _ = par.pop("name")
+    par["medium"] = int(par["medium"])
+ (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[233:239]
+==model_functions:[147:153]
+        kdeg = self.kdeg_max * (1 - self.frac)
+        if "hill" in self.parameter_set:
+            hill = int(self.parameter_set.split("_")[0].split("-")[-1])
+            kdeg = (self.kdeg_max
+                    * (1 - (self.frac**hill / (self.frac**hill + 0.2**hill)))
+                    * (1 - self.frac)) (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[727:734]
+==model_functions-checkpoint:[638:645]
+            growth_rates = self.fluxes["growth_rate"]
+            v_af = self.fluxes["vAF"]
+            allocations = prot_fluxes.apply(lambda x: x*growth_rates/(v_af*kel))
+
+            allocations["prot_fraction"] = prot_fractions
+
+            self.allocations = allocations (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[155:170]
+==model_functions-checkpoint:[132:147]
+        self.rows_c = []
+        self.columns_c = []
+
+        # create matrices
+        self.make_matrix_uc()
+        self.make_matrix_c()
+
+        _ = self.calculate_molecular_masses()
+
+
+    def calculate_degradation_rate(self):
+        """
+        calculate degradation rate based on protein content
+        and type of degradation function
+        """ (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general-checkpoint:[138:144]
+==model_functions-checkpoint:[106:113]
+        for dictionary in model_pars:
+            for key, value in dictionary.items():
+                setattr(self, key, value)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+ (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[727:734]
+==model_functions:[638:645]
+            growth_rates = self.fluxes["growth_rate"]
+            v_af = self.fluxes["vAF"]
+            allocations = prot_fluxes.apply(lambda x: x*growth_rates/(v_af*kel))
+
+            allocations["prot_fraction"] = prot_fractions
+
+            self.allocations = allocations (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[155:170]
+==model_functions:[132:147]
+        self.rows_c = []
+        self.columns_c = []
+
+        # create matrices
+        self.make_matrix_uc()
+        self.make_matrix_c()
+
+        _ = self.calculate_molecular_masses()
+
+
+    def calculate_degradation_rate(self):
+        """
+        calculate degradation rate based on protein content
+        and type of degradation function
+        """ (duplicate-code)
+.ipynb_checkpoints/model_functions-checkpoint.py:1:0: R0801: Similar lines in 2 files
+==general:[138:144]
+==model_functions:[106:113]
+        for dictionary in model_pars:
+            for key, value in dictionary.items():
+                setattr(self, key, value)
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+ (duplicate-code)
+
+-----------------------------------
+Your code has been rated at 3.15/10
+
