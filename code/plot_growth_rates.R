@@ -1,7 +1,6 @@
 library(here)
 
 #### read simulation results ###################################################
-filenames <- c("RBA")
 all_data <- read.csv(here("data", "RBA_growth_rates.csv"))
 all_data$prot_fraction <- round(as.numeric(all_data$prot_fraction),3)
 
