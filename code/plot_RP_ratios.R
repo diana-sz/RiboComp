@@ -77,7 +77,10 @@ for(name in names){
          cex.lab = 1.8)
     par(new = FALSE)
     
-    if(name %in% c("base", "extended")){
+    if(name %in% c("base_activities",
+                   "base_activities_var_kel",
+                   "extended_activities", 
+                   "extended_hill-6_activities_var_kel")){
       legend("topleft", 
              legend = legend_media,
              pch = 19,
